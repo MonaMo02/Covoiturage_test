@@ -6,12 +6,12 @@
  */
 
                                //la page a la même structure que inscription.php, voir cette page pour les commentaires.
-require'../BDD.php';
+require'../config/BDD.php';
 $bdd = getBdd();
 
-require '../formulaire.php';   
+require '../config/formulaire.php';   
 
-require '../droits.php';
+require '../config/droits.php';
 
 test_passager(); //on verifie que c'est un passager
 // on teste si le visiteur a soumis le formulaire

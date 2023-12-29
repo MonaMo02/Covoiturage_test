@@ -92,19 +92,19 @@ function gabarit(){
 }
 if (!isset($_SESSION['login'])) {
     
-	require '../gabarit/pages/gabarit_visiteur.php';
+	require '../templates/pages/gabarit_visiteur.php';
 }
 else if(isset($_SESSION['login'])){
  if(isset($_SESSION['pilote'])){
     if($_SESSION['pilote']){
-       require '../gabarit/pages/gabarit_pilote.php';
+       require '../gabatemplatesrit/pages/gabarit_pilote.php';
     }
     else{
-        require '../gabarit/pages/gabarit_passager.php';
+        require '../templates/pages/gabarit_passager.php';
     }
 }
 else{
-   require '../gabarit/pages/gabarit_passager.php'; 
+   require '../templates/pages/gabarit_passager.php'; 
 }
 
 }

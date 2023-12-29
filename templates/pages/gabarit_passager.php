@@ -8,13 +8,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="icon" type="image/png" href="../favicon.png" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" /><![endif]-->
+        <link href="../templates/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        <link href="../gabarit/css/bootstrap.min.css" rel="stylesheet">
-        <script type="text/javascript" src="../gabarit/js/verif_form.js"></script>
+        <script type="text/javascript" src="../templates/js/verif_form.js"></script>
         <!--[if lt IE 9]>
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="../gabarit/css/styles.css" rel="stylesheet">
+        <link href="../templates/css/styles.css" rel="stylesheet">
 
     </head>
     <body>
@@ -30,15 +30,28 @@
                     <a href="../index.php" class="navbar-brand"><span class = "logonavbar">CARPE DIEM</span></a>
                 </div>
                 <nav class="collapse navbar-collapse" role="navigation">
-
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="../membre/profil.php">Profil</a>
+                        </li>
+                        <li>
+                            <a href="../membre/mon_compte.php">Mes comptes</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messagerie<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../membre/mes_messages.php">Mes Messages</a></li>
+                                <li><a href="../membre/envoyer_message.php">Nouveau message</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../trajet/mes_trajets.php">Mes trajets</a>
+                        </li>
+                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <p class="navbar-btn">
-                            <a href="../membre/connexion.php" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-share-alt"></i> Connexion</a>
-                            <a href="../inscription/inscription.php" class="btn btn-success btn-large"><i class="glyphicon glyphicon-arrow-up"></i> Inscription</a>
+                            <a href="../membre/deconnexion.php" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
                         </p>
-
-
-
                     </ul>
                 </nav>
             </div>
@@ -64,7 +77,8 @@
             <!--left-->
             <div class="col-md-3" id="leftCol">
                 <ul class="nav nav-stacked" id="sidebar">
-
+                    <li><a href="../trajet/recherche_trajet.php">Rechercher un trajet</a></li>
+                    <li><a href="../inscription/inscription_voiture.php">Ajouter sa voiture</a></li>
 
                 </ul>
             </div><!--/left-->
@@ -91,9 +105,11 @@
         </div>
     </div>
 
+
+
     <!-- script references -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="../gabarit/js/bootstrap.min.js"></script>
-    <script src="../gabarit/js/scripts.js"></script>
+    <script src="../templates/js/bootstrap.min.js"></script>
+    <script src="../templates/js/scripts.js"></script>
 </body>
 </html>

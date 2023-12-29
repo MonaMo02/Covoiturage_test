@@ -6,10 +6,10 @@
  */
 
 
-require'../config/BDD.php'; //on inclut le fichier qui contient les infos sur la BDD puis on le met dans la variable bdd à l'aide de la fonction getBdd
+require '../config/BDD.php'; //on inclut le fichier qui contient les infos sur la BDD puis on le met dans la variable bdd à l'aide de la fonction getBdd
 $bdd = getBdd();
 
-require'../config/formulaire.php'; //on inclut les fonctions de formulaires pour construire rapidement le formulaire de la page
+require '../config/formulaire.php'; //on inclut les fonctions de formulaires pour construire rapidement le formulaire de la page
 
 require '../config/droits.php'; //on inclut les fonctions qui permettent de tester et de vérifier qui peut accéder à cette page
 test_visiteur(); //on teste si c'est un visiteur si ce n'en est pas un on le redirige vers l'index

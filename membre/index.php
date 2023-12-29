@@ -68,10 +68,10 @@ $sql3 = "SELECT * FROM evaluation as E, trajet as T, user as U WHERE E.evalue_us
     
     <?php $contenu = ob_get_clean();
     if($_SESSION["pilote"]==TRUE){
-    require '../gabarit/pages/gabarit_pilote.php';  //on choisit le gabarit on fonction si c'est un pilote ou passager
+    require '../templates/pages/gabarit_pilote.php';  //on choisit le gabarit on fonction si c'est un pilote ou passager
     }
     else{
-    require '../gabarit/pages/gabarit_passager.php';  
+    require '../templates/pages/gabarit_passager.php';  
     }
 
 }
