@@ -5,11 +5,11 @@
  * and open the template in the editor.
  */
 
-require'../BDD.php';
+require'../config/BDD.php';
 $bdd = getBdd();
 
-require '../droits.php';  //voir inscription.php
-require '../formulaire.php';
+require '../config/droits.php';  //voir inscription.php
+require '../config/formulaire.php';
 
 test_membre_admin();
 if (empty($_GET)) {                  //on peut afficher le profil d'un autre utilisateur par la méthode get avec comme variable l'username

@@ -5,11 +5,11 @@
  * and open the template in the editor.
  */
 
-require'../BDD.php';
+require'../config/BDD.php';
 $bdd = getBdd();
 
-require '../droits.php';        //voir inscription.php pour commentaires
-require '../formulaire.php';
+require '../config/droits.php';        //voir inscription.php pour commentaires
+require '../config/formulaire.php';
 
 test_membre();
 ob_start();

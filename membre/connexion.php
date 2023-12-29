@@ -4,10 +4,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-require'../BDD.php';
+require'../config/BDD.php';
 $bdd = getBdd();
-require'../formulaire.php';         //voir inscription.php pour commentaires
-require '../droits.php';
+require'../config/formulaire.php';         //voir inscription.php pour commentaires
+require '../config/droits.php';
 test_visiteur();
 
 if (isset($_POST['Connexion']) && $_POST['Connexion'] == 'Connexion') {

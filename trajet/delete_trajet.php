@@ -5,11 +5,11 @@
  * and open the template in the editor.
  */
 
-require'../BDD.php';
+require'../config/BDD.php';
 $bdd = getBdd();
 
-require '../droits.php';   //voir inscription.php
-require '../formulaire.php';
+require '../config/droits.php';   //voir inscription.php
+require '../config/formulaire.php';
 session_start();
 if (empty($_POST)) {         //on s'assure que l'utilisateur n'a pas acceder à la page sans passer par (mes trajets)
     

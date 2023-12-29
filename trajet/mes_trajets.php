@@ -7,11 +7,11 @@
  */
 
 //sur cette page on va afficher les differents trajets de l'utilisateur
-require'../BDD.php';
+require'../config/BDD.php';
 $bdd = getBdd();
                                //voir inscription.php
-require '../droits.php';
-require '../formulaire.php';
+require '../config/droits.php';
+require '../config/formulaire.php';
 
 function disabled($int) {//fonction qui permet de mettre un boutton en gris (disabled)
     if ($int == 1) {

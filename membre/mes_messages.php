@@ -6,11 +6,11 @@
  * and open the template in the editor.
  */
 
-require'../BDD.php';
+require'../config/BDD.php';
 $bdd = getBdd();
 
-require '../droits.php';
-require '../formulaire.php';
+require '../config/droits.php';
+require '../config/formulaire.php';
 
 test_membre();
 ob_start();

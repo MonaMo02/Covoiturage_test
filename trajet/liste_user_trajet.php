@@ -6,11 +6,11 @@
  * and open the template in the editor.
  */
 
-require'../BDD.php';
+require'../config/BDD.php';
 $bdd = getBdd();
 
-require '../droits.php';    //voir inscription.php
-require '../formulaire.php';
+require '../config/droits.php';    //voir inscription.php
+require '../config/formulaire.php';
 session_start();
 if (empty($_POST)) {//on verifie que l'utilisateur vient bien de la page (mes trajets)
     header('Location: ../index.php');

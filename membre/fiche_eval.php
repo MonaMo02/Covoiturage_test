@@ -6,8 +6,8 @@
  * and open the template in the editor.
  */
 
-require '../formulaire.php';
-require'../BDD.php';
+require '../config/formulaire.php';
+require'../config/BDD.php';
 $bdd = getBdd();
 session_start();
 $values = array(//tableau de correspondance des notes/evaluations
@@ -87,7 +87,7 @@ if (isset($_POST["evaluer"])) { //si l'utilisateur est un passager (provenance v
         form_fin();
         $contenu = ob_get_clean();
         $title = "Evaluation du pilote";
-        require '../gabarit/gabarit_passager.php';
+        require '../gabarit/pages/gabarit_passager.php';
     }
 } else if (isset($_POST["acces_form_eval_pass"])) { //sinon, c'est un pilote qui vient de la page valide_trajet.php
     if (isset($_POST["form_eval_pass"])) {  //si il a soumis le formulaire: (meme principe que precedemment, sauf qu'ici, il y a une insertion par passager
@@ -147,7 +147,7 @@ if (isset($_POST["evaluer"])) { //si l'utilisateur est un passager (provenance v
         form_fin();
         $contenu = ob_get_clean();
         $title = "Evaluation des passagers";
-        require '../gabarit/gabarit_passager.php';
+        require '../gabarit/pages/gabarit_passager.php';
     }
 } else {
     header('Location: ../indexx.php');

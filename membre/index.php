@@ -7,7 +7,7 @@
  */
 $title="Accueil";          //ceci est la page index du membre, lorsque un membre connecté va sur la page index du site il est directement redirigé ici.
 
-require '../BDD.php';
+require '../config/BDD.php';
 $bdd=  getBdd();
 session_start(); //on demarre la session
 if (isset($_SESSION['login'])) { //on verifie que l'utilisateur est bien connecté
@@ -68,10 +68,10 @@ $sql3 = "SELECT * FROM evaluation as E, trajet as T, user as U WHERE E.evalue_us
     
     <?php $contenu = ob_get_clean();
     if($_SESSION["pilote"]==TRUE){
-    require '../gabarit/gabarit_pilote.php';  //on choisit le gabarit on fonction si c'est un pilote ou passager
+    require '../gabarit/pages/gabarit_pilote.php';  //on choisit le gabarit on fonction si c'est un pilote ou passager
     }
     else{
-    require '../gabarit/gabarit_passager.php';  
+    require '../gabarit/pages/gabarit_passager.php';  
     }
 
 }

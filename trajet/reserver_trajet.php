@@ -6,11 +6,11 @@
  */
 
 $choix_trajet = $_POST["choix_trajet"];// on recupere l'id du trajet choisit à reserver
-require'../BDD.php';
+require'../config/BDD.php';
 $bdd = getBdd();
                         //voir inscription.php
-require '../droits.php';
-require '../formulaire.php';
+require '../config/droits.php';
+require '../config/formulaire.php';
 
 test_membre();
 

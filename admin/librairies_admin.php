@@ -1,9 +1,9 @@
 <?php
 
-require'../BDD.php';
-require'../droits.php';
+require'../config/BDD.php';
+require'../config/droits.php';
 $bdd = getBdd();
-require'../formulaire.php';
+require'../config/formulaire.php';
 test_admin();
 
 function print_request($bd, $request, $att_req = TRUE) {   //fonction permettant d'afficher la requete sql dans un tableau dynamique
@@ -73,6 +73,6 @@ $contenu=ob_get_clean();
    
    
 $title = "Administration";
-require '../gabarit/gabarit_admin.php';
+require '../gabarit/pages/gabarit_admin.php';
 
 ?>

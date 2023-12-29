@@ -6,10 +6,10 @@
  */
 
 
-require'../BDD.php';
+require'../config/BDD.php';
 $bdd = getBdd();             //voir inscription.php
-require '../formulaire.php';
-require '../droits.php';
+require '../config/formulaire.php';
+require '../config/droits.php';
 
 test_membre();
 // on teste si le visiteur a soumis le formulaire
