@@ -30,6 +30,78 @@ function print_request($bd, $request, $att_req = TRUE) {   //fonction permettant
     }
 }
 ob_start();
+
+//DASHBOARD/GRAPHS/MAP
+echo "<h1>Dashboard</h1>";
+
+
+// Fetch ride data from the database
+$rideDataQuery = "SELECT lieu_depart, COUNT(*) AS ride_count FROM trajet GROUP BY lieu_depart;";
+$rideDataResult = $bdd->query($rideDataQuery);
+
+if ($rideDataResult) {
+    $rideChartData = $rideDataResult->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    die("Failed to fetch ride data: " . print_r($bdd->errorInfo(), true));
+}
+
+$labels = json_encode(array_map('strval', array_column($rideChartData, 'lieu_depart')));
+$data = json_encode(array_map('strval', array_column($rideChartData, 'ride_count')));
+
+echo "<canvas id='ridesPerCityChart' width='400' height='200'></canvas>
+
+<script>
+    var ctx = document.getElementById('ridesPerCityChart').getContext('2d');
+
+    // Separate the arrays for labels and data
+    var labels = " . $labels . ";
+    var data = " . $data . ";
+
+    var ridesPerCityChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Number of Rides',
+                data: data,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//USERS TABLE 
 echo "<h1>Comptes Utilisateurs</h1>";
 
 echo "<button id='toggleUserTableBtn' class='btn btn-primary'>Toggle User Table</button>";
@@ -46,7 +118,6 @@ echo "</div>
     });
 </script>";
 
-echo "</br>";
 
 
 echo "<h1>Trajets restant a effectuer</h1>";
@@ -100,7 +171,8 @@ echo "</div>
 </script>";
 
 $contenu=ob_get_clean();   
-   
+
+
    
 $title = "Administration";
 require '../templates/pages/gabarit_admin.php';

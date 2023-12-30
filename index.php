@@ -17,11 +17,11 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="icon" type="image/png" href="favicon.png" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
-        <link href="gabarit/css/bootstrap.min.css" rel="stylesheet">
+        <link href="templates/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="gabarit/css/styles.css" rel="stylesheet">
+        <link href="templates/css/styles.css" rel="stylesheet">
 
     </head>
     <body>
