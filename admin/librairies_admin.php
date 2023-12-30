@@ -47,6 +47,8 @@ echo "</div>
 
 echo "</br>";
 
+//just a comment 
+
 echo "<h1>Trajets restant a effectuer</h1>";
 $reponse = $bdd->query("SELECT id, effectue, lieu_depart, lieu_arrivee, date, heure_dep FROM trajet"); //on stocke les informations des trajets
 $reponse_nb_trajet = $bdd->query("SELECT count(id) FROM trajet");
