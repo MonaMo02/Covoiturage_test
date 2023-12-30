@@ -2,9 +2,9 @@ initialise rep: git init your-rep
 add remote git remote add origin rep-url.git
 setting remote url git remote set-url origin rep-url.git
 locate to branch/remote git checkout yourrep
-stashing changes before commit: git stash
+stashing changes before commit: git stash save "message"
 pulling before commit: git pull origin rep
+applying stashed changes; git  stash apply
 staging changes: git add .
 commit with message : git commit -m "mmm"
-applying stashed changes; gor  stash apply
 pushing changes git push origin rep
