@@ -24,48 +24,6 @@ $sql2 = "SELECT count(*) FROM trajet as T, trajet_passager as TP WHERE TP.trajet
 <!-- On affiche les deux infos precedentes -->
 <h2><span class="fa-stack " style="vertical-align: middle; margin-right:15px;"><i class="fa fa-envelope-square fa-stack-2x" ></i></span>  Vous avez <?php echo $donnee[0];?> messages.</h2>
 <h2><span class="fa-stack " style="vertical-align: middle; margin-right:15px;"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-car fa-stack-1x fa-inverse"></i></span>  Vous êtes actuellement sur <?php echo $donnee2[0];?> trajets.</h2>  
-    
-<h2 style="margin-bottom:25px;"><span class="fa-stack " style="vertical-align: middle; margin-right:15px; "><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-star fa-stack-1x fa-inverse"></i></span>  Vos dernières evaluations reçues</h2>
-<table class="table table-hover">
-    <tr><th>Evaluateur</th><th>Ville de départ</th><th>Ville d'arrivée</th><th>Date</th><th>Evaluation</th></tr>
- <!-- on va afficher les dernières evaluations de l'utilisateur-->   
-<?php 
-$sql3 = "SELECT * FROM evaluation as E, trajet as T, user as U WHERE E.evalue_user_id=".$_SESSION['id']." AND T.id=E.trajet_id AND U.id=E.evaluateur_user_id ORDER BY E.id DESC";
-        $reponse3 = $bdd->query($sql3);
-        $compteur=0;
-        $etoile=array("","★","★★","★★★","★★★★","★★★★★");
-        while($donnee3 = $reponse3->fetch()){
-            $compteur++;
-            if($compteur<=10){     //on recupere les infos puis on crée un tableau pour y mettre ces infos
-                //on met un compteur afin de n'afficher que les 10 dernieres évaluations
-                echo"<tr>";
-                echo"<th>" . $donnee3["prenom"] ." ". $donnee3["nom"] ."</th>";
-                echo"<th>" . $donnee3["lieu_depart"] . "</th>";
-                echo"<th>" . $donnee3["lieu_arrivee"] . "</th>";
-                echo"<th>" . $donnee3["date"] . "</th>"; 
-                echo"<th><span style='font-size: 150%; color:#FCDC12;'>" . $etoile[$donnee3["evaluation"]] . "</span></th>";
-                echo"</tr>";
-            }
-        }
-        if($compteur==0){ //si il n'y aucune évaluation
-            echo"</table>";
-            echo"Vous n'avez jamais été évalué.";
-        }
-        else{
-            echo"</table>";
-        }
-
-?>
-
-
-    
-    
-    
-    
-
-    
-    
-    
     <?php $contenu = ob_get_clean();
     if($_SESSION["pilote"]==TRUE){
     require '../templates/pages/gabarit_pilote.php';  //on choisit le gabarit on fonction si c'est un pilote ou passager

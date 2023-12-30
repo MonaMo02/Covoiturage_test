@@ -5,6 +5,7 @@
 CREATE TABLE user (
   id INTEGER NOT NULL,
   password VARCHAR(45) NOT NULL,
+  login VARCHAR(45) NOT NULL,
   nom VARCHAR(45) NOT NULL,
   prenom VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
@@ -15,11 +16,16 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table pilote : users who chose : poster tjaret, altho i couldnt think of other 
--- attributes without risking redundance--we just need to know the id to get the session
+-- Table pilote : users who chose : poster tjaret, 
 -- -----------------------------------------------------
 CREATE TABLE pilote (
   pilote_user_id INTEGER NOT NULL,
+  voiture_id INTEGER NOT NULL, 
+  voiture_marque VARCHAR(45) NOT NULL,
+  voiture_annee INTEGER NOT NULL,
+  voiture_modele VARCHAR(45) NOT NULL,
+  voiture_couleur VARCHAR(45) NOT NULL,
+  photo LONGTEXT NULL,
   PRIMARY KEY (pilote_user_id),
   CONSTRAINT fk_pilote_user
     FOREIGN KEY (pilote_user_id)
@@ -27,21 +33,7 @@ CREATE TABLE pilote (
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION);
     
--- a pilote can have many voitures
-CREATE TABLE voiture (
-  pilote_id INTEGER NOT NULL,
-  voiture_id INTEGER NOT NULL, 
-  voiture_marque VARCHAR(45) NOT NULL,
-  voiture_annee INTEGER NOT NULL,
-  voiture_modele VARCHAR(45) NOT NULL,
-  voiture_couleur VARCHAR(45) NOT NULL,
-  photo LONGTEXT NULL,
-  PRIMARY KEY (voiture_id),
-  FOREIGN KEY (pilote_id)
-    REFERENCES pilote (pilote_user_id)
-    ON DELETE NO ACTION 
-    ON UPDATE NO ACTION
-  );
+
     
 
 

@@ -97,7 +97,7 @@ if (!isset($_SESSION['login'])) {
 else if(isset($_SESSION['login'])){
  if(isset($_SESSION['pilote'])){
     if($_SESSION['pilote']){
-       require '../gabatemplatesrit/pages/gabarit_pilote.php';
+       require '../templates/pages/gabarit_pilote.php';
     }
     else{
         require '../templates/pages/gabarit_passager.php';

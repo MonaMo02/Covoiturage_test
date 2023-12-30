@@ -23,13 +23,39 @@ function verifprenom() { //meme principe que pour verifnom()
     document.form.prenom.value = str_tab.join(''); //on modifie la valeur du champs prenom
 }
 
+function verifnumtel() {
+    if (/^0[5-7]\d{8}$/.test(document.form.num_tel.value)) //on verifie que le numero de tel a un format valide 
+    {
+        return (true)
+    }
+    alert("Veuillez saisir un numero de telephone valide")
+}
 function verifemail() {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.form.email.value)) //on verifie que l'email à un format valide (syntaxe trouvée sur internet)
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.form.email.value)) //on verifie que l'email à un format valide 
     {
         return (true)
     }
     alert("Veuillez saisir un email valide")
 }
+function verifmatriculeetudiant() {
+    var matriculation = document.form.matricule.value;
+    var currentYear = new Date().getFullYear();
+    var matriculeExpr = new RegExp(`^(${(currentYear % 100 - 1).toString().padStart(2, '0')}|\\d{2})(${(currentYear % 100 - 1).toString().padStart(2, '0')}|\\d{2})\\d{8}$`);
+
+    // Test if the matriculation matches the regular expression
+    if (matriculeExpr.test(matriculation)) {
+        // If the matriculation is valid, return true
+        return true;
+    }
+
+    // If the matriculation is not valid, display an alert
+    alert("Veuillez saisir une matriculation valide");
+
+    // Return false to indicate validation failure
+    return false;
+}
+
+
 
 function veriflogin() { //meme principe que verifnom()
     if (document.form.login.value == "") {
@@ -77,15 +103,6 @@ function verifpassword() {
     }
 }
 
-function verifanniversaire() { //on verifie que la date est sous la bonne forme, pour correspondre aux exigences de la base de donnee
-    var str = document.form.anniversaire.value;
-    var res = str.split("-");
-    if ((res[0].length != 4) || (res[1].length != 2) || (res[2].length != 2)) {
-        document.getElementById("verifdate").innerHTML = "format de la date non valide";
-    } else {
-        document.getElementById("verifdate").innerHTML = "";
-    }
-}
 
 function verifmarque() { //meme principe que verifnom()
     if (document.form.marque.value == "") {
@@ -105,7 +122,7 @@ function verifannee() { //meme principe que verifnom()
         alert("Veuillez saisir une annee");
     }
     if ((str.match(/[a-z]/)) || (str.match(/[A-Z]/)) || str.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/)) {//on verifie que la date ne comporte pas de caractère spéciaux ou de minuscules/majuscules
-        alert("Veuillez rentrez une date uniquement composée de chiffres");
+        alert("Veuillez entrer une date uniquement composée de chiffres");
     }
     if ((str.length < 4) || (str.length > 4)) { //on verifie que l'annee a bien une longueur de 4 caractères
         alert("Veuillez saisir une date à 4 chiffres");

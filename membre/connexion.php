@@ -19,7 +19,7 @@ if (isset($_POST['Connexion']) && $_POST['Connexion'] == 'Connexion') {
 	exit();
         }
         else {
-        $sql = 'SELECT count(*) FROM user WHERE username="' . $_POST['login'] . '"AND password="' . md5($_POST['password']) . '"';
+        $sql = 'SELECT count(*) FROM user WHERE login="' . $_POST['login'] . '"AND password="' . md5($_POST['password']) . '"';
         $reponse = $bdd->query($sql);
         $donnee = $reponse->fetch();   // on regarde si il y a une correspondance entre le login et le password dans la BDD
         if ($donnee[0] == 1) {
@@ -61,20 +61,16 @@ function formulaire() {
 
 function action() {
     global $bdd;
-    $sql = 'SELECT * FROM user WHERE username="' . $_POST['login'] . '"';
+    $sql = 'SELECT * FROM user WHERE login="' . $_POST['login'] . '"';
     $reponse = $bdd->query($sql);
     $donnees = $reponse->fetch(); //on recupere dans la base les infos de l'utilisateur
     
     $_SESSION["admin"]=FALSE; //ce n'est pas un admin
     $_SESSION['id'] = $donnees['id'];
-    $_SESSION['login'] = $donnees['username'];
+    $_SESSION['login'] = $donnees['login'];
     $_SESSION['prenom'] = $donnees['prenom'];        //on met toutes les infos de l'utilisateur dans la session
     $_SESSION['nom'] = $donnees['nom'];
     $_SESSION['email'] = $donnees['email'];
-    $_SESSION['birthday'] = $donnees['birthday'];
-    $_SESSION['photo'] = $donnees['photo'];
-    $_SESSION['compte'] = $donnees['compte'];
-    $_SESSION['note'] = $donnees['note'];
 
     $sql = 'SELECT count(*) FROM pilote WHERE pilote_user_id="' . $_SESSION['id'] . '"';
     $reponse = $bdd->query($sql);

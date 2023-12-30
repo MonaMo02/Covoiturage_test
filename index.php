@@ -6,7 +6,6 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
 }
 ?>
 
-<!-- On utilise le framework bootstrap pour génerer le html et CSS afin d'avoir une esthétique moderne mais qui ne prend pas trop de temps à réaliser".-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,8 +19,13 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
         <link href="templates/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<<<<<<< Updated upstream
         <![endif]-->
         <link href="templates/css/styles.css" rel="stylesheet">
+=======
+        <!--[endif]-->
+        <link href="gabarit/css/styles.css" rel="stylesheet">
+>>>>>>> Stashed changes
 
     </head>
     <body>
