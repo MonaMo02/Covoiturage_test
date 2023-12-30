@@ -34,7 +34,7 @@ echo "<h1>Comptes Utilisateurs</h1>";
 
 echo "<button id='toggleUserTableBtn' class='btn btn-primary'>Toggle User Table</button>";
 echo '<div id="userTableContainer" style="display:none;">'; // Initially hide the container
-print_request($bdd, "SELECT id, nom, prenom, username, email, birthday, compte, note FROM user;"); //on appelle simplement la fonction pour obtenir toutes les informations sur les comptes
+print_request($bdd, "SELECT id, nom, prenom,  email, num_tel, matricule FROM user;"); //on appelle simplement la fonction pour obtenir toutes les informations sur les comptes
 
 echo "</div>
 
