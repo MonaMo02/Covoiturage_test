@@ -34,7 +34,8 @@ echo "<h1>Comptes Utilisateurs</h1>";
 
 echo "<button id='toggleUserTableBtn' class='btn btn-primary'>Toggle User Table</button>";
 echo '<div id="userTableContainer" style="display:none;">'; // Initially hide the container
-print_request($bdd, "SELECT id, nom, prenom,  email, num_tel, matricule FROM user;"); //on appelle simplement la fonction pour obtenir toutes les informations sur les comptes
+
+print_request($bdd,  "SELECT id, nom, prenom, username, email, birthday, compte, note FROM user;"); //on appelle simplement la fonction pour obtenir toutes les informations sur les comptes
 
 echo "</div>
 
@@ -47,7 +48,6 @@ echo "</div>
 
 echo "</br>";
 
-//just a comment to test stash
 
 echo "<h1>Trajets restant a effectuer</h1>";
 $reponse = $bdd->query("SELECT id, effectue, lieu_depart, lieu_arrivee, date, heure_dep FROM trajet"); //on stocke les informations des trajets
@@ -98,6 +98,7 @@ echo "</div>
         tripsTableContainer.style.display = (tripsTableContainer.style.display === 'none') ? 'block' : 'none';
     });
 </script>";
+
 $contenu=ob_get_clean();   
    
    
