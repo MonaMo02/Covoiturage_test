@@ -31,10 +31,29 @@ function print_request($bd, $request, $att_req = TRUE) {   //fonction permettant
 }
 ob_start();
 echo "<h1>Comptes Utilisateurs</h1>";
+
+echo "<button id='toggleUserTableBtn' class='btn btn-primary'>Toggle User Table</button>";
+echo '<div id="userTableContainer" style="display:none;">'; // Initially hide the container
 print_request($bdd, "SELECT id, nom, prenom, username, email, birthday, compte, note FROM user;"); //on appelle simplement la fonction pour obtenir toutes les informations sur les comptes
+
+echo "</div>
+
+<script>
+    document.getElementById('toggleUserTableBtn').addEventListener('click', function () {
+        var userTableContainer = document.getElementById('userTableContainer');
+        userTableContainer.style.display = (userTableContainer.style.display === 'none') ? 'block' : 'none';
+    });
+</script>";
+
+echo "</br>";
+
 echo "<h1>Trajets restant a effectuer</h1>";
 $reponse = $bdd->query("SELECT id, effectue, lieu_depart, lieu_arrivee, date, heure_dep FROM trajet"); //on stocke les informations des trajets
 $reponse_nb_trajet = $bdd->query("SELECT count(id) FROM trajet");
+
+echo "<button id='toggleTripsTableBtn' class='btn btn-primary'>Toggle Remaining Trips Table</button>";
+echo "<div id='tripsTableContainer' style='display:none;'>"; // Initially hide the container
+
 echo"<table><tr><th>ID</th><th>Ville de depart</th><th>Ville d'arrivee</th><th>Date</th><th>Heure</th><th>Pilote<br>Nom  Prenom</th><th>Passagers<br>Nom  Prenom</th></tr>"; //on crée le tableau
 $nb_trajet = $reponse_nb_trajet->fetch();
 $index_id = 1;
@@ -69,10 +88,18 @@ while ($tab_res = $reponse->fetch()) {
     }
     $index_id = $index_id + 1;
 }
+
+echo "</div>
+<script>
+    document.getElementById('toggleTripsTableBtn').addEventListener('click', function () {
+        var tripsTableContainer = document.getElementById('tripsTableContainer');
+        tripsTableContainer.style.display = (tripsTableContainer.style.display === 'none') ? 'block' : 'none';
+    });
+</script>";
 $contenu=ob_get_clean();   
    
    
 $title = "Administration";
-require '../gabarit/pages/gabarit_admin.php';
+require '../templates/pages/gabarit_admin.php';
 
 ?>
