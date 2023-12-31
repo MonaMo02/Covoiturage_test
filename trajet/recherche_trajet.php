@@ -38,14 +38,17 @@ function formulaire() {
         echo"<h1>Recherche de votre trajet</h1>";
         form_debut("form", "POST", "recherche_trajet.php");
         form_label("Ville de départ");
+        form_input_text("ville_depart", TRUE, "", "", 30, " ");
         echo"<br>";
-
+        
         //on construit des listes déroulantes avec les villes contenues dans la base et les dates
-        form_select_sql_attribut_ville("Ville de départ", "ville_depart", 1, $bdd, "lieu_depart", "trajet");
-        echo"<br><br>";
+        // form_select_sql_attribut_ville("Ville de départ", "ville_depart", 1, $bdd, "lieu_depart", "trajet");
+        // echo"<br><br>";
         form_label("Ville d'arrivée");
+        form_input_text("ville_arrivee", TRUE, "", "", 30, " ");
+
         echo"<br>";
-        form_select_sql_attribut_ville("Ville d'arrivée", "ville_arrivee", 1, $bdd, "lieu_arrivee", "trajet");
+        // form_select_sql_attribut_ville("Ville d'arrivée", "ville_arrivee", 1, $bdd, "lieu_arrivee", "trajet");
         echo"<br><br>";
         form_label("Date");
         echo"<br>";
@@ -67,13 +70,32 @@ function action() {
 
     global $bdd;
     //on va chercher dans la base des données les trajets correspondant au valeurs choisies par l'utilisateur
-    $reponse = $bdd->prepare("SELECT * FROM trajet WHERE lieu_depart = ? AND lieu_arrivee = ? AND date = ? AND effectue = ? AND pilote_user_id != ?");
-    $reponse->execute(array($_POST['ville_depart'],
-        $_POST['ville_arrivee'],
-        $_POST['date'],
-        FALSE,
-        $_SESSION["id"]
-    ));
+    //$bdd->query("SELECT * FROM trajet WHERE lieu_depart = $_POST['ville_depart'] AND lieu_arrivee = $_POST['ville_arrivee'] AND date = $_POST['date'] AND effectue = FALSE AND pilote_user_id != $_SESSION["id"]");
+    // $reponse->execute(array($_POST['ville_depart'],
+    //     $_POST['ville_arrivee'],
+    //     $_POST['date'],
+    //     FALSE,
+    //     $_SESSION["id"]
+    // ));
+
+    // Assuming $bdd is your database connection
+
+// Prepare the statement
+$stmt = $bdd->prepare("SELECT * FROM trajet WHERE lieu_depart = :ville_depart AND lieu_arrivee = :destination AND date = :date AND effectue = FALSE AND pilote_user_id != :user_id");
+
+// Bind parameters
+$stmt->bindParam(':ville_depart', $_POST['ville_depart']);
+$stmt->bindParam(':destination', $_POST['ville_arrivee']);
+$stmt->bindParam(':date', $_POST['date']);
+$stmt->bindParam(':user_id', $_SESSION["id"]);
+
+// Execute the statement
+$stmt->execute();
+
+// Fetch the results if needed
+
+// Use $results as needed
+
     
     ob_start();
     ?>
@@ -93,10 +115,10 @@ function action() {
             <th>Coche</th>
         </tr>
     <?php
-    while ($donnees = $reponse->fetch()) {
+    while ($donnees = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
         echo"<tr>";
         echo"<th>" . $donnees["lieu_depart"] . "</th>";
-        echo"<th>" . $donnees["lieu_arrivee"] . "</th>";
+        echo"<th>" . $donnees["destination"] . "</th>";
         echo"<th>" . $donnees["date"] . "</th>";
         echo"<th>" . $donnees["heure_dep"] . "</th>";
         echo"<th>" . $donnees["prix"] . "</th>";

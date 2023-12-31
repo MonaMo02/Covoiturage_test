@@ -3,8 +3,8 @@
 -- Table user : pple who have accounts
 -- -----------------------------------------------------
 CREATE TABLE user (
-  id INTEGER NOT NULL,
-  password VARCHAR(45) NOT NULL,
+  id INTEGER NOT NULL AUTOINCREMENT,
+  password VARCHAR(100) NOT NULL,
   login VARCHAR(45) NOT NULL,
   nom VARCHAR(45) NOT NULL,
   prenom VARCHAR(45) NOT NULL,
@@ -13,6 +13,22 @@ CREATE TABLE user (
   matricule VARCHAR(10) NOT NULL,  
   PRIMARY KEY (id))
 ENGINE = InnoDB; 
+
+CREATE TABLE ville_depart (
+    id integer AUTOINCREMENT primary key,
+    nom varchar(100),
+    -- add more columns as needed
+    PRIMARY KEY (nom)
+);
+CREATE TABLE ville_arrivee (
+    id integer AUTOINCREMENT primary key,
+    nom varchar(100),
+    -- add more columns as needed
+    PRIMARY KEY (nom)
+);
+
+
+
 
 
 -- -----------------------------------------------------
@@ -33,10 +49,7 @@ CREATE TABLE pilote (
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION);
     
-
-    
-
-
+-- a pilote can have many voitures
 
 
 -- -----------------------------------------------------

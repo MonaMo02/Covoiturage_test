@@ -17,12 +17,12 @@ if (empty($_GET)) {                  //on peut afficher le profil d'un autre uti
 	$username=$_SESSION["login"];  //on regarde donc si la page a été appelé par une methode GET, sinon on affiche le profil du membre qui accede à la page
 }
 else {
-    $username=$_GET["username"];
+    $username=$_GET["login"];
 }
 ob_start();
 
 
-$resultat=$bdd->query("SELECT * from user WHERE username ='".$username."'"); //on recupere les infos de l'user pour les afficher
+$resultat=$bdd->query("SELECT * from user WHERE login ='".$username."'"); //on recupere les infos de l'user pour les afficher
 $exist=0;
                     $donnee = $resultat->fetch(); //si la methode GET a été utilisée, on regarde si l'utilsateur existe bien afin d'afficher une erreur dans le cas inverse
                         
@@ -31,12 +31,12 @@ $exist=0;
                         <div class="panel panel-default">
         <div class="panel-body">
           <div class="row">
-            <div class="col-md-12 lead"><?php echo $donnee["username"]." profile"; ?><hr></div>
+            <div class="col-md-12 lead"><?php echo $donnee["login"]." profile"; ?><hr></div>
           </div>
           <div class="row">
 			<div class="col-md-4 text-center">                   <!-- On utilise bootstrap pour afficher de facon esthétique les infos -->
-              <img class="img-thumbnail" style="-webkit-user-select:none; 
-              display:block; margin:auto; width:200px;" src="<?php echo $donnee["photo"]; ?>">
+              <!-- <img class="img-thumbnail" style="-webkit-user-select:none; 
+              display:block; margin:auto; width:200px;" src="<?php echo $donnee["photo"]; ?>"> -->
             </div>
             <div class="col-md-8">
               <div class="row">
@@ -47,35 +47,34 @@ $exist=0;
               <div class="row">
                 <div class="col-md-6">
                   <span class="text-muted">Email:</span> <?php echo $donnee["email"]; ?><br>
-                  <span class="text-muted">Birth date:</span> <?php echo $donnee["birthday"]; ?><br>
-                  <span class="text-muted">Compte :</span> <?php echo $donnee["compte"]." €"; ?><br><br>
+                  <!-- <span class="text-muted">Compte :</span> <?php echo $donnee["compte"]." €"; ?><br><br> -->
                   
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                   <div class="activity-mini">
                       <?php 
                        
-                        if($donnee["note"]<2){
-                            $note = "★</span>";
-                        }
-                        else if($donnee["note"]<3){
-                            $note = "★★</span>";
-                        }
-                        else if($donnee["note"]<4){
-                            $note = "★★★</span>";
-                        }
-                        else if($donnee["note"]<5){
-                            $note = "★★★★</span>";
-                        }
-                        else {
-                            $note = "★★★★★</span>";
-                        }  
-                        $note = "<span style='font-size: 150%; color:#FCDC12;'>".$note;
-                      ?>
+                      //   if($donnee["note"]<2){
+                      //       $note = "★</span>";
+                      //   }
+                      //   else if($donnee["note"]<3){
+                      //       $note = "★★</span>";
+                      //   }
+                      //   else if($donnee["note"]<4){
+                      //       $note = "★★★</span>";
+                      //   }
+                      //   else if($donnee["note"]<5){
+                      //       $note = "★★★★</span>";
+                      //   }
+                      //   else {
+                      //       $note = "★★★★★</span>";
+                      //   }  
+                      //   $note = "<span style='font-size: 150%; color:#FCDC12;'>".$note;
+                      // ?>
                     <i class="glyphicon glyphicon-star-empty"></i><?php echo "Evaluation : ".$note; ?>
                   </div>
                   
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

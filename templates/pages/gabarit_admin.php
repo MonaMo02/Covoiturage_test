@@ -12,6 +12,8 @@
         <link href="../templates/css/bootstrap.min.css" rel="stylesheet">
         <script type="text/javascript" src="../templates/js/verif_form.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
         <!--[if lt IE 9]>
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
