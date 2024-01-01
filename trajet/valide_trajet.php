@@ -20,7 +20,7 @@ if (empty($_POST)) {
 ob_start();
 $trajet_id = $_POST["valide"]; //on recupere le trajet 
 $bdd->exec("UPDATE trajet SET effectue = 1 WHERE id = " . $trajet_id . ";"); // on recupere le trajet
-$reponse = $bdd->query("SELECT username, user_id, prenom, nom, nb_places, prix, date FROM trajet_passager TP, trajet T, user U WHERE TP.trajet_id = T.id AND TP.user_id = U.id AND TP.trajet_id = " . $trajet_id . ";");
+$reponse = $bdd->query("SELECT login, user_id, prenom, nom, nb_places, prix, date FROM trajet_passager TP, trajet T, user U WHERE TP.trajet_id = T.id AND TP.user_id = U.id AND TP.trajet_id = " . $trajet_id . ";");
 echo"<h1>Versements recus</h1>"; // on inscrit dans un tableau les versements reçus par les differents passagers du trajet
 while ($donnee = $reponse->fetch()) { //on parcours chaque passager
     echo"<div class='panel panel-success'>";

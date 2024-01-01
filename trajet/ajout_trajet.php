@@ -84,13 +84,13 @@ function action() {
     $stmt->bindParam(':places_max', $_POST["places"] );
     $stmt->bindParam(':date', $_POST['date']);
     $stmt->bindParam(':user_id', $_SESSION["id"]);
-    $stmt->bindParam(':heure_dep', $_SESSION["heure"]);
-    $stmt->bindParam(':prix', $_SESSION["prix"]);
+    $stmt->bindParam(':heure_dep', $_POST["heure"]);
+    $stmt->bindParam(':prix', $_POST["prix"]);
     $stmt->execute();
 
 
     //$statement->execute(array(
-    return "<div class='alert alert-success'>Votre trajet a bien été enregistré.</div>";
+    return "<div class='alert alert-success'>Votre trajet a bien été enregistré.Vous pouvez le consulter dans Mes Trajets</div>";
 }
 
 $title = "Inscription trajet";

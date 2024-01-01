@@ -22,7 +22,7 @@ ob_start();
 echo"<h1>Liste des passagers</h1>";
 
 //pour chaque passager present sur le trajet on affiche ses infos
-$reponse = $bdd->query("SELECT user_id, username, prenom, nom, nb_places FROM trajet_passager, user WHERE trajet_id = " . $trajet_id . " AND id=user_id");
+$reponse = $bdd->query("SELECT user_id, login, prenom, nom, nb_places FROM trajet_passager, user WHERE trajet_id = " . $trajet_id . " AND id=user_id");
 while ($donnee = $reponse->fetch()) {
     echo"<div class='panel panel-success'>";
     echo"<div class='panel-heading'>";
@@ -35,10 +35,10 @@ while ($donnee = $reponse->fetch()) {
 
 //on va faire un formulaire pour le bouton envoyer message afin d'envoyer l'username du destinataire a la page envoyer_message.php
     echo '<form action="../membre/envoyer_message.php" method="post">';
-    echo "<button type='submit' class='btn btn-success' name='destinataire' value='" . $donnee["username"] . "'>Envoyer message</button>    ";
+    echo "<button type='submit' class='btn btn-success' name='destinataire' value='" . $donnee["login"] . "'>Envoyer message</button>    ";
 
     //on fait un lien avec la methode GET vers le profil du passager
-    echo"  <a href='../membre/profil.php?username=" . $donnee["username"] . "' class='btn btn-primary'>Son profil</a></form>";
+    echo"  <a href='../membre/profil.php?username=" . $donnee["login"] . "' class='btn btn-primary'>Son profil</a></form>";
     echo"</div>";
     echo"</div>";
     echo "</div>";

@@ -138,4 +138,28 @@ CREATE TABLE IF NOT EXISTS messagerie (
     REFERENCES user (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
+-- -----------------------------------------------------
+-- Table `evaluation`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `evaluation` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `evaluateur_user_id` INT NOT NULL,
+  `evalue_user_id` INT NOT NULL,
+  `evaluation` INT NOT NULL,
+  `trajet_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_evaluateur`
+    FOREIGN KEY (`evaluateur_user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_evalue`
+    FOREIGN KEY (`evalue_user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trajet_id`
+    FOREIGN KEY (`trajet_id`)
+    REFERENCES `trajet` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);

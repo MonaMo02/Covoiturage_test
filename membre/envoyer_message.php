@@ -41,7 +41,7 @@ function formulaire() {
     } else {
         //sinon on fait une liste déroulante contenant tous les usernames des membres comme destinataire
         form_label("Destinataire"); 
-        form_select_sql_attribut_user("Destinataire :", "destinataire_username", 1, $bdd, "username", "user");
+        form_select_sql_attribut_user("Destinataire :", "destinataire_username", 1, $bdd, "login", "user");
     }
     echo"<br><br>";
     form_label("Titre");
@@ -61,7 +61,7 @@ function formulaire() {
 function action() {
 
     global $bdd;
-    $reponse = $bdd->query("SELECT id FROM user WHERE username = '" . $_POST["destinataire_username"] . "'");
+    $reponse = $bdd->query("SELECT id FROM user WHERE login = '" . $_POST["destinataire_username"] . "'");
     $donnee = $reponse->fetchAll(); //on recupere l'id du destinataire
     $destinataire_id = $donnee[0]["id"];
     $sql = 'INSERT INTO messagerie (titre,date,message,expediteur_user_id,destinataire_user_id) VALUES(:titre,:date,:message,:expediteur_id,:destinataire_id)';

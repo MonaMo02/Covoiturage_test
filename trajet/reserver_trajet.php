@@ -48,14 +48,14 @@ function formulaire() {
         echo"<div class='panel panel-success'>";
   echo"<div class='panel-heading'>";
   
-    echo"<b>Ville de départ : </b> ".$donnee["lieu_depart"]." - <b>Ville d'arrivée : </b>".$donnee["lieu_arrivee"];
+    echo"<b>Ville de départ : </b> ".$donnee["lieu_depart"]." - <b>Ville d'arrivée : </b>".$donnee["destination"];
 
 echo"</div>";
 echo "<div class='panel-body'>";
 
 echo" Pilote : ".$donnee["prenom"]." ".$donnee["nom"];
     
-  echo"  <a href='../membre/profil.php?username=".$donnee["username"]."' class='btn btn-primary pull-right'>Son profil</a></br>";
+  echo"  <a href='../membre/profil.php?username=".$donnee["login"]."' class='btn btn-primary pull-right'>Son profil</a></br>";
   echo "Voiture : ".$donnee["voiture_marque"]." ".$donnee["voiture_modele"];
 
     echo"</div>";

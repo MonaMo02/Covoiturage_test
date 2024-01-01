@@ -33,7 +33,7 @@ function formulaire() {
     <?php
     $reponse = $bdd->query("SELECT * FROM trajet WHERE effectue = 0 and pilote_user_id != " . $_SESSION["id"]);
     $donnee = $reponse->fetch(); //on verifie qu'il y a bien des trajets dans la base afin d'eviter des erreurs
-    if ($donnee[0] != 0) {
+    if ($donnee != FALSE) {
         ob_start();
         echo"<h1>Recherche de votre trajet</h1>";
         form_debut("form", "POST", "recherche_trajet.php");
@@ -101,45 +101,49 @@ $stmt->execute();
     ?>
     <?php
     form_debut("form", "POST", "reserver_trajet.php"); //on crée un formulaire pour recuperer le choix du trajet
-    ?>
 
-    <!--On crée un tableau contenant les infos des trajets trouvé   -->
-    <table class='table table-hover'>
-        <tr>
-            <th>Ville de départ</th>
-            <th>Ville d'arrivée</th>
-            <th>Date</th>
-            <th>Heure de départ</th>
-            <th>Prix</th>
-            <th>Places restantes</th>
-            <th>Coche</th>
-        </tr>
-    <?php
-    while ($donnees = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
-        echo"<tr>";
-        echo"<th>" . $donnees["ville_depart"] . "</th>";
-        echo"<th>" . $donnees["destination"] . "</th>";
-        echo"<th>" . $donnees["date"] . "</th>";
-        echo"<th>" . $donnees["heure_dep"] . "</th>";
-        echo"<th>" . $donnees["prix"] . "</th>";
-        echo"<th>" . ($donnees["places_max"] - $donnees["places_prises"]) . "/" . $donnees["places_max"] . "</th>";
-        
-        //on crée un bouton radio qui renvoi l'id du trajet pour chaque trajet si il n'est pas complet
-        if ($donnees["places_max"] != $donnees["places_prises"]) {
-            echo"<th><input type='radio' name='choix_trajet' value='" . $donnees['id'] . "' /></th>";
-        } else {
-            echo'<th>COMPLET</th>';
+    $donnees = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if($donnees!=FALSE){
+        ?>
+
+        <!--On crée un tableau contenant les infos des trajets trouvé   -->
+        <table class='table table-hover'>
+            <tr>
+                <th>Ville de départ</th>
+                <th>Ville d'arrivée</th>
+                <th>Date</th>
+                <th>Heure de départ</th>
+                <th>Prix</th>
+                <th>Places restantes</th>
+                <th>Coche</th>
+            </tr>
+        <?php
+        foreach ($donnees as $row) {
+            echo"<tr>";
+            echo"<th>" . $row["lieu_depart"] . "</th>";
+            echo"<th>" . $row["destination"] . "</th>";
+            echo"<th>" . $row["date"] . "</th>";
+            echo"<th>" . $row["heure_dep"] . "</th>";
+            echo"<th>" . $row["prix"] . "</th>";
+            echo"<th>" . ($row["places_max"] - $row["places_prises"]) . "/" . $row["places_max"] . "</th>";
+            
+            //on crée un bouton radio qui renvoi l'id du trajet pour chaque trajet si il n'est pas complet
+            if ($row["places_max"] != $row["places_prises"]) {
+                echo"<th><input type='radio' name='choix_trajet' value='" . $row['id'] . "' /></th>";
+            } else {
+                echo'<th>COMPLET</th>';
+            }
+            echo"</tr>";
         }
-        echo"</tr>";
-    }
-    ?>
+        ?>
 
-    </table>
-    </br></br>
-    <?php
-    form_submit("Reserver", "Reserver", FALSE);
-    form_fin();
-    ?>
+        </table>
+        </br></br>
+        <?php
+        form_submit("Reserver", "Reserver", FALSE);
+        form_fin();}
+        else{echo"<div class='alert alert-danger'>Le trajet que vous cherchez n'est pas disponible .</div>";}
+        ?>
 
 
     <?php
