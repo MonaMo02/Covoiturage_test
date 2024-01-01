@@ -9,6 +9,6 @@ INSERT INTO user (password, email, prenom, nom, num_tel, matricule, login) VALUE
 INSERT INTO user (password, email, prenom, nom, num_tel, matricule, login) VALUES ('d6ba0682d75eb986237fb6b594f8a31f', 'matt_leblanc@sfr.com', 'Matt', 'Leblanc', '0553768690', '2222318690', 'joey');
 INSERT INTO user (password, email, prenom, nom, num_tel, matricule, login) VALUES ('b7e1509f89fb4e58f750856a642f6e98', 'aymar.tnani@utt.fr', 'Aymar', 'Tnani', '0768983823', '2020359890', 'mamar');
 INSERT INTO user (password, email, prenom, nom, num_tel, matricule, login) VALUES ('931ed1920da0c0aab4cb7088ecf3d804', 'roby.maxime@gmail.com', 'Maxime', 'Roby', '0676369278', '1919378796', 'robyneterie');
-
-
+-- /INSERTION trajet (cuz i can't do it from website)
+INSERT INTO trajet(	lieu_depart,destination,places_max	,places_prises,	date,pilote_user_id	,heure_dep	,prix) VALUES('babezzouar','alger',3,0,'2024-01-02',1,11,100);
 

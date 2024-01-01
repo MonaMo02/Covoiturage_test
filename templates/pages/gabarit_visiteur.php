@@ -9,12 +9,12 @@
         <link rel="icon" type="image/png" href="../favicon.png" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" /><![endif]-->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-        <link href="../gabarit/css/bootstrap.min.css" rel="stylesheet">
-        <script type="text/javascript" src="../gabarit/js/verif_form.js"></script>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript" src="../js/verif_form.js"></script>
         <!--[if lt IE 9]>
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="../gabarit/css/styles.css" rel="stylesheet">
+        <link href="../css/styles.css" rel="stylesheet">
 
     </head>
     <body>
@@ -93,7 +93,7 @@
 
     <!-- script references -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="../gabarit/js/bootstrap.min.js"></script>
-    <script src="../gabarit/js/scripts.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/scripts.js"></script>
 </body>
 </html>

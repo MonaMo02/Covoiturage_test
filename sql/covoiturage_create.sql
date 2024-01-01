@@ -3,7 +3,7 @@
 -- Table user : pple who have accounts
 -- -----------------------------------------------------
 CREATE TABLE user (
-  id INTEGER NOT NULL AUTOINCREMENT,
+  id INTEGER NOT NULL AUTO_INCREMENT,
   password VARCHAR(100) NOT NULL,
   login VARCHAR(45) NOT NULL,
   nom VARCHAR(45) NOT NULL,
@@ -15,16 +15,12 @@ CREATE TABLE user (
 ENGINE = InnoDB; 
 
 CREATE TABLE ville_depart (
-    id integer AUTOINCREMENT primary key,
-    nom varchar(100),
-    -- add more columns as needed
-    PRIMARY KEY (nom)
+    id integer AUTO_INCREMENT primary key,
+    nom varchar(100)
 );
 CREATE TABLE ville_arrivee (
-    id integer AUTOINCREMENT primary key,
-    nom varchar(100),
-    -- add more columns as needed
-    PRIMARY KEY (nom)
+    id integer AUTO_INCREMENT primary key,
+    nom varchar(100)
 );
 
 

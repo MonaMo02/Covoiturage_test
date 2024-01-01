@@ -81,7 +81,7 @@ function action() {
     // Assuming $bdd is your database connection
 
 // Prepare the statement
-$stmt = $bdd->prepare("SELECT * FROM trajet WHERE lieu_depart = :ville_depart AND lieu_arrivee = :destination AND date = :date AND effectue = FALSE AND pilote_user_id != :user_id");
+$stmt = $bdd->prepare("SELECT * FROM trajet WHERE lieu_depart = :ville_depart AND destination = :destination AND date = :date AND effectue = FALSE AND pilote_user_id != :user_id");
 
 // Bind parameters
 $stmt->bindParam(':ville_depart', $_POST['ville_depart']);
@@ -117,7 +117,7 @@ $stmt->execute();
     <?php
     while ($donnees = $stmt->fetchAll(PDO::FETCH_ASSOC)) {
         echo"<tr>";
-        echo"<th>" . $donnees["lieu_depart"] . "</th>";
+        echo"<th>" . $donnees["ville_depart"] . "</th>";
         echo"<th>" . $donnees["destination"] . "</th>";
         echo"<th>" . $donnees["date"] . "</th>";
         echo"<th>" . $donnees["heure_dep"] . "</th>";

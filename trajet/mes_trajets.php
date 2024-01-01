@@ -39,9 +39,11 @@ if ($_SESSION["pilote"]) {
         $reponse = $bdd->query("SELECT * FROM trajet WHERE effectue = FALSE AND pilote_user_id = " . $_SESSION["id"]);//on affiche que les trajets non effectue
        //on parcourt tous les trajets
         while ($donnee = $reponse->fetch()) {
-            echo"<tr><td>" . $donnee["lieu_depart"] . "</td><td>" . $donnee["lieu_arrivee"] . "</td><td>" . $donnee["places_prises"] . "/" . $donnee["places_max"] . "</td><td>" . $donnee["date"] . "</td><td>" . $donnee["heure_dep"] . "</td><td>" . $donnee["prix"] . "</td>";
+            echo"<tr><td>" . $donnee["lieu_depart"] . "</td><td>" . $donnee["destination"] . "</td><td>" . $donnee["places_prises"] . "/" . $donnee["places_max"] . "</td><td>" . $donnee["date"] . "</td><td>" . $donnee["heure_dep"] . "</td><td>" . $donnee["prix"] . "</td>";
             
             //on va faire un formulaire pour chaque boutton submit (supprimer, valider, liste) afin d'envoyer par la methode POST l'id du trajet aux differentes pages
+            echo '<td><form action="modifier_trajet.php" method="post">';
+            echo "<button type='submit' name='modif' class='btn btn-safe' value='" . $donnee["id"] . "'>Modifier</button></form></td>";
             echo '<td><form action="delete_trajet.php" method="post">';
             echo "<button type='submit' name='suppr' class='btn btn-danger' value='" . $donnee["id"] . "'>Supprimer</button></form></td>";
             echo '<td><form action="valide_trajet.php" method="post">';
