@@ -31,7 +31,7 @@ function verifnumtel() {
     alert("Veuillez saisir un numero de telephone valide")
 }
 function verifemail() {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.form.email.value)) //on verifie que l'email à un format valide 
+    if (/^\w+([\.-]?\w+)*@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,3})+$/.test(document.form.email.value)) //on verifie que l'email à un format valide 
     {
         return (true)
     }
@@ -42,16 +42,12 @@ function verifmatriculeetudiant() {
     var currentYear = new Date().getFullYear();
     var matriculeExpr = new RegExp(`^(${(currentYear % 100 - 1).toString().padStart(2, '0')}|\\d{2})(${(currentYear % 100 - 1).toString().padStart(2, '0')}|\\d{2})\\d{8}$`);
 
-    // Test if the matriculation matches the regular expression
     if (matriculeExpr.test(matriculation)) {
-        // If the matriculation is valid, return true
         return true;
     }
 
-    // If the matriculation is not valid, display an alert
     alert("Veuillez saisir une matriculation valide");
 
-    // Return false to indicate validation failure
     return false;
 }
 

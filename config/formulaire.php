@@ -7,7 +7,7 @@
  */
 
 //touts les tests de présences d'attributs sont effectués par des ifs successifs qui affichent ou non ce qui correspond a l'attribut
-
+// change apres tagui itkssart
 function form_select_sql_attribut_ville($label, $name, $size, $bdd, $attribut, $table) {//permet de créer une liste contenant toutes les valeurs distinces de la requete SQL des villes
     $reponse = $bdd->query("SELECT DISTINCT " . $attribut . " FROM " . $table . " WHERE effectue = FALSE");
     //on crée un tableau contenant toutes les villes
@@ -40,7 +40,7 @@ function form_fin() {
     echo("</form>");
 }
 
-function form_select($name, $multiple, $size, $hash) { //multiple est un booléén, si il est fixé comme TRUE, il faut que $name soit transmis comme un tableau ('name[]')
+function form_select($name, $multiple, $size, $hash) { //multiple est un booléén, si il est fixé comme TRUE, il faut que $name soit transmis comme un tableau ('name[]') pour reservation trajets
     echo ("<select name = '$name'");
     if ($multiple)
         echo "multiple = '$multiple'";
@@ -53,7 +53,7 @@ function form_select($name, $multiple, $size, $hash) { //multiple est un boolé�
     echo("</select>");
 }
 
-function form_input_text($name, $required, $placeholder, $value, $size, $onChange) { //l'attribut placeholder et value sont incompatible, c'est l'attribut value qui prime dans cette fonction.
+function form_input_text($name, $required, $placeholder, $value, $size, $onChange) {
     echo("<input name = '$name' type = 'text'");
 
     if ($placeholder)
@@ -68,7 +68,42 @@ function form_input_text($name, $required, $placeholder, $value, $size, $onChang
         echo "onChange = '$onChange'";
     echo(">");
 }
+function form_input_position($name, $required, $placeholder, $value, $size, $onChange, $positionValue, $resultId) {
+    echo("<input name='$name' type='text'");
 
+    if ($placeholder)
+        echo " placeholder='$placeholder'";
+    if ($value)
+        echo " value='$value'";
+    if ($size)
+        echo " size='$size'";
+    if ($required)
+        echo " required";
+    if ($onChange)
+        echo " onChange='$onChange'";
+    
+    $defaultValue = is_callable($positionValue) ? call_user_func($positionValue) : '';
+
+        echo " onclick=\"getPosAndDisplayResult('$resultId');\"";
+    
+    echo " />";
+}
+function form_input_coord($name, $required, $placeholder, $value, $size, $onChange) {
+    echo("<input name='$name' type='hidden'");
+
+    if ($placeholder)
+        echo " placeholder='$placeholder'";
+    if ($value)
+        echo " value='$value'";
+    if ($size)
+        echo " size='$size'";
+    if ($required)
+        echo " required";
+    if ($onChange)
+        echo " onChange='$onChange'";
+   echo " />";
+
+}
 function form_input_email($name, $required, $placeholder, $value, $size, $onChange) { //on transmet le nom, si il est requis, l'eventuel indice, l'eventuelle valeur, la taille du champs et la fonction pour l'évenement onChange
     echo("<input type = 'email' name = '$name'");
     if ($placeholder)
@@ -84,6 +119,34 @@ function form_input_email($name, $required, $placeholder, $value, $size, $onChan
     echo(">");
 }
 
+function form_input_tel($name, $required, $placeholder, $value, $size, $onChange) { //on transmet le nom, si il est requis, l'eventuel indice, l'eventuelle valeur, la taille du champs et la fonction pour l'évenement onChange
+    echo("<input type = 'phone number' name = '$name'");
+    if ($placeholder)
+        echo "placeholder = '$placeholder'";
+    if ($value)
+        echo "value = '$value'";
+    if ($size)
+        echo "size = '$size'";
+    if ($required)
+        echo "required ";
+    if ($onChange)
+        echo "onChange = \"$onChange\"";
+    echo(">");
+}
+function form_input_matricule($name, $required, $placeholder, $value, $size, $onChange) { //on transmet le nom, si il est requis, l'eventuel indice, l'eventuelle valeur, la taille du champs et la fonction pour l'évenement onChange
+    echo("<input type = 'matricule' name = '$name'");
+    if ($placeholder)
+        echo "placeholder = '$placeholder'";
+    if ($value)
+        echo "value = '$value'";
+    if ($size)
+        echo "size = '$size'";
+    if ($required)
+        echo "required ";
+    if ($onChange)
+        echo "onChange = \"$onChange\"";
+    echo(">");
+}
 function form_input_mdp($name, $required, $placeholder, $value, $size, $onChange) { //de meme que form_input_email
     echo("<input name='$name' type='password'");
     if ($placeholder)
@@ -99,7 +162,7 @@ function form_input_mdp($name, $required, $placeholder, $value, $size, $onChange
     echo(">");
 }
 
-function form_submit($name, $value, $disabled) { //value est l'attribut qui apparaitrait sur le bouton. de meme que form_input_email
+function form_submit($name, $value, $disabled) { 
     echo("<input name='$name' type='submit' class='btn btn-success'");
     if ($value)
         echo "value = '$value'";
@@ -170,9 +233,10 @@ function affiche_tab($array) { //fonction de debug pour afficher les tableau ass
     }
 }
 
-function form_label($text) { //fonction pour afficher le text avant les input dans les formulaires
-    echo "<label>" . $text . "</label> : ";
+function form_label($text) {
+    echo "<label >$text</label> : ";
 }
+
 
 function form_date($name, $required, $onChange) { //fonction de l'input date
     echo "<input name='$name' type='date'";

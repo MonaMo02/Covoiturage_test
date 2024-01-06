@@ -10,7 +10,6 @@ require '../config/BDD.php'; //on inclut le fichier qui contient les infos sur l
 $bdd = getBdd();
 
 require '../config/formulaire.php'; //on inclut les fonctions de formulaires pour construire rapidement le formulaire de la page
-
 require '../config/droits.php'; //on inclut les fonctions qui permettent de tester et de vérifier qui peut accéder à cette page
 test_visiteur(); //on teste si c'est un visiteur si ce n'en est pas un on le redirige vers l'index
 // on teste si le visiteur a soumis le formulaire
@@ -41,6 +40,8 @@ function formulaire() {
     ?>
     <h1>Inscription</h1>
     <?php
+
+    echo"<script src='/covoiturage_test/templates/js/verif_form.js'></script>";
     form_debut("form", "POST", "inscription.php");
     form_label("Nom");
     form_input_text("nom", TRUE, "", "", 30, "verifnom();");
@@ -49,19 +50,19 @@ function formulaire() {
     form_input_text("prenom", TRUE, "", "", 30, "verifprenom();");  //on fait notre formulaire en utilisant les fonctions de formulaire.php
     echo"<br><br>";
     form_label("Login");
-    form_input_text("login", TRUE, "", "", 30, "veriflogin();");
+    form_input_text("login", TRUE, "username", "", 30, "veriflogin();");
     echo"<br><br>";
     form_label("Numéro de Téléphone");
-    form_input_text("num_tel", TRUE, "", "", 10, "verifnumtel();");
+    form_input_text("num_tel", TRUE, "numéro de téléphone", "", 30, "verifnumtel();");
     echo"<br><br>";
     form_label("Matricule Etudiant");
-    form_input_text("matricule", TRUE, "", "", 12, "verifmatriculeetudiant();");
+    form_input_text("matricule", TRUE, "Ex:191932450761", "", 30, "verifmatriculeetudiant();");
     echo"<br><br>";
     form_label("Email");
-    form_input_email("email", TRUE, "", "", 45, "verifemail();");
+    form_input_email("email", TRUE, "Ex:username_09@gmail.com", "", 45, "verifemail();");
     echo"<br><br>";
     form_label("Mot de passe");
-    form_input_mdp("password", TRUE, "", "", 30, "verifpassword();");
+    form_input_mdp("password", TRUE, "mot de passe", "", 30, "verifpassword();");
     echo "<span style=\"color: red;\" id=\"lvlsecure\"></span>";
     echo"<br><br>";
     echo"<br><br>";
@@ -78,7 +79,7 @@ function action() {
   //  $chemin_destination = '../photo_profil/'; //chemin pour stocker les photos de profil use it for voiture
    // move_uploaded_file($_FILES["pic"]['tmp_name'], $chemin_destination . $_POST["login"] . strrchr($_FILES['pic']['name'], '.')); //on met la photo dans le dossier
     global $bdd;
-    $sql = 'INSERT INTO user (password, login, nom, prenom, email, num_tel, matricule) VALUES(:password,:login,:nom,:prenom,:email,:num_tel,:matricule)';
+    $sql = 'INSERT INTO user (password, login, nom, prenom, email, num_tel, matricule,compte) VALUES(:password,:login,:nom,:prenom,:email,:num_tel,:matricule,:compte)';
     $statement = $bdd->prepare($sql);
     $statement->execute(array(
         ":password" => md5($_POST["password"]),
@@ -88,6 +89,7 @@ function action() {
         ":email" => $_POST["email"],
         ":num_tel" => $_POST["num_tel"],
         ":matricule" => $_POST["matricule"],
+        ":compte" => "0",
       //  ":photo" => $chemin_destination . $_POST["login"] . strrchr($_FILES['pic']['name'], '.'),       //on inscrit l'utilisateur dans la base de données
         
     ));

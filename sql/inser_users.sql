@@ -12,3 +12,7 @@ INSERT INTO user (password, email, prenom, nom, num_tel, matricule, login) VALUE
 -- /INSERTION trajet (cuz i can't do it from website)
 INSERT INTO trajet(	lieu_depart,destination,places_max	,places_prises,	date,pilote_user_id	,heure_dep	,prix) VALUES('babezzouar','alger',3,0,'2024-01-02',1,11,100);
 
+--//user inserted 
+INSERT INTO `user` (`id`, `password`, `login`, `nom`, `prenom`, `email`, `num_tel`, `matricule`) VALUES (NULL, '6f8dceadedf03f53255e801b320c0f6a', 'meena', 'DAS', 'Meena', 'meena@gmail.com', '0745362198', '2020389461')
+-- pilote
+INSERT INTO `ville_arrivee` (`id`, `nom`, `latitude`, `longitude`) VALUES (1, 'Ighil Ali, Daïra Ighil Ali, Béjaïa, 06014, Algérie', '36.362650', '3.915776')

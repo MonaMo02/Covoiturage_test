@@ -10,66 +10,72 @@ CREATE TABLE user (
   prenom VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
   num_tel VARCHAR(10) NOT NULL,
-  matricule VARCHAR(10) NOT NULL,  
+  matricule VARCHAR(10) NOT NULL,
+  compte integer,  
   PRIMARY KEY (id))
 ENGINE = InnoDB; 
 
-CREATE TABLE ville_depart (
-    id integer AUTO_INCREMENT primary key,
-    nom varchar(100)
-);
-CREATE TABLE ville_arrivee (
-    id integer AUTO_INCREMENT primary key,
-    nom varchar(100)
-);
-
-
-
-
 
 -- -----------------------------------------------------
--- Table pilote : users who chose : poster tjaret, 
+-- Table pilote : users who chose : poster tjaret
 -- -----------------------------------------------------
 CREATE TABLE pilote (
-  pilote_user_id INTEGER NOT NULL,
+  pilote_user_id INTEGER primary key,
   voiture_id INTEGER NOT NULL, 
   voiture_marque VARCHAR(45) NOT NULL,
   voiture_annee INTEGER NOT NULL,
   voiture_modele VARCHAR(45) NOT NULL,
   voiture_couleur VARCHAR(45) NOT NULL,
   photo LONGTEXT NULL,
-  PRIMARY KEY (pilote_user_id),
   CONSTRAINT fk_pilote_user
     FOREIGN KEY (pilote_user_id)
     REFERENCES user (id)
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION);
+
+
+CREATE TABLE ville_depart (
+    id integer AUTO_INCREMENT primary key,
+    nom varchar(100),
+    latitude  decimal(10,6),
+    longitude  decimal(10,6)
+);
+CREATE TABLE ville_arrivee (
+    id integer AUTO_INCREMENT primary key,
+    nom varchar(100),
+    latitude  decimal(10,6),
+    longitude  decimal(10,6)
+);
     
--- a pilote can have many voitures
 
-
--- -----------------------------------------------------
--- Table trajet
--- -----------------------------------------------------
 CREATE TABLE trajet (
   id INTEGER NOT NULL AUTO_INCREMENT,
   lieu_depart VARCHAR(45) NOT NULL,
   destination VARCHAR(45) NOT NULL,
   places_max INTEGER NOT NULL,
-  places_prises INTEGER NOT NULL,
+  places_prises INTEGER,
   date VARCHAR(45) NOT NULL,
   pilote_user_id INTEGER NOT NULL,
   heure_dep INTEGER NOT NULL,
   prix DECIMAL(5) NOT NULL,
-  effectue TINYINT(1) NOT NULL,
+  effectue TINYINT NOT NULL,
   PRIMARY KEY (id, pilote_user_id),
   CONSTRAINT fk_trajet_pilote1
     FOREIGN KEY (pilote_user_id)
     REFERENCES pilote (pilote_user_id)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    CONSTRAINT fk_ville
+    FOREIGN KEY (lieu_depart)
+    REFERENCES ville_depart (nom)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    CONSTRAINT fk_ville_arr
+    FOREIGN KEY (destination)
+    REFERENCES ville_arrivee (nom)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION
     );
-
 
 -- -----------------------------------------------------
 -- Table trajet_passager
@@ -79,17 +85,22 @@ CREATE TABLE trajet_passager (
   user_id INTEGER NOT NULL,
   position VARCHAR(45) NOT NULL,
   nb_places INTEGER NOT NULL,
-  proximité DECIMAL(10) NOT NULL, /*distanceentre depart pilote n passager position*/
+  proximité DECIMAL(10) NOT NULL,
   PRIMARY KEY (trajet_id, user_id),
-  CONSTRAINT fk_trajet_has_user_trajet1
+  CONSTRAINT fk_psgr_trajet
     FOREIGN KEY (trajet_id)
     REFERENCES trajet (id)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT fk_trajet_has_user_user1
+  CONSTRAINT fk_psgr_trajet_user
     FOREIGN KEY (user_id)
     REFERENCES user (id)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    CONSTRAINT fk_pos_ville
+    FOREIGN KEY (position)
+    REFERENCES ville_depart (nom)
+    ON DELETE CASCADE
     ON UPDATE NO ACTION);
 
 
@@ -100,11 +111,10 @@ CREATE TABLE trajet_passager (
 -- Table transaction
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS transaction (
-  id INTEGER NOT NULL AUTO_INCREMENT,
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
   credit_user_id INTEGER NOT NULL,
   debit_user_id INTEGER NOT NULL,
   somme DECIMAL(10) NOT NULL,
-  PRIMARY KEY (id),
   CONSTRAINT fk_credit
     FOREIGN KEY (credit_user_id)
     REFERENCES user (id)
