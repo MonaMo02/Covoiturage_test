@@ -41,34 +41,18 @@
             </div>
         </nav>
 
-        <div id="masthead">  
             <div class="container">
-                <div class="row">
-                    <div class="col-md-7"><br><br>
-                        <h1><span class = "logop2"><span class = "logop1">CAR</span>PE DIEM</span>
-                            <p class="lead"><span id = "sloganp1">Vivez le covoiturage </span><span id = "sloganp2">au jour le jour.</span></p>
-                        </h1>
-                    </div>
-
-                </div>
+                <?php echo $contenu2; ?>
             </div> 
         </div><!--/container-->
-    </div><!--/masthead-->
 
     <!--main-->
     <div class="container">
         <div class="row">
-            <!--left-->
-            <div class="col-md-3" id="leftCol">
 
-            </div><!--/left-->
-
-            <!--right-->
-            <div class="col-md-9">
                 <?php echo $contenu; ?>
 
-            </div><!--/right-->
-        </div><!--/row-->
+        </div>
     </div><!--/container-->
 
 

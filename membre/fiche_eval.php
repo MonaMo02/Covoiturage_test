@@ -52,7 +52,7 @@ if (isset($_POST["evaluer"])) { //si l'utilisateur est un passager (provenance v
             if ($_POST["note"] == "extraordinaire") {
                 $note = 5;
             }
-            $sql = 'INSERT INTO evaluation (evaluateur_user_id,evalue_user_id,evaluation, trajet_id) VALUES (:evaluateur_user_id,:evalue_user_id,:evaluation,:trajet_id)'; //on insere la note dans la BDD
+            $sql = 'INSERT INTO evaluation (evaluateur_user_id,evalue_user_id,evaluation, trajet_id) VALUES (:evaluateur_user_id,:evalue_user_id,:evaluation,:trajet_id);'; //on insere la note dans la BDD
             $statement = $bdd->prepare($sql);
             $statement->execute(array(
                 ":evaluateur_user_id" => $_SESSION["id"],
@@ -147,10 +147,10 @@ if (isset($_POST["evaluer"])) { //si l'utilisateur est un passager (provenance v
         form_fin();
         $contenu = ob_get_clean();
         $title = "Evaluation des passagers";
-        require '../gabarit/gabarit_passager.php';
+        require '../templates/pages/gabarit_passager.php';
     }
 } else {
-    header('Location: ../indexx.php');
+    header('Location: ../index.php');
     exit();
 }
 

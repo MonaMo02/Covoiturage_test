@@ -115,4 +115,17 @@ function AlterRequestForm() {
     return ob_get_clean();
 }
 
+
+function getCount($bdd, $tableName) {
+    $query = "SELECT COUNT(*) as count FROM $tableName";
+    $result = $bdd->query($query);
+    
+    if ($result) {
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        return $row['count'];
+    } else {
+        // Handle the error or return an appropriate value
+        return 0;
+    }
+}
 ?>

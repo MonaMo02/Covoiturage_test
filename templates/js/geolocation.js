@@ -139,7 +139,7 @@ async function getCoor() {
 }*/
 function geocodeOnChange() {
     // Replace 'YOUR_API_KEY' with your actual Location IQ API key
-    var apiKey = 'pk.b3131f0ea825db713292fcdae7328f5d';
+    var apiKey = 'pk.3be9e33b005e35c714ca37c18e918f08';
 
     // Retrieve user input from the input field
     var userInput = document.querySelector('input[name="ville_arrivee"]').value;

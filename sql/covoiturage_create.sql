@@ -35,14 +35,12 @@ CREATE TABLE pilote (
 
 
 CREATE TABLE ville_depart (
-    id integer AUTO_INCREMENT primary key,
-    nom varchar(100),
+    nom varchar(100) PRIMARY KEY,
     latitude  decimal(10,6),
     longitude  decimal(10,6)
 );
 CREATE TABLE ville_arrivee (
-    id integer AUTO_INCREMENT primary key,
-    nom varchar(100),
+    nom varchar(100) PRIMARY KEY,
     latitude  decimal(10,6),
     longitude  decimal(10,6)
 );
@@ -50,8 +48,8 @@ CREATE TABLE ville_arrivee (
 
 CREATE TABLE trajet (
   id INTEGER NOT NULL AUTO_INCREMENT,
-  lieu_depart VARCHAR(45) NOT NULL,
-  destination VARCHAR(45) NOT NULL,
+  lieu_depart VARCHAR(100) ,
+  destination VARCHAR(100) ,
   places_max INTEGER NOT NULL,
   places_prises INTEGER,
   date VARCHAR(45) NOT NULL,

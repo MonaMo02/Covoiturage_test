@@ -73,10 +73,10 @@ function action()
     global $bdd;
 
     //on va regarder si les villes renseignées existent deja dans la base, si non alors on les ajoutes
-    $sql = 'SELECT nom FROM ville_depart WHERE nom="' . $_POST['ville_depart'] . '"';
+    $sql = 'SELECT nom FROM ville_depart WHERE nom="' . $_POST['ville_depart'] . '";';
     $reponse = $bdd->query($sql);
     if ($reponse->rowCount() == 0) {
-        $sql2 = "INSERT INTO ville_depart (nom, latitude, longitude) VALUES(:nom, :latitude, :longitude)";
+        $sql2 = "INSERT INTO ville_depart (nom, latitude, longitude) VALUES(:nom, :latitude, :longitude);";
         $statement = $bdd->prepare($sql2);
         $statement->execute(array(
             ":nom" => $_POST['ville_depart'],
@@ -87,7 +87,7 @@ function action()
     $sql = 'SELECT nom FROM ville_arrivee WHERE nom="' . $_POST['ville_arrivee'] . '"';
     $reponse = $bdd->query($sql);
     if ($reponse->rowCount() == 0) {
-        $sql2 = "INSERT INTO ville_arrivee (nom, latitude, longitude) VALUES(:nom, :latitude, :longitude)";
+        $sql2 = "INSERT INTO ville_arrivee (nom, latitude, longitude) VALUES(:nom, :latitude, :longitude);";
         $statement = $bdd->prepare($sql2);
         $statement->execute(array(
             ":nom" => $_POST['ville_arrivee'],
@@ -97,9 +97,9 @@ function action()
     }
 
     //on insert les infos dans la table trajet
-    $sql = 'INSERT INTO trajet (lieu_depart,destination,places_max,places_prises,date,pilote_user_id,heure_dep,prix,effectue) VALUES(:lieu_depart,:destination,:places_max,:places_prises,:date,:pilote_user_id,:heure_dep,:prix,:effectue)';
+    $sql = 'INSERT INTO trajet (lieu_depart,destination,places_max,places_prises,date,pilote_user_id,heure_dep,prix,effectue) VALUES(:lieu_depart,:destination,:places_max,:places_prises,:date,:pilote_user_id,:heure_dep,:prix,:effectue);';
     $statement = $bdd->prepare($sql);
-    $statement->execute(array(
+    $result =$statement->execute(array(
         ":lieu_depart" => $_POST["ville_depart"],
         ":destination" => $_POST["ville_arrivee"],
         ":places_max" => $_POST["places"],
@@ -111,7 +111,14 @@ function action()
         ":effectue" => FALSE,
     ));
 
-    return "<div class='alert alert-success'>Votre trajet a bien été enregistré.</div>";
+    if($result){
+        return "<div class='alert alert-success'>Votre trajet a bien été enregistré.</div>";
+    }
+    else{
+        return "<div class='alert alert-success'>RIDE NOT ADDED </div>";
+
+    }
+
 }
 
 $title = "Inscription trajet";
