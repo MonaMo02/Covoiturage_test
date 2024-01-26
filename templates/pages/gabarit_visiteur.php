@@ -14,11 +14,11 @@
         <!--[if lt IE 9]>
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="../templates/css/styles.css" rel="stylesheet">
+        <link href="../templates/css/style2.css" rel="stylesheet">
 
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top" role="banner">
+    <nav class="navbar navbar-default navbar-fixed-top costum-navbar-style" role="banner">
             <div class="container">
                 <div class="navbar-header">
                     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,35 +27,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="../index.php" class="navbar-brand"><span class = "logonavbar">CARPE DIEM</span></a>
+                    <a href="../index.php" class="navbar-brand innernav"><span class = "logonavbar">CARPE DIEM</span></a>
                 </div>
-                <nav class="collapse navbar-collapse" role="navigation">
+                <nav class="collapse navbar-collapse innernav" role="navigation">
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <p class="navbar-btn">
-                            <a href="../membre/connexion.php" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-share-alt"></i> Connexion</a>
-                            <a href="../inscription/inscription.php" class="btn btn-success btn-large"><i class="glyphicon glyphicon-arrow-up"></i> Inscription</a>
+                    <ul class="nav navbar-nav navbar-right costum-nava-style">
+                        <p class="navbar-btn costum-p-navbar-buttons">
+                            <a href="../membre/connexion.php" class="btn  btn-large insc-button " > Connexion</a>
+                            <a href="../inscription/inscription.php" class="btn  btn-large insc-button"> Inscription</a>
                         </p>
-
-
-
                     </ul>
                 </nav>
             </div>
         </nav>
 
-        <div id="masthead">  
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7"><br><br>
-                        <h1><span class = "logop2"><span class = "logop1">CAR</span>PE DIEM</span>
-                            <p class="lead"><span id = "sloganp1">Vivez le covoiturage </span><span id = "sloganp2">au jour le jour.</span></p>
-                        </h1>
-                    </div>
-
-                </div>
-            </div> 
-        </div><!--/container-->
+        
     </div><!--/masthead-->
 
     <!--main-->
@@ -77,19 +63,7 @@
         </div><!--/row-->
     </div><!--/container-->
 
-    <div class="container">
-
-        <hr><hr>
-        <div class="text-center" style="border-top: 1px solid;">
-            <p><center>Alexandre Patelli - Florian Culié</center></p>
-        <p><center>Université de Technologie de Troyes - LO07</center></p>
-            <br />
-            <a href="#"><i id="social" class="fa fa-facebook-square fa-3x"></i></a>
-            <a href="#"><i id="social" class="fa fa-twitter-square fa-3x"></i></a>
-            <a href="#"><i id="social" class="fa fa-google-plus-square fa-3x"></i></a>
-            <a href="#"><i id="social" class="fa fa-envelope-square fa-3x"></i></a>
-        </div>
-    </div>
+   
 
     <!-- script references -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>

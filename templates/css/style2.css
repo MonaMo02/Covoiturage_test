@@ -1,0 +1,551 @@
+/*
+A Bootstrap 3.1 affix sidebar template
+from http://bootply.com
+
+This CSS code should follow the 'bootstrap.css'
+in your HTML file.
+
+license: MIT
+author: bootply.com
+*/
+
+*{
+    padding: 0;
+    margin: 0;
+}
+.col-md-7 {
+    color: rgb(0, 0, 0);
+}
+
+.col-md-9 h1{
+
+    color: #AEC327;
+    font-size: 35px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+
+}
+.col-md-9 input[type="text"], .col-md-9 input[type="password"] {
+    height: 65px;
+    width: 550px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 0;
+    background-color: #438b8426;
+    border-radius: 10px;
+    padding-left: 20px;
+    font-size: 18px;
+}
+
+.col-md-9 input[type="password"]{
+    margin-top: 5px;
+}
+
+.col-md-9 input[type="submit"]{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 180px;
+    width: 200px;
+    height: 50px;
+    background-color: #14525c;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+
+.col-md-9 input[type="reset"]{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.col-md-9 td, th{
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    #masthead h1 {
+        font-size: 50px;
+    }
+}
+
+.navbar-bright {
+    background-color:#111155;
+    color:#fff;
+}
+
+.affix-top,.affix{
+    position: static;
+}
+
+@media (min-width: 979px) {
+    #sidebar.affix-top {
+        position: static;
+        margin-top:30px;
+        width:228px;
+    }
+
+    #sidebar.affix {
+        position: fixed;
+        top:70px;
+        width:228px;
+    }
+}
+
+#sidebar li.active {
+    border:0 #eee solid;
+    border-right-width:5px;
+}
+
+
+
+.navbar-default {
+    background-color: #AEC327;
+    border-color: #6ea6ad76;
+}
+.navbar-default .navbar-brand {
+    color: #000000;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #10602b;
+}
+.navbar-default .navbar-text {
+    color: #000000;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #14525c;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #10602b;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu {
+    background-color: #AEC327;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
+    color: #000000;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
+    color: #10602b;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
+    background-color: #AEC327;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #10602b;   
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #10602b;
+}
+.navbar-default .navbar-toggle {
+    border-color: #679800;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    color: #10602b; 
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #f6fafb;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: #f6fafb;
+}
+.navbar-default .navbar-link {
+    color: #f6fafb;
+}
+.navbar-default .navbar-link:hover {
+    color: #10602b;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #f6fafb;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #10602b;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #10602b;
+        color: #10602b; 
+    }
+}
+
+
+
+
+
+@font-face { /*ajout de la police de la baniere*/
+    font-family: "Dolcevita";
+    src: url('../fonts/Dolce Vita.ttf') format("truetype");
+}
+
+.logop1{ /*affichage en deux couleurs du slogan (#logop1 et #logop2*/
+    
+    /*color: yellow;*/
+    color: #AEC327;
+    
+}
+
+.logop2{
+    font-family: "Dolcevita", sans-serif;
+    color: honeydew;
+    /*color: #D8F781;*/
+    font-size: 70px;
+}
+
+.logonavbar{
+    font-family: "Dolcevita", sans-serif;
+    color: #14525c;
+    /*color: #D8F781;*/
+    font-size: 28px;
+    font-weight: 600;
+    
+}
+
+.costum-navbar-style{
+    background-color: #fcfcff;
+    height: 70px;
+}
+
+                                       
+.innernav{
+    margin-top: 7px;
+}
+
+
+.insc-button {
+    background-color: #fcfcff;
+    border: 0;
+    margin-left: 30px;
+    color: #438b84;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.insc-button:hover {
+    color: #14525c;
+}
+
+
+
+
+.containerbody{
+    background-image:  url('../image/Covoiturage.jpg');
+    min-height:360px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-top: 20px;
+    
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.quick-search-form{
+    position: absolute;
+    background-color: #ffffff;
+    height: 55px;
+    width: 950px;
+    
+    margin-top: 340px;
+    border-radius: 20px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.47);
+
+}
+
+.quick-search-form form{  
+    margin-left: 14px;
+}
+
+.start{
+    height: 50px;
+    width: 260px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 0 solid #14525c4d;
+    border-right-width: 1px;
+
+}
+
+.dest{
+    height: 50px;
+    width: 260px;
+
+    border: 0 solid #14525c4d;
+    border-right-width: 1px;
+    
+}
+
+.date{
+    height: 50px;
+    width: 150px;
+    border: 0 solid #14525c4d;
+    border-right-width: 1px;
+}
+
+.nbseat{
+    height: 50px;
+    width: 60px;
+    margin-left: 10px;
+    border: 0 ;
+    
+}
+
+.submit-search{
+    height: 55px;
+    width: 170px;
+    font-size: 18px;
+    border: 0;
+    background-color: #14525c;
+    border-radius: px;
+    margin-left: 10px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    color: #fff;
+}
+
+.input{
+    padding-left: 10px;
+}
+
+.input:focus{
+    outline: 0;
+}
+
+
+
+.dec:hover{
+    background-color: #ffffff;
+    color: rgb(190, 0, 0);
+}
+
+
+
+
+ .journey-container {
+    width: 45%;
+    margin: 0 auto;
+    display: block;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    padding-top: 30px;
+    
+}
+
+.journey-item {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.47);
+    border-radius: 10px;
+    text-align: left;
+
+}
+
+.journey-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    text-align: left;
+
+    
+}
+
+.fa-location-pin{
+    position: absolute;
+    color: #438b84;
+    margin-left: 24px;
+    font-size: 18px;
+}
+
+.btm{
+    margin-top: -28px;
+}
+.tp{
+    margin-top: 5px;
+}
+
+.fa-dollar-sign{
+    margin-left: 220px;
+    font-size: 20px;
+}
+.prix{
+    color: #000000;
+    font-size: 18p;
+}
+.line{
+    height: 75px;
+    border-left: 1px #438b849e solid;
+    margin-left: 30px;
+}
+.divider {
+    margin-bottom: 20px;
+}
+
+.info-section {
+    flex: 1;
+}
+
+.info-label {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 30px;
+    color: #438b84;
+}
+
+.pilote-info,
+.car-info {
+    margin-left: 30px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-bottom: 10px;
+}
+
+.pilote-name{
+    font-size: 18px;
+    font-weight: 600;;
+}
+
+.pilote-label,
+.car-label {
+    font-weight: bold;
+}
+
+
+.info-value{
+    font-size: 20px;
+
+}
+.fa-car {
+    margin-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+#hd2{
+    color: #14525c;
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 20px;
+    
+}
+
+.resbutton{
+    position: absolute;
+    height: 45px;
+    width: 130px;
+    background-color: #14525c;
+    border: 0;
+    color: #eee;
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 505px;
+    margin-top: -50px;
+    border-radius: 8px;
+
+    
+}
+
+.resbutton:hover{
+    background-color: #438b84;
+
+}
+
+.connection{
+    margin-top: 120px;
+    height: 100px;
+    width: 500px;
+   
+}
+.inscription{
+    margin-top: 100px;
+}
+
+.inscription input[type="email"]{
+    height: 65px;
+    width: 550px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 0;
+    background-color: #438b8426;
+    border-radius: 10px;
+    padding-left: 20px;
+    font-size: 18px;
+} 
+.inscription input[type="date"]{
+    position: absolute;
+    height: 65px;
+    width: 250px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 0;
+    background-color: #438b8426;
+    border-radius: 10px;
+    padding-left: 20px;
+    font-size: 18px;
+} 
+
+.inscription input[type="file"]{
+    position: absolute;
+    height: 65px;
+    width: 250px;
+    margin-top: 10px;
+    
+    margin-left: 310px;
+    
+    border: 0;
+    background-color: #438b8426;
+    border-radius: 10px;
+    padding-left: 20px;
+    font-size: 18px;
+} 
+#map { 
+    margin-top: 100px;
+    height: 180px; }
+
+
+.resform input {
+    position: absolute;
+    height: 45px;
+    width: 130px;
+    background-color: #14525c;
+    border: 0;
+    color: #eee;
+    font-weight: 600;
+    font-size: 16px;
+   
+    border-radius: 8px;
+   margin-left: 490px;
+    margin-top:-50px;
+}
+
+.resform input:hover{
+
+    background-color: #438b84;
+}
+
+.resmsg{
+    position: absolute;
+    color: rgb(168, 0, 0);
+    margin-top: -110px;
+    margin-left: 525px;
+    font-size: 18px;
+    font-weight: 600;
+}
