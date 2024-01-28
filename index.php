@@ -62,7 +62,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
         </nav>
         
         <div class="containerbody">                  
-            <div class="quick-search-form"> 
+            <div class="quick-search-form"  style="margin-top: 340px;"> 
                 <form id="searchForm"  method="POST">
                     <input type="text" name="ville_depart" class='start input' placeholder='Depart' required/>
                     <input type="text" name="ville_arrivee" class='dest input' placeholder='Destination' required />

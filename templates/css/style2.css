@@ -253,15 +253,34 @@ author: bootply.com
 }
 
 
+
+
+
+
+.rech_page{
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.rech_page h1{
+    color: #14525c;
+    font-weight: 600;
+    font-size: 46;
+}
+
+
 .quick-search-form{
     position: absolute;
     background-color: #ffffff;
     height: 55px;
     width: 950px;
     
-    margin-top: 340px;
+    /* margin-top: 340px; */
     border-radius: 20px;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.47);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.255);
 
 }
 
@@ -548,4 +567,350 @@ author: bootply.com
     margin-left: 525px;
     font-size: 18px;
     font-weight: 600;
+}
+
+/*  profile */
+
+.profile_page{
+    
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 100px;
+    height: 220px;
+    
+}
+
+.profile_page h1{
+    font-weight: 600;
+    font-size: 50;
+    color: #14525c;
+    text-align: center;
+
+}
+
+.profileButtons > input{
+    color: #438b84;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 200px;
+    background-color: white;
+    border: 0;
+    border-radius: 10px;
+    
+}
+.enable{
+    height: 50px;
+    width: 400px;
+    
+}
+.save{
+    height: 50px;
+    width: 200px;
+    
+}
+
+.profileButtons{
+    margin-left: 60px;
+    
+}
+
+.profile_page input:hover, .enable:focus{
+    background-color: #e4e2e28b;   
+}
+
+.name_pic_card{
+    display: block;
+    width: 300px;
+    margin-left: 25%;
+    
+}
+
+.profile_page hr{ 
+    border-top: 1px #507c7754 solid;
+    width: 650px;
+    margin-left: 20%;
+    
+}
+
+.name_pic_card h3{
+    font-size: 38px;
+    font-weight: 600;
+    color: #144148;
+    position: absolute;
+   
+
+}
+
+
+.userInfo {
+    color: #5b7572;
+    text-align: left;
+    margin-top: 80px;
+    position: absolute;
+    
+}
+
+.userInfo  input{
+    border: 0 solid;
+    font-size: 16px;
+}
+.userInfo  label{
+    border: 0 solid;
+    font-size: 17px;
+}
+.userInfo  input:hover{
+    background-color: white;
+}
+
+
+.name_pic_card i{ 
+    font-size: 55px;
+    margin-top: 15px;
+    color: #ffffff;
+}
+
+.profilePic{
+    background-color: #dddddd;
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    margin-top: 20px;
+    margin-left: 460px;
+    position: absolute;
+}
+
+.car{
+    margin-top: 150px;
+    display: block;
+    width: 300px;
+    margin-left: 25%;
+    
+}
+
+.car h2{
+
+    font-weight: 600;
+    font-size: 42;
+    color: #12474f;
+    
+}
+.carButtons {
+    margin-top: 140px;
+    margin-left: 0px; 
+    display: flex;
+}
+.carButtons input{
+    /* background-color: #e4e2e28b; */
+    color: #438b84;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: white;
+    height: 50px;
+    border-radius: 10px;
+    border: 0;
+    
+}
+
+.savecar{
+    margin-left: 45px;
+}
+.carButtons input:hover, .enablecar:focus{
+    background-color: #e4e2e28b;
+}
+
+
+.carInfo {
+    color: #5b7572;
+    text-align: left;
+    margin-top: 10px;
+    position: absolute;
+    
+}
+
+.carInfo  input{
+    border: 0 solid;
+    font-size: 16px;
+}
+
+.carInfo  label{ 
+    font-size: 17px;
+}
+
+
+
+/* .car img {
+    width: 150px;
+    border-radius: 100%;
+    position: absolute;
+    margin-left: 460px;
+} */
+
+.profileTotalMoney{
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 450px;
+}
+
+.profileTotalMoney h5{
+    font-size: 20px;
+    color:#5b7572;
+    font-weight: 500;
+
+}
+
+
+/* mes messages */
+
+.mes_messages{
+    justify-content: center;
+    align-content: center;
+    margin-top: 100px;
+    height: 220px;
+}
+
+.mes_messages > h1{
+    font-weight: 600;
+    font-size: 50;
+    color: #14525c;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cont{
+    margin-left: 19%;
+    width: 650px;
+    
+    background-color: #ffffff;
+    border-color: #d6e9c6;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.318);
+    margin-top: 20px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-left: 20px;
+    border-radius: 15px;
+}
+.msgcard{
+    height: 100px;
+}
+.msgcard b{
+   
+    color: #14525cda;
+    font-size: 18px;   
+}
+
+.msgcard h4{
+
+    font-size: 17px;   
+}
+.msgcard p{  
+    position: absolute;
+    color: #14525cda;
+    font-size: 14px;
+    
+}
+
+.cont p{  
+    
+    font-size: 16px;
+    font-weight: 600;
+    
+}
+.msgbutton{
+    border-radius: 7px;
+    font-weight: 600;
+    margin-left: 15px;
+    margin-top: -10px;
+    background-color: #12474f;
+    color: rgb(236, 236, 236);
+}
+
+.msgbutton:hover, .msgbutton:focus{
+    color: rgb(236, 236, 236);
+    background-color: #438b84;
+}
+
+.emptyMsg{
+    color: #728684;
+    margin-left: 28%;
+    width: 450px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* envoyer un message*/
+
+.envMsg{
+    justify-content: center;
+    align-content: center;
+    margin-top: 100px;
+    height: 220px;
+    
+}
+.envMsg > h1{
+    text-align: center;
+    font-weight: 600;
+    font-size: 50;
+    color: #14525c;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.formMsg {
+    justify-content: left;
+    align-content: left;
+    text-align: left;
+    margin-left: 28%;
+}
+
+.formMsg input[type="text"]{
+    background-color:#e3eeed;
+    color: #144148;
+    padding-left: 15px;
+    font-size: 17px;
+    height: 60px;
+    border: 0 solid;
+    border-radius: 10px;
+}
+
+.formMsg textarea{
+    background-color:#e3eeed;
+    color: #144148;
+    
+    padding: 15px;
+    font-size: 17px;
+    
+    border: 0 solid;
+    border-radius: 10px;
+}
+
+.formMsg input[type="submit"]{
+    width: 487px;
+    font-size: 18px;
+    height: 45px;
+    /* margin-left: 20%; */
+    background-color: #12474f;
+    border: 0 solid;
+
+}
+
+.formMsg label{
+    color: #438b84;
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+.formMsg select{
+    background-color: white;
+    height: 35px;
+    width: 125px;
+    color: #000000;
+    border: 0px solid;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+#desti b{
+    color: #438b84;
 }

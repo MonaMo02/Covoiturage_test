@@ -83,10 +83,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
         
-        }else { echo "<div  marging-top:80px;' > ";
-            echo "<img src='.\undraw_windy_day_x63l.png' width='220px' style='margin-left:350px; padding-top:20px;'>";
-            echo " <h3 style='margin-left:370px; font-size:20px; color:#14525c;'> Pas encore de trajet</h3>"; 
-            echo "</div>";
+        }else { 
+            // echo "<div  marging-top:80px;' > ";
+            // echo "<img src='templates\image\undraw_windy_day_x63l.png' width='220px' style='margin-left:350px; padding-top:20px;'>";
+            // echo " <h3 style='margin-left:370px; font-size:20px; color:#14525c;'> Pas encore de trajet</h3>"; 
+            // echo "</div>";
         }}
     ?>
 

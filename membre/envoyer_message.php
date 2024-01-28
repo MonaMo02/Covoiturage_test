@@ -28,32 +28,35 @@ function formulaire() {
     global $bdd;
     ob_start();
     ?>
-    <h1>Ecrire un message</h1>
-    <?php
-    form_debut("form", "POST", "envoyer_message.php");      //on crée le formulaire pour que l'utilisateur puisse saisir le message
+    <div class="envMsg" style='margin-top:100px'>
+  
+        <h1  >Ecrire un message</h1>
+        <div class="formMsg">
+        <?php
+        form_debut("form", "POST", "envoyer_message.php");      //on crée le formulaire pour que l'utilisateur puisse saisir le message
 
-    
-    
-    //on regarde si la page a été appelé depuis un autre formulaire POST(mes trajets) qui contient le login du destinataire si oui on ne laisse pas le choix à l'utilisateur
-    if (isset($_POST["destinataire"])) {
-        form_hidden("destinataire_username", $_POST["destinataire"]);
-        echo"<p>Destinataire : " . $_POST["destinataire"] . "</p>";
-    } else {
-        //sinon on fait une liste déroulante contenant tous les usernames des membres comme destinataire
-        form_label("Destinataire"); 
-        form_select_sql_attribut_user("Destinataire :", "destinataire_username", 1, $bdd, "login", "user");
-    }
-    echo"<br><br>";
-    form_label("Titre");
-    form_input_text("titre", TRUE, "", "", 45, "");
-    echo"<br><br>";
-    form_label("Message");
-    form_textarea("message", 20, 90, "", TRUE, "");
-    echo "<br><br>";
-    form_submit("Soumettre", "Envoyer", FALSE);
-    form_reset("Reset", "Reinitialiser", FALSE, FALSE);
-    form_fin();
-    ?>
+            //on regarde si la page a été appelé depuis un autre formulaire POST(mes trajets) qui contient le login du destinataire si oui on ne laisse pas le choix à l'utilisateur
+            if (isset($_POST["destinataire"])) {
+                form_hidden("destinataire_username", $_POST["destinataire"]);
+                echo"<h4 id='desti' > <b>Destinataire :</b> " . $_POST["destinataire"] . "</h4>";
+            } else {
+                //sinon on fait une liste déroulante contenant tous les usernames des membres comme destinataire
+                form_label("Destinataire"); 
+                form_select_sql_attribut_user("Destinataire :", "destinataire_username", 1, $bdd, "login", "user");
+            }
+            echo"<br>";
+            
+            form_input_text("titre", TRUE, "titre", "", 48, "");
+            echo"<br><br>";
+            
+            form_textarea("message", 10, 45, "Message", TRUE, "");
+            echo "<br><br>";
+            form_submit("Soumettre", "Envoyer", FALSE);
+            
+            form_fin();
+            ?>
+        </div>
+    </div>
     <?php
     return ob_get_clean();
 }
@@ -74,7 +77,7 @@ function action() {
         ":destinataire_id" => $destinataire_id
     ));
 
-    return "<div class='alert alert-success'>Le message a bien été envoyé.</div>";
+    return "<div style='margin-top:100px' class='alert alert-success'>Le message a bien été envoyé.</div>";
 }
 
 $title = "Ecrire message";

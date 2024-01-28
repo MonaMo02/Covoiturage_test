@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 require'../config/BDD.php';
 $bdd = getBdd();
 
@@ -15,31 +9,34 @@ require '../config/formulaire.php';
 test_membre();
 ob_start();$bdd = getBdd();
 $resultat = $bdd->query("SELECT * FROM messagerie AS M, user AS U WHERE M.destinataire_user_id = " . $_SESSION["id"] . " AND U.id = M.expediteur_user_id ORDER BY M.id DESC");
-
+echo "<div class='mes_messages' style='margin-top:100px'>";
+echo "<h1 '>Boîte de réception</h1>";
 $messages = $resultat->fetchAll(PDO::FETCH_ASSOC);
 
 if (!empty($messages)) {
-    echo "<h1>Mes messages:</h1>";
+    
 
     foreach ($messages as $index => $donnee) {
         $tab_date = explode(" ", $donnee["date"]);
         $tab_jour = explode("-", $tab_date[0]);
+
         echo '<form action="envoyer_message.php" method="post">';
-        echo "<div class=\"panel panel-success\">";
-        echo "<div class=\"panel-heading clearfix\">";
-        echo "<b>Le " . $tab_jour[2] . " " . $tab_jour[1] . " " . $tab_jour[0] . " à " . $tab_date[1] . "</b>";
-        echo "<button class=\"btn btn-primary pull-right btn-margin-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseExample" . $index . "\" aria-expanded=\"false\" aria-controls=\"collapseExample\">";
+        echo "<div class=\"panel panel-success cont \">";
+        echo "<div class=\"msgcard\">";
+        echo "<h4><b>Expediteur :</b> " . $donnee["prenom"] . " " . $donnee["nom"] . "</h4>";
+        echo "<h4><b>Titre : </b>" . $donnee["titre"] . "</h4>";
+        echo "<p>Le " . $tab_jour[2] . " " . $tab_jour[1] . " " . $tab_jour[0] . " à " . $tab_date[1] . "</p>";
+        
+        echo "<button class=\"btn  pull-right  msgbutton\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseExample" . $index . "\" aria-expanded=\"false\" aria-controls=\"collapseExample\">";
         echo "Lire le message";
         echo "</button>";
-        echo "<button type='submit' name='destinataire' class='btn btn-success pull-right btn-margin-right' value='" . $donnee["login"] . "'>Répondre</button></form>";
+        echo "<button type='submit' name='destinataire' class='btn pull-right msgbutton' value='" . $donnee["login"] . "'>Répondre</button></form>";
         echo "</div>";
         echo "<div class=\"collapse\" id=\"collapseExample" . $index . "\">";
         echo "<div class=\"well\">";
         echo "<div class=\"panel-body\">";
         try {
-            echo "<h2><u>Expediteur :</u> " . $donnee["prenom"] . " " . $donnee["nom"] . "</h2>";
-            echo "<h2><U>Titre :</U> " . $donnee["titre"] . "</h2>";
-            echo "<h2><U>Message : </u></h2>";
+            
             echo "<p>" . $donnee["message"] . "</p>";
             echo "<br>";
         } catch (PDOException $e) {
@@ -51,9 +48,9 @@ if (!empty($messages)) {
         echo "</div>";
     }
 } else {
-    echo "<br><br><div class='alert alert-danger'>Vous n'avez aucun message reçu.</div>";
+    echo "<h4 class='emptyMsg'>Pas de messages pour le moment. Réservez ou publiez un trajet pour contacter d’autres membres. Si vous avez déjà un trajet de prévu, n’hésitez pas à contacter les personnes avec qui vous voyagez !</h4>";
 }
-
+echo "</div";
 $contenu = ob_get_clean();
 
 $title = "Mes messages";
