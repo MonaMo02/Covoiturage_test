@@ -1,11 +1,18 @@
 <?php
+
 session_start();
+$title="Accueil";          //ceci est la page index du membre, lorsque un membre connecté va sur la page index du site il est directement redirigé ici.
+
+require './config/BDD.php';
+$bdd=  getBdd();
 if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté alors on le renvoi à la page index membre
     header('Location: membre/index.php');
     exit();
 }
+
 ?>
 
+<!-- On utilise le framework bootstrap pour génerer le html et CSS afin d'avoir une esthétique moderne mais qui ne prend pas trop de temps à réaliser".-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,11 +27,18 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="templates/css/styles.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/e3b74a388e.js" crossorigin="anonymous"></script>
+        <!-- <link href="templates/css/styles.css" rel="stylesheet"> -->
+        <link href="./templates/css/style2.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     </head>
+
+
+
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top" role="banner">
+        <nav class="navbar navbar-default navbar-fixed-top costum-navbar-style" role="banner">
             <div class="container">
                 <div class="navbar-header">
                     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -33,118 +47,149 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand"><span class = "logonavbar">CARPE DIEM</span></a>
+                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CARPE DIEM</span></a>
                 </div>
-                <nav class="collapse navbar-collapse" role="navigation">
+                <nav class="collapse navbar-collapse innernav" role="navigation">
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <p class="navbar-btn">
-                            <a href="membre/connexion.php" class="btn btn-primary btn-large"><i class="glyphicon glyphicon-share-alt"></i> Connexion</a>
-                            <a href="inscription/inscription.php" class="btn btn-success btn-large"><i class="glyphicon glyphicon-arrow-up"></i> Inscription</a>
+                    <ul class="nav navbar-nav navbar-right costum-nava-style">
+                        <p class="navbar-btn costum-p-navbar-buttons">
+                            <a href="membre/connexion.php" class="btn  btn-large insc-button " > Connexion</a>
+                            <a href="inscription/inscription.php" class="btn  btn-large insc-button"> Inscription</a>
                         </p>
-
-
-
                     </ul>
                 </nav>
             </div>
         </nav>
+        
+        <div class="containerbody">                  
+            <div class="quick-search-form"  style="margin-top: 340px;"> 
+                <form id="searchForm"  method="POST">
+                    <input type="text" name="ville_depart" class='start input' placeholder='Depart' required/>
+                    <input type="text" name="ville_arrivee" class='dest input' placeholder='Destination' required />
+                    <input type="date" id="myDate" class="date input" name="date" min="yyyy-mm-dd" placeholder="Select a date">
+                    <input type="number" name="nbseat" class='nbseat input' placeholder='0' />
+                    <input type="submit" value="Search" class="submit-search">
+                </form>
 
-        <div id="masthead">  
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7"><br><br>
-                        <h1><span class = "logop2"><span class = "logop1">CAR</span>PE DIEM</span>
-                            <p class="lead"><span id = "sloganp1">Vivez le covoiturage </span><span id = "sloganp2">au jour le jour.</span></p>
-                        </h1>
-                    </div>
-
-                </div>
-            </div> 
-        </div><!--/container-->
-    </div><!--/masthead-->
-
-    <!--main-->
-    <div class="container">
-        <section>
-        <blockquote class="slogan text-center">Bienvenue sur la solution de covoiturage CARPE DIEM, connectez vous ou créez un compte pour commencer. </blockquote>
-        </section>
-        <section>
-        <div class="row features" style="margin-top:25px;">
-        <div class="col-lg-4 text-center">
-            <div class="single-fet">
-                <div>
-               <span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x"></i>
-  <i class="fa fa-car fa-stack-1x fa-inverse"></i>
-</span>
-                </div>
-                <h2>Une solution covoiturage</h2>
-
-                <p>
-                    Trouvez facilement et rapidement des compagnons de voyage grâce pour vos trajets en voiture.
-                </p>
-
+                
             </div>
-        </div>
-        <div class="col-lg-4 text-center">
-            <div class="single-fet">
-                <div>
-                  <span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x"></i>
-  <i class="fa fa-users fa-stack-1x fa-inverse"></i>
-</span>
-                </div>
-                <h2>Un site communautaire</h2>
-
-                <p>
-                    Fort d'une communauté fidèle et responsable, CARPE DIEM propose une alternative écologique efficace.
-                </p>
-
             </div>
-        </div>
-        <div class="col-lg-4 text-center">
-            <div class="single-fet">
-                <div>
-           <span class="fa-stack fa-4x">
-  <i class="fa fa-circle fa-stack-2x"></i>
-  <i class="fa fa-usd fa-stack-1x fa-inverse"></i>
-</span>
+
+                <script>
+                    document.getElementById('myDate').setAttribute('min', new Date().toISOString().split('T')[0]);
+                    document.getElementById('myDate').setAttribute('value', new Date().toISOString().split('T')[0]);
+
+ 
+                    $(document).ready(function() {
+                        $('#searchForm').submit(function(event) {
+                            event.preventDefault(); 
+                            var formData = $(this).serialize(); 
+                            $.ajax({
+                                type: 'POST',
+                                url: 'search_results.php',
+                                data: formData,
+                                success: function(response) {
+                                 
+                                    $('#searchResults').html(response);
+                                },
+                                error: function() {
+                                    // Handle errors
+                                    $('#searchResults').html('<p>Error occurred while processing the request.</p>');
+                                }
+                            });
+                        });
+                    });
+                    </script>
+
+                <div class="list-trajet">
+
+                <div id="searchResults">
+                    <!-- Search results will be displayed here -->
                 </div>
-                <h2>Un système sécurisé</h2>
+                    <?php
+                        $dateAujourdhui = date('Y-m-d'); 
 
-                <p>
-                    Puisque les trajets ne sont pas gratuit, CARPE DIEM possède un système de gestion de payement sécurisé, pour que chacun puisse voyager à moindre prix.
-                </p>
+                         $sql = "
+                            SELECT  t.lieu_depart, t.destination, t.places_max, t.places_prises,
+                                    CONCAT(u.nom, ' ', u.prenom) AS nom_prenom,
+                                    CONCAT(p.voiture_marque, ' ', p.voiture_modele) AS marque_modele,
+                                    t.date,  t.heure_dep, t.prix
+                           FROM 
+                               trajet t
+                           INNER JOIN 
+                               pilote p ON t.pilote_user_id = p.pilote_user_id
+                           INNER JOIN 
+                               user u ON p.pilote_user_id = u.id
+                            WHERE date >= '$dateAujourdhui'";
 
-            </div>
-        </div>
+                        
+                        $stmt = $bdd->query($sql);
+                        
+                        if ($stmt->rowCount() > 0) {
 
-    </div>
+                            echo " <div class='journey-container'>";
+                                
+                            echo " <h3 id='hd2'>Trajets disponibles</h3>";
+                            
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { //displaying query result
+                        ?>
+                            
+                            <div class="journey-item">                            
+                                <i class="fa-solid fa-location-pin tp"></i>
+                                <div class='line'>
+                                    <div class="journey-info">
+                                        <div class="info-section">
+                                            <span class="info-label"></span>
+                                            <span class="info-value"><?php echo $row["lieu_depart"]; ?></span>
+                                        </div>
+                                        <div class="info-section">
+                                            <span class="info-label"><i class="fa-solid fa-dollar-sign"></i></span>
+                                            <span class="info-value prix"><?php echo $row["prix"]; ?></span>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="journey-info">
+                                        <div class="info-section">
+                                            <span class="info-label"></span>
+                                            <span class="info-value"><?php echo $row["destination"]; ?></span>
+                                        </div>
+                                    </div>
+                                </div>
 
-            </section>
-</div>
-        <div class="container">
+                                <i class="fa-solid fa-location-pin btm"></i>
+                                
+                                <div class="divider"></div> 
+                                    <img width="70px" style=" border-radius: 50px; margin-left:5px; margin-top:-10px; position:absolute;" src="driver.jpg" alt="">
+                                    
+                                    <div class="pilote-info">            
+                                        <span class="pilote-name"><?php echo $row["nom_prenom"]; ?></span> <br>
+                                        <span class="car-value"><?php echo $row["marque_modele"]; ?></span>
+                                    </div>
+                                
+                                    
+                                    <input type="button" class="resbutton" value="Reserver" onclick=redirectToLogin()>
+                                </div>
+                                <script>
+                                    function redirectToLogin() {
+                                        window.location.href = 'membre/connexion.php';
+                                    }
 
-            <hr><hr>
-        <div class="text-center" style="border-top: 1px solid;">
-            <p><center>Alexandre Patelli - Florian Culié</center></p>
-        <p><center>Université de Technologie de Troyes - LO07</center></p>
-            <br />
-                <a href="#"><i id="social" class="fa fa-facebook-square fa-3x"></i></a>
-	            <a href="#"><i id="social" class="fa fa-twitter-square fa-3x"></i></a>
-	            <a href="#"><i id="social" class="fa fa-google-plus-square fa-3x"></i></a>
-	            <a href="#"><i id="social" class="fa fa-envelope-square fa-3x"></i></a>
-</div>
-        </div>
-
-
-
-  
-
+                                </script>
+                                <?php
+                                
+                            }
+                        } 
+                        ?>
+                </div><!--  //list trajet -->
+                
+            </div> <!--  quick search form -->
+        </div> <!--  containerbody-->
+      
+    
     <!-- script references -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="templates/js/bootstrap.min.js"></script>
-    <script src="templates/js/scripts.js"></script>
+    <script src="gabarit/js/bootstrap.min.js"></script>
+    <script src="gabarit/js/scripts.js"></script>
+    
 </body>
 </html>

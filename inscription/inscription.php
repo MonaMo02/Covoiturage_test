@@ -38,39 +38,39 @@ if (isset($_POST['Soumettre']) && $_POST['Soumettre'] == 'Soumettre') {
 function formulaire() {
     ob_start(); //on met en memoire tampon le code hmtl qui va suivre
     ?>
-    <h1>Inscription</h1>
+    
+    <div class='inscription'>
+        <h1 style='color: #14525c; font-size:42px; margin-left:140px;'>Inscrivez-vous</h1>
     <?php
 
     echo"<script src='/covoiturage_test/templates/js/verif_form.js'></script>";
     form_debut("form", "POST", "inscription.php");
-    form_label("Nom");
-    form_input_text("nom", TRUE, "", "", 30, "verifnom();");
+    
+    form_input_text("nom", TRUE, "Nom", "", 30, "verifnom();");
     echo"<br><br>";
-    form_label("Prénom");
-    form_input_text("prenom", TRUE, "", "", 30, "verifprenom();");  //on fait notre formulaire en utilisant les fonctions de formulaire.php
+    form_input_text("prenom", TRUE, "Prenom", "", 30, "verifprenom();");  //on fait notre formulaire en utilisant les fonctions de formulaire.php
     echo"<br><br>";
-    form_label("Login");
     form_input_text("login", TRUE, "username", "", 30, "veriflogin();");
     echo"<br><br>";
-    form_label("Numéro de Téléphone");
     form_input_text("num_tel", TRUE, "numéro de téléphone", "", 30, "verifnumtel();");
     echo"<br><br>";
-    form_label("Matricule Etudiant");
-    form_input_text("matricule", TRUE, "Ex:191932450761", "", 30, "verifmatriculeetudiant();");
+    
+    form_input_text("matricule", TRUE, "Mratricule", "", 30, "verifmatriculeetudiant();");
     echo"<br><br>";
-    form_label("Email");
-    form_input_email("email", TRUE, "Ex:username_09@gmail.com", "", 45, "verifemail();");
+    
+    form_input_email("email", TRUE, "Email", "", 45, "verifemail();");
     echo"<br><br>";
-    form_label("Mot de passe");
-    form_input_mdp("password", TRUE, "mot de passe", "", 30, "verifpassword();");
+    
+    form_input_mdp("password", TRUE, "Mot de passe", "", 30, "verifpassword();");
     echo "<span style=\"color: red;\" id=\"lvlsecure\"></span>";
     echo"<br><br>";
-    echo"<br><br>";
+    
     form_submit("Soumettre", "Soumettre", FALSE);
-    form_reset("Reset", "Reinitialiser", FALSE, FALSE);
+    
     form_fin();
     ?>
-
+    <p style="margin-left: 170px">already have an accounet? <a href="../membre/connexion.php">sign up</a></p>
+    </div>
     <?php
     return ob_get_clean(); //la fonction retourne tout le html qui a été mis en tampon.
 }

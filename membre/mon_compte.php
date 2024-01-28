@@ -14,7 +14,7 @@ require '../config/formulaire.php';
 test_membre();
 ob_start();
     
-    echo "<h1>Compte</h1>";
+    echo "<h1 style='margin-top:100px'>Compte</h1>";
     //on crée un tableau contenant les transactions dans lequel l'utilisateur est impliqué
     echo "<table class='table table-hover'><tr><th>Utilisateur</th><th>Debit</th><th>Credit</th></tr>";
     $reponse = $bdd->query("SELECT * FROM transaction WHERE credit_user_id = " . $_SESSION["id"]." OR debit_user_id = ". $_SESSION["id"]);

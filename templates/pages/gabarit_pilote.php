@@ -11,15 +11,16 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link href="../templates/css/bootstrap.min.css" rel="stylesheet">
         <script type="text/javascript" src="../templates/js/verif_form.js"></script>
+        <script src="https://kit.fontawesome.com/e3b74a388e.js" crossorigin="anonymous"></script>
 
         <!--[if lt IE 9]>
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="../templates/css/styles.css" rel="stylesheet">
+        <link href="../templates/css/style2.css" rel="stylesheet">
 
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top" role="banner">
+    <nav class="navbar navbar-default navbar-fixed-top" role="banner" style="background-color:white; height:50px;">
             <div class="container">
                 <div class="navbar-header">
                     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -39,8 +40,8 @@
                             <a href="../membre/mon_compte.php">Mes comptes</a>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messagerie<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
+                            <a href="#" class="dropdown-toggle"  data-toggle="dropdown">Messagerie<b class="caret"></b></a>
+                            <ul class="dropdown-menu" style="background-color:white;" >
                                 <li><a href="../membre/mes_messages.php">Mes Messages</a></li>
                                 <li><a href="../membre/envoyer_message.php">Nouveau message</a></li>
                             </ul>
@@ -48,64 +49,31 @@
                         <li>
                             <a href="../trajet/mes_trajets.php">Mes trajets</a>
                         </li>
+                        <!-- <li><a href="../trajet/recherche_trajet.php">Rechercher un trajet</a></li> -->
+                        <li><a href="../trajet/ajout_trajet.php">Ajouter un trajet</a></li>
+                        <li><a href="../trajet/recherche_trajet.php">Rechercher un trajet</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <p class="navbar-btn">
-                            <a href="../membre/deconnexion.php" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
+                            <a href="../membre/deconnexion.php" class="btn btn-large"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
                         </p>
                     </ul>
                 </nav>
             </div>
         </nav>
 
-        <div id="masthead">  
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7"><br><br>
-                        <h1><span class = "logop2"><span class = "logop1">CAR</span>PE DIEM</span>
-                            <p class="lead"><span id = "sloganp1">Vivez le covoiturage </span><span id = "sloganp2">au jour le jour.</span></p>
-                        </h1>
-                    </div>
-
-                </div>
-            </div> 
-        </div><!--/container-->
-    </div><!--/masthead-->
-
+        
     <!--main-->
     <div class="container">
-        <div class="row">
-            <!--left-->
-            <div class="col-md-3" id="leftCol">
-                <ul class="nav nav-stacked" id="sidebar">
-                    <li><a href="../trajet/recherche_trajet.php">Rechercher un trajet</a></li>
-                    <li><a href="../trajet/ajout_trajet.php">Ajouter un trajet</a></li>
-
-                </ul>
-            </div><!--/left-->
-
-            <!--right-->
-            <div class="col-md-9">
+        
+            <div class="col-md-11">
                 <?php echo $contenu; ?>
 
-            </div><!--/right-->
-        </div><!--/row-->
-    </div><!--/container-->
-
-    <div class="container">
-
-        <hr><hr>
-        <div class="text-center" style="border-top: 1px solid;">
-            <p><center>Alexandre Patelli - Florian Culié</center></p>
-        <p><center>Université de Technologie de Troyes - LO07</center></p>
-            <br />
-            <a href="#"><i id="social" class="fa fa-facebook-square fa-3x"></i></a>
-            <a href="#"><i id="social" class="fa fa-twitter-square fa-3x"></i></a>
-            <a href="#"><i id="social" class="fa fa-google-plus-square fa-3x"></i></a>
-            <a href="#"><i id="social" class="fa fa-envelope-square fa-3x"></i></a>
-        </div>
+            </div>
+        
     </div>
 
+    
     <!-- script references -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="../templates/js/bootstrap.min.js"></script>

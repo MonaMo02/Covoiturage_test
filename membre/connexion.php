@@ -41,20 +41,25 @@ if (isset($_POST['Connexion']) && $_POST['Connexion'] == 'Connexion') {
 function formulaire() {
     ob_start(); //on met en tampon le html
     ?>
-    <h1>Connexion</h1>
+    <div class='connection'>
+    <h1 style='color: #14525c; font-size:42px; margin-left:120px;'>Connectez-vous</h1>
+    
+    
     <?php
     form_debut("form", "POST", "connexion.php");
-    form_label("Login");
-    form_input_text("login", TRUE, "", "", 30, "");
+   
+    form_input_text("login", TRUE, "login", "", 30, "");
     echo "<br><br>";
-    form_label("Mot de passe");
-    form_input_mdp("password", TRUE, "", "", 30, "");
+    
+    form_input_mdp("password", TRUE, "Mot de passe", "", 30, "");
     echo "<br><br>";
     form_submit("Connexion", "Connexion", FALSE);
-    form_reset("reset", "", FALSE, TRUE);
+    
     form_fin()
     ?>
-
+    <p style="margin-left: 180px">dont have an accounet? <a href="../inscription/inscription.php">sign in</a></p>
+    
+    </div>
     <?php
     return ob_get_clean();
 }

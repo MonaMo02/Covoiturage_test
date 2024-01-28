@@ -217,8 +217,8 @@ function form_file($name, $accept, $text) { //$text est une chaine de caractère
 }
 
 function form_textarea($name, $rows, $cols, $text, $required, $onChange) { //meme fonctionnement que form_input_text
-    echo("$text<br>");
-    echo("<textarea name ='" . $name . "' rows='$rows' cols='$cols' ");
+    
+    echo("<textarea name ='" . $name . "' rows='$rows' cols='$cols' placeholder='$text'");
     if ($required) {
         echo "required ";
     }
