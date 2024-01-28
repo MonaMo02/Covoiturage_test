@@ -101,7 +101,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                     });
                     </script>
 
-                <div class="list-trajet">
+                
 
                 <div id="searchResults">
                     <!-- Search results will be displayed here -->
@@ -126,14 +126,11 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                         $stmt = $bdd->query($sql);
                         
                         if ($stmt->rowCount() > 0) {
-
-                            echo " <div class='journey-container'>";
-                                
                             echo " <h3 id='hd2'>Trajets disponibles</h3>";
-                            
+
                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { //displaying query result
                         ?>
-                            
+                            <div class='journey-container'>
                             <div class="journey-item">                            
                                 <i class="fa-solid fa-location-pin tp"></i>
                                 <div class='line'>
@@ -142,8 +139,8 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                                             <span class="info-label"></span>
                                             <span class="info-value"><?php echo $row["lieu_depart"]; ?></span>
                                         </div>
-                                        <div class="info-section">
-                                            <span class="info-label"><i class="fa-solid fa-dollar-sign"></i></span>
+                                        <div class="info-section indexprice ">
+                                            <span class="info-label"><i class="fa-solid fa-dollar-sign "></i></span>
                                             <span class="info-value prix"><?php echo $row["prix"]; ?></span>
                                         </div>
                                     </div>
@@ -159,28 +156,32 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                                 <i class="fa-solid fa-location-pin btm"></i>
                                 
                                 <div class="divider"></div> 
-                                    <img width="70px" style=" border-radius: 50px; margin-left:5px; margin-top:-10px; position:absolute;" src="driver.jpg" alt="">
+                                    <img width="70px" style=" border-radius: 50px; margin-left:5px; margin-top:-10px; position:absolute;" src="templates/image/driver.jpg" alt="">
                                     
                                     <div class="pilote-info">            
                                         <span class="pilote-name"><?php echo $row["nom_prenom"]; ?></span> <br>
                                         <span class="car-value"><?php echo $row["marque_modele"]; ?></span>
                                     </div>
+                                <input type="button" class="resbutton" value="Reserver" onclick=redirectToLogin()>
+                                                                   
                                 
-                                    
-                                    <input type="button" class="resbutton" value="Reserver" onclick=redirectToLogin()>
-                                </div>
+
                                 <script>
                                     function redirectToLogin() {
                                         window.location.href = 'membre/connexion.php';
                                     }
 
                                 </script>
+
+                            </div> <!-- journey items -->
+                        </div> <!-- journey container -->
+                        
                                 <?php
                                 
                             }
                         } 
                         ?>
-                </div><!--  //list trajet -->
+                
                 
             </div> <!--  quick search form -->
         </div> <!--  containerbody-->

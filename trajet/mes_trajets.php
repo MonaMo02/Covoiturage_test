@@ -30,9 +30,9 @@ if ($_SESSION["pilote"]) {
     $nb_trajet_pilote = $rep_nb_trajet_pilote->fetch();
     //si le pilote n'a aucun trajet en cours en tant que conducteur on l'affiche
     if ($nb_trajet_pilote[0] == '0') {
-        echo "<br><br><div class='alert alert-danger'>Vous n'êtes actuellement inscrit pour aucun trajet en tant que pilote, rendez-vous dans la section \"Ajouter un trajet\"</div>";
+        echo "<br><br><div class='alert alert-danger'style='margin-top:100px' >Vous n'êtes actuellement inscrit pour aucun trajet en tant que pilote, rendez-vous dans la section \"Ajouter un trajet\"</div>";
     } else { //sinon on affiche les trajets
-        echo "<h1>Mes trajets en tant que pilote :</h1> ";
+        echo "<h1 style='margin-top:100px'>Mes trajets en tant que pilote :</h1> ";
        
         //on fait un tableau contenant les infos des trajets
         echo "<p><table class='table table-hover'><tr><th>Départ</th><th>Arrivée</th><th>Places prises</th><th>Date</th><th>Heure</th><th>Prix</th><th></th><th></th><th></th></tr>";

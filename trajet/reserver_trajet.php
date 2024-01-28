@@ -1,9 +1,4 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 $choix_trajet = $_POST["choix_trajet"];// on recupere l'id du trajet choisit à reserver
 require'../config/BDD.php';
@@ -43,23 +38,23 @@ function formulaire() {
     
     
     <?php
-    
+    if ($donnee == false) {
     //on affiche les informations du trajet
-        echo"<div class='panel panel-success'>";
-  echo"<div class='panel-heading'>";
-  
+    echo"<div class='panel panel-success'>";
+    echo"<div class='panel-heading'>";
+    
     echo"<b>Ville de départ : </b> ".$donnee["lieu_depart"]." - <b>Ville d'arrivée : </b>".$donnee["destination"];
 
-echo"</div>";
-echo "<div class='panel-body'>";
-
-echo" Pilote : ".$donnee["prenom"]." ".$donnee["nom"];
-    
-  echo"  <a href='../membre/profil.php?username=".$donnee["login"]."' class='btn btn-primary pull-right'>Son profil</a></br>";
-  echo "Voiture : ".$donnee["voiture_marque"]." ".$donnee["voiture_modele"];
-
     echo"</div>";
-echo "</div>";
+    echo "<div class='panel-body'>";
+
+    echo" Pilote : ".$donnee["prenom"]." ".$donnee["nom"];
+        
+    echo"  <a href='../membre/profil.php?username=".$donnee["login"]."' class='btn btn-primary pull-right'>Son profil</a></br>";
+    echo "Voiture : ".$donnee["voiture_marque"]." ".$donnee["voiture_modele"];
+
+        echo"</div>";
+    echo "</div>";
         
         
         
@@ -76,6 +71,10 @@ echo "</div>";
     ?>
     <?php
     return ob_get_clean();
+    }else {
+        // Handle the case when no row is found in the database
+        echo "No matching record found in the database.";
+    }
 }
 
 function action() {

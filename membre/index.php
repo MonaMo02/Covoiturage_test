@@ -12,7 +12,7 @@ $bdd=  getBdd();
 session_start(); //on demarre la session
 if (isset($_SESSION['login'])) { //on verifie que l'utilisateur est bien connecté
 ob_start();?>
-<h1>Bienvenue <?php echo$_SESSION['prenom']." ".$_SESSION['nom'];?></h1>
+<h1 style="margin-top:100px">Bienvenue <?php echo$_SESSION['prenom']." ".$_SESSION['nom'];?></h1>
 <?php 
 $sql = "SELECT count(*) FROM messagerie WHERE destinataire_user_id=".$_SESSION['id']; //on recuêre le nombre de message recu par l'utilisateur
         $reponse = $bdd->query($sql);
@@ -22,6 +22,7 @@ $sql2 = "SELECT count(*) FROM trajet as T, trajet_passager as TP WHERE TP.trajet
         $donnee2 = $reponse2->fetch();
 ?>
 <!-- On affiche les deux infos precedentes -->
+
 <h2><span class="fa-stack " style="vertical-align: middle; margin-right:15px;"><i class="fa fa-envelope-square fa-stack-2x" ></i></span>  Vous avez <?php echo $donnee[0];?> messages.</h2>
 <h2><span class="fa-stack " style="vertical-align: middle; margin-right:15px;"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-car fa-stack-1x fa-inverse"></i></span>  Vous êtes actuellement sur <?php echo $donnee2[0];?> trajets.</h2>  
     <?php $contenu = ob_get_clean();

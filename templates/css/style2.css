@@ -354,23 +354,26 @@ author: bootply.com
 
 
  .journey-container {
-    width: 45%;
+    /* width: 45%; */
     margin: 0 auto;
-    display: block;
     justify-content: center;
     align-content: center;
     text-align: center;
-    padding-top: 30px;
+    display: flex;
+   
     
 }
 
-.journey-item {
+.journey-item{
+    width: 800px;
+    height: 180px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
     padding: 10px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.47);
     border-radius: 10px;
     text-align: left;
+    
 
 }
 
@@ -398,7 +401,7 @@ author: bootply.com
 }
 
 .fa-dollar-sign{
-    margin-left: 220px;
+    margin-left: 290px;
     font-size: 20px;
 }
 .prix{
@@ -429,9 +432,10 @@ author: bootply.com
 .car-info {
     margin-left: 30px;
     font-size: 16px;
-    margin-top: 20px;
+    
     margin-left: 80px;
     margin-bottom: 10px;
+    position: absolute;
 }
 
 .pilote-name{
@@ -460,12 +464,30 @@ author: bootply.com
     margin-bottom: 20px;
     font-size: 26px;
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 60px;
+    text-align: center;
     
 }
 
+.notfound{
+    /* margin-left:370px;
+     font-size:20px;
+      color:#14525c; */
+      margin-top: 60px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      
+      
+}
+.notfound h3{
+    color:#14525c;
+    font-size:20px;
+    
+
+}
 .resbutton{
-    position: absolute;
+    /* position: absolute; */
     height: 45px;
     width: 130px;
     background-color: #14525c;
@@ -473,8 +495,9 @@ author: bootply.com
     color: #eee;
     font-weight: 600;
     font-size: 16px;
-    margin-left: 505px;
-    margin-top: -50px;
+    margin-left: 82%;
+    
+    margin-top: 10px;
     border-radius: 8px;
 
     

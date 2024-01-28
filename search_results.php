@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <i class="fa-solid fa-location-pin btm"></i>
                 
                 <div class="divider"></div> 
-                    <img width="60px" style=" border-radius: 50px; margin-left:10px; margin-top:-5px; position:absolute;" src=" <?php echo str_replace("../", "./", $row["photo"]) ?>" alt="">
+                    <img width="60px" style=" border-radius: 50px; margin-left:10px; margin-top:-5px; position:absolute;" src="templates/image/driver.jpg" alt="">
                     
                     <div class="pilote-info">            
                         <span class="pilote-name"><?php echo $row["nom_prenom"]; ?></span> <br>
@@ -84,10 +84,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         
         }else { 
-            // echo "<div  marging-top:80px;' > ";
-            // echo "<img src='templates\image\undraw_windy_day_x63l.png' width='220px' style='margin-left:350px; padding-top:20px;'>";
-            // echo " <h3 style='margin-left:370px; font-size:20px; color:#14525c;'> Pas encore de trajet</h3>"; 
-            // echo "</div>";
+            echo "<div class='notfound' > ";
+            echo "<img src='templates\image\undraw_windy_day_x63l.png' width='220px' >";
+            echo " <h3 > Pas encore de trajet</h3>"; 
+            echo "</div>";
         }}
     ?>
 

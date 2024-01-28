@@ -50,7 +50,7 @@ function formulaire() {
     }
     if ($data != FALSE) {
         ob_start(); ?>
-        <h1>Recherche de votre trajet</h1>";
+        <h1 style="margin-top:100px;" >Recherche de votre trajet</h1>";
         <input type="hidden" name="db" id="db" value='<?php echo $json_data; ?>'>
         <input type="hidden" id="location-lat">
         <input type="hidden" id="location-lon">
@@ -79,10 +79,11 @@ function formulaire() {
 
         <div id="results-container"></div>
         <script src = "../templates/js/findtrajet.js"></script>
+        
     <?php
         return ob_get_clean();
     } else {
-        return "Il n'y a aucun trajet pour le moment.";
+        return "<h3 style='margin-top:100px;'>Il n'y a aucun trajet pour le moment.</h3>";
     }
 }
     

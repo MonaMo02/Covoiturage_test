@@ -29,7 +29,7 @@ function formulaire()
 {
     ob_start();
 ?>
-    <h1>Inscription de votre trajet</h1>
+    <h1 style="margin-top:100px;" >Inscription de votre trajet</h1>
     <?php
     form_debut("form", "POST", "ajout_trajet.php");
     form_label("ville de départ");
