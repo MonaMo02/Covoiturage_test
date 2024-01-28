@@ -13,143 +13,81 @@ require '../config/droits.php';
 require '../config/formulaire.php';
 
 test_membre();
-// on teste si le visiteur a soumis le formulaire
-if (isset($_POST['Soumettre']) && $_POST['Soumettre'] == 'Soumettre') {
-    // on teste l'existence de nos variables. On teste également si elles ne sont pas vides
-    if (isset($_POST['ville_depart']) && isset($_POST['ville_arrivee']) && isset($_POST['date'])) {
-        $contenu = action();
-    } else {
-        $contenu = "Certains champs ne sont pas remplis";
-    }
-} else {
-    $contenu = formulaire();
-}
+
+$contenu = formulaire();
+
 
 function formulaire() {
 
     global $bdd;
-    ?>
+    
+    $result = $bdd->query("SELECT 
+    trajet.*,
+    ville_depart.latitude AS departlat,
+    ville_depart.longitude AS departlon,
+    ville_arrivee.latitude AS destinationlat,
+    ville_arrivee.longitude AS destinationlon
+    FROM trajet
+    JOIN ville_depart ON trajet.lieu_depart = ville_depart.nom
+    JOIN ville_arrivee ON trajet.destination = ville_arrivee.nom
+    WHERE trajet.effectue = 0
+    AND pilote_user_id !=" . $_SESSION["id"] );
 
+// Check if the query was successful
+    if ($result) {
+        // Fetch the data
+        $data = array();
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+
+        // Convert the data to a JSON string
+        $json_data = json_encode($data);
+
+        // No need to close the result set for PDO
+    } else {
+        echo "Error: " . $sql . "<br>" . $bdd->errorInfo()[2];
+    }
+    if ($data != FALSE) {
+        ob_start(); ?>
+        <h1>Recherche de votre trajet</h1>";
+        <input type="hidden" name="db" id="db" value='<?php echo $json_data; ?>'>
+        <input type="hidden" id="location-lat">
+        <input type="hidden" id="location-lon">
+        <input type="hidden" id="destination-lat">
+        <input type="hidden" id="destination-lon">
+
+        <!-- <pre><?php print_r($data); ?></pre> -->
+        <form onsubmit="findTrajets(); return false;">
+            <label for="location">Enter departure:</label>
+            <input type="text" id="location" required autocomplete="off">
+            <div id="autocomplete-suggestions-location"></div>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="destination">Enter destination:</label>
+            <input type="text" id="destination" required autocomplete="off">
+            <div id="autocomplete-suggestions-location"></div>
+            <div id="autocomplete-suggestions-destination"></div>
+
+            <button type="submit">Find Trajets</button>
+        </form>
+
+        <div id="results-container"></div>
+        <script src = "../templates/js/findtrajet.js"></script>
     <?php
-    $reponse = $bdd->query("SELECT * FROM trajet WHERE effectue = 0 and pilote_user_id != " . $_SESSION["id"]);
-    $donnee = $reponse->fetch(); //on verifie qu'il y a bien des trajets dans la base afin d'eviter des erreurs
-    if ($donnee != FALSE) {
-        ob_start();
-        echo"<h1>Recherche de votre trajet</h1>";
-        form_debut("form", "POST", "recherche_trajet.php");
-        form_label("Ville de départ");
-        form_input_text("ville_depart", TRUE, "", "", 30, " ");
-        echo"<br>";
-        
-        //on construit des listes déroulantes avec les villes contenues dans la base et les dates
-        // form_select_sql_attribut_ville("Ville de départ", "ville_depart", 1, $bdd, "lieu_depart", "trajet");
-        // echo"<br><br>";
-        form_label("Ville d'arrivée");
-        form_input_text("ville_arrivee", TRUE, "", "", 30, " ");
-
-        echo"<br>";
-        // form_select_sql_attribut_ville("Ville d'arrivée", "ville_arrivee", 1, $bdd, "lieu_arrivee", "trajet");
-        echo"<br><br>";
-        form_label("Date");
-        echo"<br>";
-        form_select_sql_attribut_ville("Date", "date", 1, $bdd, "date", "trajet");
-        echo"<br><br>";
-
-        form_submit("Soumettre", "Soumettre", FALSE);
-        form_reset("Reset", "Reinitialiser", FALSE, FALSE);
-        form_fin();
         return ob_get_clean();
     } else {
         return "Il n'y a aucun trajet pour le moment.";
     }
-    ?>
-    <?php
 }
-
-function action() {
-
-    global $bdd;
-    //on va chercher dans la base des données les trajets correspondant au valeurs choisies par l'utilisateur
-    //$bdd->query("SELECT * FROM trajet WHERE lieu_depart = $_POST['ville_depart'] AND lieu_arrivee = $_POST['ville_arrivee'] AND date = $_POST['date'] AND effectue = FALSE AND pilote_user_id != $_SESSION["id"]");
-    // $reponse->execute(array($_POST['ville_depart'],
-    //     $_POST['ville_arrivee'],
-    //     $_POST['date'],
-    //     FALSE,
-    //     $_SESSION["id"]
-    // ));
-
-    // Assuming $bdd is your database connection
-
-// Prepare the statement
-$stmt = $bdd->prepare("SELECT * FROM trajet WHERE lieu_depart = :ville_depart AND destination = :destination AND date = :date AND effectue = FALSE AND pilote_user_id != :user_id");
-
-// Bind parameters
-$stmt->bindParam(':ville_depart', $_POST['ville_depart']);
-$stmt->bindParam(':destination', $_POST['ville_arrivee']);
-$stmt->bindParam(':date', $_POST['date']);
-$stmt->bindParam(':user_id', $_SESSION["id"]);
-
-// Execute the statement
-$stmt->execute();
-
-// Fetch the results if needed
-
-// Use $results as needed
-
     
-    ob_start();
-    ?>
-    <?php
-    form_debut("form", "POST", "reserver_trajet.php"); //on crée un formulaire pour recuperer le choix du trajet
-
-    $donnees = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    if($donnees!=FALSE){
-        ?>
-
-        <!--On crée un tableau contenant les infos des trajets trouvé   -->
-        <table class='table table-hover'>
-            <tr>
-                <th>Ville de départ</th>
-                <th>Ville d'arrivée</th>
-                <th>Date</th>
-                <th>Heure de départ</th>
-                <th>Prix</th>
-                <th>Places restantes</th>
-                <th>Coche</th>
-            </tr>
-        <?php
-        foreach ($donnees as $row) {
-            echo"<tr>";
-            echo"<th>" . $row["lieu_depart"] . "</th>";
-            echo"<th>" . $row["destination"] . "</th>";
-            echo"<th>" . $row["date"] . "</th>";
-            echo"<th>" . $row["heure_dep"] . "</th>";
-            echo"<th>" . $row["prix"] . "</th>";
-            echo"<th>" . ($row["places_max"] - $row["places_prises"]) . "/" . $row["places_max"] . "</th>";
-            
-            //on crée un bouton radio qui renvoi l'id du trajet pour chaque trajet si il n'est pas complet
-            if ($row["places_max"] != $row["places_prises"]) {
-                echo"<th><input type='radio' name='choix_trajet' value='" . $row['id'] . "' /></th>";
-            } else {
-                echo'<th>COMPLET</th>';
-            }
-            echo"</tr>";
-        }
-        ?>
-
-        </table>
-        </br></br>
-        <?php
-        form_submit("Reserver", "Reserver", FALSE);
-        form_fin();}
-        else{echo"<div class='alert alert-danger'>Le trajet que vous cherchez n'est pas disponible .</div>";}
-        ?>
-
-
-    <?php
-    return ob_get_clean();
-}
+    
 
 $title = "Recherche trajet";
 gabarit();
-
+?>

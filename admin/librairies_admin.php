@@ -121,7 +121,7 @@ while ($tab_res = $reponse->fetch()) {
         echo"<tr><td>" . $tab_res["id"] . "</td><td>" . $tab_res["lieu_depart"] . "</td><td>" . $tab_res["destination"] . "</td><td>" . $tab_res["date"] . "</td><td>" . $tab_res["heure_dep"] . "</td>";
         echo"<td><table>";
         while ($pilote = $reponse_pilote->fetch()) {
-            echo"<td><a href='../membre/profil.php?username=".$pilote["username"]."'>" . $pilote["nom"] . "</a></td><td>" . $pilote["prenom"] . "</td>";
+            echo"<td><a href='../membre/profil.php?login=".$pilote["login"]."'>" . $pilote["nom"] . "</a></td><td>" . $pilote["prenom"] . "</td>";
         }
         echo"</td></table>";
         echo"<td><table>";
