@@ -91,8 +91,8 @@ function action()
         $statement = $bdd->prepare($sql2);
         $statement->execute(array(
             ":nom" => $_POST['ville_arrivee'],
-            ":latitude" => $_POST['latitude'],
-            ":longitude" => $_POST['longitude']
+            ":latitude" => $_POST['lat'],
+            ":longitude" => $_POST['long']
         ));
     }
 

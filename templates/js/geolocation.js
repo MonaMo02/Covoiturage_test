@@ -1,5 +1,4 @@
 //depart automatique
-const http = new XMLHttpRequest();
 let result = document.querySelector("#result");
 
 function getPos() {
@@ -45,6 +44,7 @@ function getAPI(bdcAPI) {
                 latitude: latitude,
                 longitude: longitude
             };
+            
         })
         .catch(error => {
             console.error("Error during fetch:", error);
@@ -156,7 +156,8 @@ function geocodeOnChange() {
 
                 // Output the address in 'ville_arrivee' field
                 document.querySelector('input[name="ville_arrivee"]').value = address;
-
+                document.querySelector('input[type="hidden"][name="lat"]').value = latitude;
+                document.querySelector('input[type="hidden"][name="long"]').value = longitude;
                 // Call the getCoordinates function to update hidden input values
                 getCoordinates();
 
@@ -178,8 +179,8 @@ function getCoordinates() {
     var longInput = document.querySelector('input[name="long"]');
 
     // Fetch the latest latitude and longitude from the geocoding results
-    var latitude = parseFloat(document.querySelector('input[name="latitude"]').value);
-    var longitude = parseFloat(document.querySelector('input[name="longitude"]').value);
+    var latitude = parseFloat(document.querySelector('input[name="lat"]').value);
+    var longitude = parseFloat(document.querySelector('input[name="long"]').value);
 
     // Update hidden input values
     if (latInput) {
@@ -194,4 +195,3 @@ function getCoordinates() {
         console.error('Longitude input element not found.');
     }
 }
-
