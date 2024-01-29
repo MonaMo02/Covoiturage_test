@@ -27,12 +27,14 @@ $exist=1;
     <div class="name_pic_card">
       <h3><?php echo ucfirst(strtolower($donnee["login"])); ?></h3>  
       <div class="userInfo">
-        <form  method="post">
-            <label for="nom">Nom : </label><input type="text" id="nom" value=<?php echo ucfirst(strtolower($donnee["nom"])); ?> disabled> <br>
-            <label for="prenom">Preom : </label><input type="text" id="prenom" value=<?php echo ucfirst(strtolower($donnee["prenom"])); ?> disabled> <br>
-            <label for="matricule">Matricule : </label><input type="text" id="matricule" value=<?php echo ucfirst(strtolower($donnee["matricule"])); ?> disabled> <br>
-            <label for="email">Email : </label><input type="text" id="email" value=<?php echo ucfirst(strtolower($donnee["email"])); ?> disabled> <br>
-        </form>    
+      <script src='templates/js/verif_form.js'></script>
+        <form  method="post"action="update_profile.php">
+            <label for="nom">Nom : </label><input type="text" name ="nom"id="nom" value=<?php echo ucfirst(strtolower($donnee["nom"])); ?>  onchange=verifnom() disabled> <br>
+            <label for="prenom">Preom : </label><input type="text" name ="prenom" id="prenom" value=<?php echo ucfirst(strtolower($donnee["prenom"])); ?> onchange=verifprenom() disabled> <br>
+            <label for="matricule">Matricule : </label><input type="text" name ="matricule" id="matricule" value=<?php echo ucfirst(strtolower($donnee["matricule"])); ?> onchange=verifmatriculeetudiant() disabled> <br>
+            <label for="email">Email : </label><input type="text" name ="email" id="email" value=<?php echo ucfirst(strtolower($donnee["email"])); ?> onchange=veriemail()  disabled> <br>
+            <input type="submit" class="save" name="save" value="Save" style="visibility: hidden;">
+          </form>    
       </div>
       <div class='profilePic'>
         <i class="fa-solid fa-user"></i>
@@ -47,8 +49,7 @@ $exist=1;
     </div>
     
     <div class="profileButtons">
-      <input type="button" class="enable" value="Modifier les informations personnelles" onclick="enableEdit()">  
-      <input type="button" class="save" value="Save changes"  style="visibility: hidden;">
+      <input type="button" class="enable" value="Modifier les informations personnelles" onclick="enableEdit()">       
     </div>
     <hr>
     <script>
@@ -82,18 +83,18 @@ $exist=1;
 <div class="car"> 
   <h2>Vehicule</h2>           
   <div class="carInfo"> 
-    <form  method="post">
-        <label for="marque">Marque :  </label><input type="text" id="marque" value=<?php echo ucfirst(strtolower($donnee2["voiture_marque"])); ?> disabled> <br>
-        <label for="modele">Modele :  </label><input type="text" id="modele" value=<?php echo ucfirst(strtolower($donnee2["voiture_modele"])); ?> disabled> <br>
-        <label for="voiture_annee">Annee : </label><input type="text" id="voiture_annee" value=<?php echo ucfirst(strtolower($donnee2["voiture_annee"])); ?> disabled> <br>
-        <label for="voiture_couleur">Matricule : </label><input type="text" id="voiture_couleur" value=<?php echo ucfirst(strtolower($donnee2["voiture_couleur"])); ?> disabled> <br>
+    <form  method="post" action="update_profile.php">
+        <label for="marque">Marque :  </label><input type="text" name="marque" id="marque" value=<?php echo ucfirst(strtolower($donnee2["voiture_marque"])); ?>  onchange=verifmarque()> <br>
+        <label for="modele">Modele :  </label><input type="text" name="modele" id="modele" value=<?php echo ucfirst(strtolower($donnee2["voiture_modele"])); ?> disabled onchange=verifmodele()> <br>
+        <label for="voiture_annee">Annee : </label><input type="text" name="voiture_annee" id="voiture_annee" value=<?php echo ucfirst(strtolower($donnee2["voiture_annee"])); ?> disabled onchange=verifannee()> <br>
+        <label for="voiture_couleur">Couleur : </label><input type="text" name="voiture_couleur" id="voiture_couleur" value=<?php echo ucfirst(strtolower($donnee2["voiture_couleur"])); ?> disabled onchange=verifcouleur()> <br>
+        <input type="submit" name="savecar" class="savecar" value="Save"  style="visibility: hidden;">
     </form>
   </div> 
   <div class="carButtons">
       <input type="button" class="enablecar" value="Modifier les informations de la vehicule" onclick="enableEditcar()"> 
-      <input type="button" class="savecar" value="Save changes"  style="visibility: hidden;">
   </div>  
-</div>         
+</div>          
   <script>
       function enableEditcar() {
     
