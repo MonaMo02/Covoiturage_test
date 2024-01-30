@@ -14,7 +14,7 @@
         <!--[if lt IE 9]>
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="../templates/css/styles.css" rel="stylesheet">
+        <link href="../templates/css/styles2.css" rel="stylesheet">
 
     </head>
     <body>
@@ -57,53 +57,19 @@
             </div>
         </nav>
 
-        <div id="masthead">  
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7"><br><br>
-                        <h1><span class = "logop2"><span class = "logop1">CAR</span>PE DIEM</span>
-                            <p class="lead"><span id = "sloganp1">Vivez le covoiturage </span><span id = "sloganp2">au jour le jour.</span></p>
-                        </h1>
-                    </div>
 
-                </div>
-            </div> 
-        </div><!--/container-->
-    </div><!--/masthead-->
 
     <!--main-->
     <div class="container">
-        <div class="row">
-            <!--left-->
-            <div class="col-md-3" id="leftCol">
-                <ul class="nav nav-stacked" id="sidebar">
-                    <li><a href="../trajet/recherche_trajet.php">Rechercher un trajet</a></li>
-                    <li><a href="../inscription/inscription_voiture.php">Ajouter sa voiture</a></li>
-
-                </ul>
-            </div><!--/left-->
-
-            <!--right-->
-            <div class="col-md-9">
+        
+            <div class="col-md-11">
                 <?php echo $contenu; ?>
 
-            </div><!--/right-->
-        </div><!--/row-->
-    </div><!--/container-->
-
-    <div class="container">
-
-        <hr><hr>
-        <div class="text-center" style="border-top: 1px solid;">
-            <p><center>Alexandre Patelli - Florian Culié</center></p>
-        <p><center>Université de Technologie de Troyes - LO07</center></p>
-            <br />
-            <a href="#"><i id="social" class="fa fa-facebook-square fa-3x"></i></a>
-            <a href="#"><i id="social" class="fa fa-twitter-square fa-3x"></i></a>
-            <a href="#"><i id="social" class="fa fa-google-plus-square fa-3x"></i></a>
-            <a href="#"><i id="social" class="fa fa-envelope-square fa-3x"></i></a>
-        </div>
+            </div>
+        
     </div>
+
+
 
 
 

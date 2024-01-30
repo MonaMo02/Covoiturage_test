@@ -1,7 +1,8 @@
 <?php
 
-$choix_trajet = $_POST["choix_trajet"];// on recupere l'id du trajet choisit à reserver
-require'../config/BDD.php';
+// $choix_trajet = $_GET["choix_trajet"];// on recupere l'id du trajet choisit à reserver
+
+require '../config/BDD.php';
 $bdd = getBdd();
                         //voir inscription.php
 require '../config/droits.php';
@@ -9,9 +10,14 @@ require '../config/formulaire.php';
 
 test_membre();
 
-if (!isset($_POST['choix_trajet'])) {//on verifie que l'utilisateur vient bien de la page recherche_trajet.php
+if (!isset($_GET['choix_trajet'])&&!isset($_POST['choix_trajet'])) {//on verifie que l'utilisateur vient bien de la page recherche_trajet.php
     header('Location: ../index.php');
     exit();
+}else if(isset($_GET['choix_trajet'])){
+    $choix_trajet = $_GET["choix_trajet"];
+
+}else if(isset($_POST['choix_trajet'])){
+    $choix_trajet = $_POST["choix_trajet"];   
 }
 // on teste si le visiteur a soumis le formulaire
 if (isset($_POST['Reservation']) && $_POST['Reservation'] == 'Reservation') {
@@ -38,7 +44,7 @@ function formulaire() {
     
     
     <?php
-    if ($donnee == false) {
+    if ($donnee ==true) {
     //on affiche les informations du trajet
     echo"<div class='panel panel-success'>";
     echo"<div class='panel-heading'>";
@@ -65,7 +71,7 @@ function formulaire() {
     //on limite le nombre de places à celle disponible en soustrayant le nombre de places max par le nombre de places prises
     $tab_places = range(1, $donnee["places_max"] - $donnee["places_prises"]);
     form_select("nb_places", FALSE,1, $tab_places);
-    form_hidden("choix_trajet", $choix_trajet);//on garde en memoire l'id du trajet par un champ hidden
+    form_hidden("choix_trajet",$choix_trajet);//on garde en memoire l'id du trajet par un champ hidden
     form_submit("Reservation", "Reservation", FALSE);
     form_fin();
     ?>

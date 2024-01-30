@@ -30,18 +30,22 @@ function formulaire() {
 
 // Check if the query was successful
     if ($result) {
-        // Fetch the data
-        $data = array();
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $data[] = $row;
-        }
+    // Fetch the data
+    $data = array();
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        $data[] = $row;
+    }
 
-        // Convert the data to a JSON string
-        $json_data = json_encode($data);
+    // Convert the data to a JSON string
+    $json_data = json_encode($data);
 
-        // No need to close the result set for PDO
-    } else {
-        echo "Error: " .$result. "<br>" . $bdd->errorInfo()[2];
+    // Close the database connection
+    $result->closeCursor(); // Close the cursor, releasing the lock on the table
+    $bdd = null; // Close the connection
+} else {
+    echo "Error: " .$result. "<br>" . $bdd->errorInfo()[2];
+
+    
     }
     if ($data != FALSE) {
         ob_start(); ?>

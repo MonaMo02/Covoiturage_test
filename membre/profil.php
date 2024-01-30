@@ -7,7 +7,7 @@ require '../config/droits.php';  //voir inscription.php
 require '../config/formulaire.php';
 
 test_membre_admin();
-if (empty($_GET)) {                  //on peut afficher le profil d'un autre utilisateur par la méthode get avec comme variable l'username
+if (!isset($_GET["login"])) {                  //on peut afficher le profil d'un autre utilisateur par la méthode get avec comme variable l'username
     
 	$username=$_SESSION["login"];  //on regarde donc si la page a été appelé par une methode GET, sinon on affiche le profil du membre qui accede à la page
 }
@@ -39,14 +39,7 @@ $exist=1;
       <div class='profilePic'>
         <i class="fa-solid fa-user"></i>
       </div>
-      <div class="profileTotalMoney">
-        <?php
-          $reponse = $bdd->query("SELECT compte FROM user WHERE id = " .$_SESSION["id"]);
-          $donnee5 = $reponse->fetchAll();  //on affiche la variable compte de la table user qui contient le total debit credit
-        echo"<h5><b>Credit :</b> ".$donnee5[0]["compte"]." $" ."</h5>";
-        ?>
-      </div>
-    </div>
+ 
     
     <div class="profileButtons">
       <input type="button" class="enable" value="Modifier les informations personnelles" onclick="enableEdit()">       

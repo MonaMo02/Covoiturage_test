@@ -19,10 +19,17 @@ author: bootply.com
 
 .col-md-9 h1{
 
-    color: #AEC327;
-    font-size: 35px;
-    font-weight: bold;
+    color: #333;
+    font-size: 36px;
+    margin-top: 100px;
+    margin-bottom: 20px;
 
+}
+.col-md-11 h1{
+
+    color: #333;
+    font-size: 36px;
+    margin-top: 100px;
     margin-bottom: 20px;
 
 }
@@ -109,7 +116,7 @@ author: bootply.com
 
 
 .navbar-default {
-    background-color: #AEC327;
+
     border-color: #6ea6ad76;
 }
 .navbar-default .navbar-brand {
@@ -147,7 +154,7 @@ author: bootply.com
     color: #10602b;
 }
 .navbar-default .navbar-toggle {
-    border-color: #679800;
+    border-color: #6ea6ad76;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
     color: #10602b; 

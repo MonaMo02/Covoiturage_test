@@ -181,11 +181,11 @@ function displayResults(filteredTrajets) {
 
         filteredTrajets.forEach(trajet => {
             const li = document.createElement('li');
-            const destinationInfo = `depart=${encodeURIComponent(trajet.lieu_depart)}&destination=${encodeURIComponent(trajet.destination)}&date=${encodeURIComponent(trajet.date)}&time=${encodeURIComponent(trajet.heure_dep)}&idtrajet=${encodeURIComponent(trajet.id)}`;
+            const destinationInfo = `choix_trajet=${encodeURIComponent(trajet.id)}&depart=${encodeURIComponent(trajet.lieu_depart)}&destination=${encodeURIComponent(trajet.destination)}&date=${encodeURIComponent(trajet.date)}&time=${encodeURIComponent(trajet.heure_dep)}&idtrajet=${encodeURIComponent(trajet.id)}`;
 
 // Create a clickable link
             const link = document.createElement('a');
-            link.href = `reserve.php?${destinationInfo}`;
+            link.href = `reserver_trajet.php?${destinationInfo}`;
             // link.textContent = "Click to reserve";
                 link.textContent =`depart:${trajet.lieu_depart}\n
                                 destination:${trajet.destination}\n

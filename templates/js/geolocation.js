@@ -33,7 +33,7 @@ document.getElementById('destination').addEventListener('input', function () {
 });
 
 function fetchAutocompleteSuggestions(query, inputId) {
-const apiKey = 'pk.6a78765190aaa9b1b86455b49310eaff';
+const apiKey = 'pk.1e1d94098d9e8333fee0998d53e5deb4';
 
 fetch(`https://us1.locationiq.com/v1/autocomplete.php?key=${apiKey}&q=${encodeURIComponent(query)}`)
 .then(response => response.json())
@@ -159,7 +159,7 @@ document.getElementById('result').innerText="depart:"+document.getElementById('l
 
 function nearestfromcurrent(latitude,longitude){
 
-    const apiKey = 'pk.6a78765190aaa9b1b86455b49310eaff';
+    const apiKey = 'pk.1e1d94098d9e8333fee0998d53e5deb4';
     
 
     
