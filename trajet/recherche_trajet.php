@@ -6,7 +6,7 @@
  */
 
 
-require'../config/BDD.php';
+require '../config/BDD.php';
 $bdd = getBdd();
 //voir inscription.php
 require '../config/droits.php';
@@ -22,12 +22,7 @@ function formulaire() {
     global $bdd;
     
     $result = $bdd->query("SELECT 
-    trajet.*,
-    ville_depart.latitude AS departlat,
-    ville_depart.longitude AS departlon,
-    ville_arrivee.latitude AS destinationlat,
-    ville_arrivee.longitude AS destinationlon
-    FROM trajet
+    * from trajet
     JOIN ville_depart ON trajet.lieu_depart = ville_depart.nom
     JOIN ville_arrivee ON trajet.destination = ville_arrivee.nom
     WHERE trajet.effectue = 0
@@ -46,11 +41,11 @@ function formulaire() {
 
         // No need to close the result set for PDO
     } else {
-        echo "Error: " . $sql . "<br>" . $bdd->errorInfo()[2];
+        echo "Error: " .$result. "<br>" . $bdd->errorInfo()[2];
     }
     if ($data != FALSE) {
         ob_start(); ?>
-        <h1 style="margin-top:100px;" >Recherche de votre trajet</h1>";
+        <h1 style="margin-top:100px;" >Recherche de votre trajet</h1>
         <input type="hidden" name="db" id="db" value='<?php echo $json_data; ?>'>
         <input type="hidden" id="location-lat">
         <input type="hidden" id="location-lon">

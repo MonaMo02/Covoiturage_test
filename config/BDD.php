@@ -7,6 +7,6 @@
 
 //fonction qui permet de crée un objet PDO pour manipuler dans la BDD
 function getBdd() {
-  $bdd = new PDO('mysql:host=localhost;dbname=covoiturage;charset=utf8', 'root','' );
+  $bdd = new PDO('mysql:host=localhost;dbname=cov;charset=utf8', 'root','' );
   return $bdd;
 }

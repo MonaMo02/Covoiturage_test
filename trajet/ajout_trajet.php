@@ -31,27 +31,40 @@ function formulaire()
 ?>
     <h1 style="margin-top:100px;" >Inscription de votre trajet</h1>
     <?php
-    form_debut("form", "POST", "ajout_trajet.php");
-    form_label("ville de départ");
-    form_input_position("ville_depart", TRUE, "", "", 30, "", "", "result");
-    echo'<input type="hidden" name="latitude" value="">';
-    echo '<input type="hidden" name="longitude" value="">';
-    echo '<button type="button" onclick="getCoor()">Envoyer mes coordonnées</button>';
-    echo '<div id="result"> Il faut cliquer sur le bouton "Envoyer mes coordonnées"</div>';
-    echo "<br><br>";
-    form_label("ville d'arrivée");
-    form_input_text("ville_arrivee", "TRUE", "", "", 60, "geocodeOnChange();");
-    echo '<button type="button" onclick="getCoordinates()">Confirmer ma destination</button>';
-    echo'<input type="hidden" name="lat" value="">';
-    echo '<input type="hidden" name="long" value="">';
-    echo '<script src="../templates/js/geolocation.js"></script>';
-    echo "<br><br>";   
-    form_label("Date du trajet (yyyy-mm-dd)");
-    form_input_text("date", "TRUE", "", "", 30, "verifdate();");
-    echo "<span style=\"color: red;\" id=\"verifdate\"></span>";
-    echo "<br><br>";
-    form_label("Heure");
-    form_input_text("heure", TRUE, "", "", 20, "");
+    form_debut("form", "POST", "ajout_trajet.php");?>
+    <label for="ville_depart">Departure City:</label>
+    <div>
+        <input type="text" name="ville_depart" id="location" >
+        
+        <button onclick="getPosAndDisplayResult()">Get Departure Location</button>
+    </div>
+    
+    <div id="autocomplete-suggestions-location"></div>
+    <!-- Arrival Section -->
+    <h2>Arrival Information</h2>
+    <label for="ville_arrivee">Arrival City:</label>
+    <input type="text" name="ville_arrivee" id="destination" >
+
+    <input type="hidden" id="location-lat" name="location-lat">
+    <input type="hidden" id="location-lon" name="location-lon">
+    <input type="hidden" id="destination-lat" name="destination-lat">
+    <input type="hidden" id="destination-lon" name="destination-lon">
+    <div id="autocomplete-suggestions-destination"></div>
+    
+    <!-- <button onclick="showresult()">result</button> -->
+    <div id="result"></div>
+    <script src="../templates/js/geolocation.js"></script>
+    <span style="color: red;" id="verifdate"></span>
+    <br><br>
+    <label for='heure'>
+           <input type="time" name="heure" required>';
+    </label>
+    
+    <br><br>
+    <label for='date'> Date
+            <input type="date" name="date" id="date" required>';
+    </label>
+    <?php
     echo "<br><br>";
     form_label("Nombre de place disponibles");
     form_input_text("places", TRUE, "", "", 5, "");
@@ -76,23 +89,23 @@ function action()
     $sql = 'SELECT nom FROM ville_depart WHERE nom="' . $_POST['ville_depart'] . '";';
     $reponse = $bdd->query($sql);
     if ($reponse->rowCount() == 0) {
-        $sql2 = "INSERT INTO ville_depart (nom, latitude, longitude) VALUES(:nom, :latitude, :longitude);";
+        $sql2 = "INSERT INTO ville_depart (nom,locationlat,locationlon) VALUES(:nom, :latitude, :longitude);";
         $statement = $bdd->prepare($sql2);
         $statement->execute(array(
             ":nom" => $_POST['ville_depart'],
-            ":latitude" => $_POST['latitude'],
-            ":longitude" => $_POST['longitude']
+            ":latitude" => $_POST['location-lat'],
+            ":longitude" => $_POST['location-lon']
         ));
     }
     $sql = 'SELECT nom FROM ville_arrivee WHERE nom="' . $_POST['ville_arrivee'] . '"';
     $reponse = $bdd->query($sql);
     if ($reponse->rowCount() == 0) {
-        $sql2 = "INSERT INTO ville_arrivee (nom, latitude, longitude) VALUES(:nom, :latitude, :longitude);";
+        $sql2 = "INSERT INTO ville_arrivee (nom,destinationlat,destinationlon) VALUES(:nom, :latitude, :longitude);";
         $statement = $bdd->prepare($sql2);
         $statement->execute(array(
             ":nom" => $_POST['ville_arrivee'],
-            ":latitude" => $_POST['lat'],
-            ":longitude" => $_POST['long']
+            ":latitude" => $_POST['destination-lat'],
+            ":longitude" => $_POST['destination-lon']
         ));
     }
 
