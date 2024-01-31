@@ -21,6 +21,8 @@ $resultat=$bdd->query("SELECT * from user WHERE login ='".$username."'"); //on r
 $exist=0;
 $donnee = $resultat->fetch(); //si la methode GET a été utilisée, on regarde si l'utilsateur existe bien afin d'afficher une erreur dans le cas inverse
 $exist=1;
+
+
 ?>
   <div class="profile_page">
     <h1>A propos de vous</h1><hr>
@@ -44,7 +46,7 @@ $exist=1;
     <div class="profileButtons">
       <input type="button" class="enable" value="Modifier les informations personnelles" onclick="enableEdit()">       
     </div>
-    <hr>
+    
     <script>
 
       function enableEdit() {
@@ -65,7 +67,9 @@ $exist=1;
       }
      
     </script>
+    
   </div>
+  <hr>
 <?php 
   $resultat2=$bdd->query("SELECT * from pilote WHERE pilote_user_id =".$donnee["id"]); 
   //on teste si c'est un pilote, si oui on affiche les infos de la voiture
@@ -109,11 +113,6 @@ $exist=1;
 <?php   
      
 }
-
-                            
-// if($exist==0){
-//      echo"L'utilisateur n'existe pas";
-// }
 
 $contenu=ob_get_clean();   
    

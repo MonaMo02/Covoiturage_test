@@ -619,7 +619,10 @@ author: bootply.com
 
 }
 
-.profileButtons > input{
+
+.enable{
+    height: 50px;
+    width: 400px;
     color: #438b84;
     font-size: 20px;
     font-weight: 600;
@@ -627,25 +630,27 @@ author: bootply.com
     background-color: white;
     border: 0;
     border-radius: 10px;
-    
-}
-.enable{
-    height: 50px;
-    width: 400px;
+    margin-left: -20px;
     
 }
 .save{
     height: 50px;
     width: 200px;
+    color: #438b84;
+    font-size: 20px;
+    font-weight: 600;
+    
+    background-color: white;
+    border: 0;
+    border-radius: 10px;
+    margin-left: 400px;
+    position: absolute;
     
 }
 
-.profileButtons{
-    margin-left: 60px;
-    
-}
 
-.profile_page input:hover, .enable:focus{
+
+.enable:hover, .enablecar:hover, .save:hover , .enable:focus, .enablecar:focus{
     background-color: #e4e2e28b;   
 }
 
@@ -711,7 +716,7 @@ author: bootply.com
 }
 
 .car{
-    margin-top: 150px;
+    margin-top: 20px;
     display: block;
     width: 300px;
     margin-left: 25%;
@@ -719,7 +724,7 @@ author: bootply.com
 }
 
 .car h2{
-
+    margin-right: 200px;
     font-weight: 600;
     font-size: 42;
     color: #12474f;
@@ -731,7 +736,22 @@ author: bootply.com
     display: flex;
 }
 .carButtons input{
-    /* background-color: #e4e2e28b; */
+    height: 50px;
+    width: 400px;
+    color: #438b84;
+    font-size: 20px;
+    font-weight: 600;
+    position: absolute;
+    background-color: white;
+    border: 0;
+    border-radius: 10px;
+    margin-left: -16px;
+    
+    
+}
+
+.savecar{
+    
     color: #438b84;
     font-size: 20px;
     font-weight: 600;
@@ -739,15 +759,13 @@ author: bootply.com
     height: 50px;
     border-radius: 10px;
     border: 0;
+    margin-left: 482px;
+    position: absolute;
     
 }
-
-.savecar{
-    margin-left: 45px;
-}
-.carButtons input:hover, .enablecar:focus{
+/* .carButtons input:hover, .enablecar:focus{
     background-color: #e4e2e28b;
-}
+} */
 
 
 .carInfo {
@@ -813,7 +831,7 @@ author: bootply.com
     
     background-color: #ffffff;
     border-color: #d6e9c6;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.318);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.279);
     margin-top: 20px;
     padding-right: 15px;
     padding-top: 15px;
@@ -851,7 +869,7 @@ author: bootply.com
     font-weight: 600;
     margin-left: 15px;
     margin-top: -10px;
-    background-color: #12474f;
+    background-color: #236872;
     color: rgb(236, 236, 236);
 }
 
@@ -942,5 +960,32 @@ author: bootply.com
 }
 
 #desti b{
+    color: #438b84;
+}
+
+.monCompte{
+    justify-content: center;
+    align-content: center;
+}
+.monCompte > h1{
+    text-align: center;
+    font-weight: 600;
+    font-size: 50;
+    color: #14525c;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.monCompte table{
+    
+    width: 1000px;
+}
+
+.monCompte table td{
+    font-size: 16px;
+}
+.monCompte table th{
+    
+    font-size: 20px;
     color: #438b84;
 }

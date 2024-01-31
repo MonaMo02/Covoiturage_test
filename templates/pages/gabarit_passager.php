@@ -14,7 +14,8 @@
         <!--[if lt IE 9]>
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="../templates/css/styles2.css" rel="stylesheet">
+       
+        <link href="../templates/css/style2.css" rel="stylesheet">
 
     </head>
     <body>
@@ -39,7 +40,7 @@
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messagerie<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" style="background-color:white;">
                                 <li><a href="../membre/mes_messages.php">Mes Messages</a></li>
                                 <li><a href="../membre/envoyer_message.php">Nouveau message</a></li>
                             </ul>
@@ -50,7 +51,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <p class="navbar-btn">
-                            <a href="../membre/deconnexion.php" class="btn btn-danger btn-large"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
+                            <a href="../membre/deconnexion.php" class="btn btn-large"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
                         </p>
                     </ul>
                 </nav>
@@ -60,7 +61,7 @@
 
 
     <!--main-->
-    <div class="container">
+    <div class="container" >
         
             <div class="col-md-11">
                 <?php echo $contenu; ?>
@@ -70,6 +71,7 @@
     </div>
 
 
+    
 
 
 

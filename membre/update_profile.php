@@ -18,9 +18,20 @@ if ((isset($_POST["save"]))&&($_POST["save"]=="Save")) {
         $query = "UPDATE user SET nom=?, prenom=?, matricule=?, email=? WHERE login=?";
         $stmt = $bdd->prepare($query);
         $stmt->execute([$nom, $prenom, $matricule, $email, $username]);
+        
+        if (isset($_SESSION["success_message"])) { 
+                ?>
+                <script>
+            var confirmation = confirm("Changes saved successfully");
+            if (confirmation) {
+                window.location.href = "profil.php";
+            }
+                </script>
+                <?php
+        }
+    
         $_SESSION['success_message'] = 'Changes saved successfully!';
-        // Redirect to the profile page after saving changes
-        header("Location: profil.php");  // Change to the actual profile page URL
+        
         exit();
     }
 elseif((isset($_POST["savecar"]))&&($_POST["savecar"]=="Save")) {
