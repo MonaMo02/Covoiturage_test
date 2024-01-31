@@ -121,7 +121,6 @@ function action() {
 
 
 
-
 $title = "Reserver trajet";
 gabarit();
 
