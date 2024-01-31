@@ -102,6 +102,7 @@ function action() {
         return "<div class='alert alert-danger'>Le nombre de places disponibles est insuffisant.";
     } else if(($total_places_prises + $new_places) == $max_available_places){
 
+        $bdd->exec("UPDATE trajet SET places_prises = places_prises + " . $new_places . " WHERE id = " . $choix_trajet);
         $bdd->exec("UPDATE trajet SET effectue = 1 WHERE id = " . $choix_trajet);
         return "<div class='alert alert-success'>Votre trajet a bien été réservé, il est maintenant disponible dans votre espace 'mes trajets'.</div>";
     }else
