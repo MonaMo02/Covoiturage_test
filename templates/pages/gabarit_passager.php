@@ -48,6 +48,8 @@
                         <li>
                             <a href="../trajet/mes_trajets.php">Mes trajets</a>
                         </li>
+                        <li><a href="../trajet/recherche_trajet.php">Rechercher un trajet</a></li>
+                        <li><a href="../inscription/inscription_voiture.php">Enregistrer Voiture</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <p class="navbar-btn">

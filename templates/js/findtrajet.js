@@ -56,7 +56,7 @@ console.error('Error in findTrajets:', error);
 }
 
 function fetchAutocompleteSuggestions(query, inputId) {
-const apiKey = 'pk.b0202a65e13c7e35245ce1f7c6c65d84';
+const apiKey = 'pk.3be9e33b005e35c714ca37c18e918f08';
 
 fetch(`https://us1.locationiq.com/v1/autocomplete.php?key=${apiKey}&q=${encodeURIComponent(query)}`)
 .then(response => response.json())

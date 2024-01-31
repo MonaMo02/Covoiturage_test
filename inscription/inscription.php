@@ -79,9 +79,9 @@ function action() {
   //  $chemin_destination = '../photo_profil/'; //chemin pour stocker les photos de profil use it for voiture
    // move_uploaded_file($_FILES["pic"]['tmp_name'], $chemin_destination . $_POST["login"] . strrchr($_FILES['pic']['name'], '.')); //on met la photo dans le dossier
     global $bdd;
-    $sql = 'INSERT INTO user (password, login, nom, prenom, email, num_tel, matricule,compte) VALUES(:password,:login,:nom,:prenom,:email,:num_tel,:matricule,:compte)';
+    $sql = 'INSERT INTO user (password, login, nom, prenom, email, num_tel, matricule,compte) VALUES(:password,:login,:nom,:prenom,:email,:num_tel,:matricule,:compte);';
     $statement = $bdd->prepare($sql);
-    $statement->execute(array(
+    $result = $statement->execute(array(
         ":password" => md5($_POST["password"]),
         ":login" => $_POST["login"],
         ":nom" => $_POST["nom"],
@@ -93,7 +93,13 @@ function action() {
       //  ":photo" => $chemin_destination . $_POST["login"] . strrchr($_FILES['pic']['name'], '.'),       //on inscrit l'utilisateur dans la base de données
         
     ));
-    return "<div class='alert alert-success'>Inscription réussie.</div>"; //on retourne que l'inscritpion a été reussi
+
+    if($result){
+    return "<div class='alert alert-success'>Inscription réussie.</div>";
+    }
+    else{
+        return "<div class='alert alert-success'>Inscription échouée.</div>";
+    } //on retourne que l'inscritpion a été reussi
 }
 
 $title = "Inscription";
