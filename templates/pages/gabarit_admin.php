@@ -29,6 +29,7 @@
             padding: 15px;
             margin-bottom: 20px;
             margin-left: 70px;
+            text-align: center;
         }
 
         .custom-card h4 {
