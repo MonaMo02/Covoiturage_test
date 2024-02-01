@@ -19,18 +19,17 @@ if ((isset($_POST["save"]))&&($_POST["save"]=="Save")) {
         $stmt = $bdd->prepare($query);
         $stmt->execute([$nom, $prenom, $matricule, $email, $username]);
         
-        if (isset($_SESSION["success_message"])) { 
-                ?>
-                <script>
+        ?>
+        <script>
             var confirmation = confirm("Changes saved successfully");
             if (confirmation) {
                 window.location.href = "profil.php";
             }
                 </script>
-                <?php
-        }
+            <?php
+        
     
-        $_SESSION['success_message'] = 'Changes saved successfully!';
+        
         
         exit();
     }
