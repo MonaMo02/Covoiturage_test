@@ -18,27 +18,34 @@ $contenu = formulaire();
 
 
 function formulaire() {
-
+    
     global $bdd;
     
+    date_default_timezone_set('UTC');
+    
+    // Get the current date and time separately
+    $currentDate = date('Y-m-d');
+    $currentTime = date('H:i');
+    
     $result = $bdd->query("SELECT 
-    * from trajet
+    * FROM trajet
     JOIN ville_depart ON trajet.lieu_depart = ville_depart.nom
     JOIN ville_arrivee ON trajet.destination = ville_arrivee.nom
-    WHERE trajet.effectue = 0
-    AND pilote_user_id !=" . $_SESSION["id"] );
-
-// Check if the query was successful
+    WHERE trajet.effectue = 0 AND trajet.date >= '" . $currentDate . "' AND trajet.heure_dep >= '" . $currentTime . "'
+    AND pilote_user_id != " . $_SESSION["id"]);
+    
+    
+    // Check if the query was successful
     if ($result) {
-    // Fetch the data
-    $data = array();
+        // Fetch the data
+        $data = array();
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         $data[] = $row;
     }
 
     // Convert the data to a JSON string
     $json_data = json_encode($data);
-
+    
     // Close the database connection
     $result->closeCursor(); // Close the cursor, releasing the lock on the table
     $bdd = null; // Close the connection
@@ -46,8 +53,8 @@ function formulaire() {
     echo "Error: " .$result. "<br>" . $bdd->errorInfo()[2];
 
     
-    }
-    if ($data != FALSE) {
+}
+if ($data != FALSE) {
         ob_start(); ?>
         <h1 style="margin-top:100px;" >Recherche de votre trajet</h1>
         <input type="hidden" name="db" id="db" value='<?php echo $json_data; ?>'>
