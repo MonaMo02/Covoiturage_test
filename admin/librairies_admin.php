@@ -6,30 +6,8 @@ test_admin();
 
 ob_start();
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'showTablesAjax') {
-//     $tables = getTablesList($bdd);
-//     $tableHtml = "<h2>Tables in the Database:</h2>";
-//     foreach ($tables as $table) {
-//         $tableHtml .= "<button class='tableToggle' data-table='$table'>$table</button>
-//                         <div class='tableContent' id='tableContent_$table'></div>";
-//     }
-//     echo $tableHtml;
-//     exit; // Stop further execution after sending the AJAX response
-// }
-
-// if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'getTableContent') {
-//     $tableName = $_POST['tableName'];
-    
-//     // Add your logic to fetch and display the content of the specified table
-//     $tableContent = getTableContent($bdd, $tableName);
-
-//     echo $tableContent;
-//     exit; // Stop further execution after sending the AJAX response
-// }
-
-
-echo "
-<div class='col-md-5' id='rightCol'>";
+echo '
+<div id="rightCol" style = "width : 30%;"> ';
 
 if (isset($_POST['submit']) && $_POST['submit'] == 'submit') {
     // Retrieve form data
@@ -40,10 +18,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'submit') {
 }
 
 $form = AlterRequestForm(); 
-echo"
-
-$form
-";
+echo" <div class = 'alterform' >  $form  </div>";
 
                 
 $rideDataQuery = "SELECT lieu_depart, COUNT(*) AS ride_count FROM trajet GROUP BY lieu_depart;";
@@ -91,56 +66,80 @@ echo "<canvas id='ridesPerCityChart' width = 100px height = 100px></canvas>
 
 
 
-echo"
-<div class='col-md-7' id='leftCol'>";
-echo "<h1>Comptes Utilisateurs</h1>";
-print_request($bdd, "SELECT id, nom, prenom, login, email FROM user;"); //on appelle simplement la fonction pour obtenir toutes les informations sur les comptes
-echo"
-
-<h1>Trajets restant a effectuer</h1>";
-$reponse = $bdd->query("SELECT id, effectue, lieu_depart, destination, date, heure_dep FROM trajet where effectue = 1"); //on stocke les informations des trajets
-$reponse_nb_trajet = $bdd->query("SELECT count(*) FROM trajet");
-echo"<table><tr><th>ID</th><th>Ville de depart</th><th>Ville d'arrivee</th><th>Date</th><th>Heure</th><th>Pilote<br>Nom  Prenom</th><th>Passagers<br>Nom  Prenom</th></tr>"; //on crée le tableau
-$nb_trajet = $reponse_nb_trajet->fetch();
-$index_id = 1;
-while ($tab_res = $reponse->fetch()) {
-    $reponse_passagers = $bdd->query("SELECT nom, prenom, login FROM trajet_passager TP, user U, trajet T "
-            . "WHERE TP.user_id = U.id "
-            . "AND TP.trajet_id = T.id "
-            . "AND TP.trajet_id = "
-            . $index_id . " "
-            . "AND effectue = 0 "
-            . "GROUP BY TP.user_id;");
-    $reponse_pilote = $bdd->query("SELECT nom, prenom, login FROM trajet T, user U "
-            . "WHERE T.pilote_user_id = U.id "
-            . "AND T.id = "
-            . $index_id . " "
-            . "AND effectue = 0 "
-            . "GROUP BY T.id");
-    if ($tab_res["effectue"] == 0) { //si le trajet n'est pas effectué (effetue = 0) on l'affiche
-        echo"<tr><td>" . $tab_res["id"] . "</td><td>" . $tab_res["lieu_depart"] . "</td><td>" . $tab_res["destination"] . "</td><td>" . $tab_res["date"] . "</td><td>" . $tab_res["heure_dep"] . "</td>";
-        echo"<td><table>";
-        while ($pilote = $reponse_pilote->fetch()) {
-            echo"<td><a href='../membre/profil.php?login=".$pilote["login"]."'>" . $pilote["nom"] . "</a></td><td>" . $pilote["prenom"] . "</td>";
-        }
-        echo"</td></table>";
-        echo"<td><table>";
-        while ($tab_passagers = $reponse_passagers->fetch()) {
-            echo"<tr><td><a href='../membre/profil.php?username=".$tab_passagers["username"]."'>" . $tab_passagers["nom"] . "</a></td><td>" . $tab_passagers["prenom"] . "</td></tr>";
-        }
-        echo"</table></td>";
-    }else{
-        
-    }
-    $index_id = $index_id + 1;
-}
+echo'
+<div  id="leftCol" style = "width : 60%; margin-left: 10%;">';
+echo "<h1 class='logonavbar' style ='margin-left: 25%'>Comptes Utilisateurs</h1>";
+print_request($bdd, "SELECT id, nom, prenom, login, email FROM user ORDER BY RAND() LIMIT 10;"); //on appelle simplement la fonction pour obtenir toutes les informations sur les comptes
 
 echo "</div>";
 
 
 $contenu=ob_get_clean(); 
 
-ob_clean();
+ob_start();
+
+echo "
+<h1 class='logonavbar'>Trajets restant à effectuer</h1>
+<ul class='responsive-table'>
+  <li class='table-header'>
+    <div class='col col-1'>ID</div>
+    <div class='col col-2'>Ville de départ</div>
+    <div class='col col-3'>Ville d'arrivée</div>
+    <div class='col col-4'>Date</div>
+    <div class='col col-5'>Heure</div>
+    <div class='col col-6'>Pilote</div>
+  </li>";
+
+$reponse = $bdd->query("SELECT id, effectue, lieu_depart, destination, date, heure_dep FROM trajet where effectue = 0");
+$reponse_nb_trajet = $bdd->query("SELECT count(*) FROM trajet");
+$nb_trajet = $reponse_nb_trajet->fetch();
+$index_id = 1;
+
+while ($tab_res = $reponse->fetch()) {
+    $reponse_passagers = $bdd->query("SELECT nom, prenom, login FROM trajet_passager TP, user U, trajet T "
+        . "WHERE TP.user_id = U.id "
+        . "AND TP.trajet_id = T.id "
+        . "AND TP.trajet_id = "
+        . $index_id . " "
+        . "AND effectue = 0 "
+        . "GROUP BY TP.user_id;");
+
+    $reponse_pilote = $bdd->query("SELECT nom, prenom, login FROM trajet T, user U "
+        . "WHERE T.pilote_user_id = U.id "
+        . "AND T.id = "
+        . $index_id . " "
+        . "AND effectue = 0 "
+        . "GROUP BY T.id");
+
+    if ($tab_res["effectue"] == 0) {
+        echo "<li class='table-row'>";
+        echo "<div class='col col-1'>" . $tab_res["id"] . "</div>";
+        echo "<div class='col col-2'>" . $tab_res["lieu_depart"] . "</div>";
+        echo "<div class='col col-3'>" . $tab_res["destination"] . "</div>";
+        echo "<div class='col col-4'>" . $tab_res["date"] . "</div>";
+        echo "<div class='col col-5'>" . $tab_res["heure_dep"] . "</div>";
+
+        echo "<div class='col col-6'><table>";
+        while ($pilote = $reponse_pilote->fetch()) {
+            echo "<tr><td><a href='../membre/profil.php?login=" . $pilote["login"] . "'>" . $pilote["nom"] . "</a></td><td>" . $pilote["prenom"] . "</td></tr>";
+        }
+        echo "</table></div>";
+
+        
+
+        echo "</li>";
+    } else {
+        // Handle the case when the trip is completed
+    }
+
+    $index_id = $index_id + 1;
+}
+
+echo "</ul>";
+
+$contenu3 = ob_get_clean();
+
+ob_start();
 
 $countusers = getCount($bdd, 'user');
 $countdrivers = getCount($bdd, 'pilote');

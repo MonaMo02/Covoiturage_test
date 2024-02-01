@@ -18,59 +18,52 @@
         <![endif]-->
        
         <link href="../templates/css/style2.css" rel="stylesheet">
+        <link href="../templates/css/adminStyle.css" rel="stylesheet">
 
-        <style>
-        /* Add your custom styles here */
-        .custom-card {
-            /* Add styles similar to the navbar */
-            background-color: #f8f8f8;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-left: 70px;
-            text-align: center;
-        }
-
-        .custom-card h4 {
-            /* Style the heading inside the card */
-            color: #333;
-        }
-    </style>
 
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top" role="banner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="../index.php" class="navbar-brand"><span class = "logonavbar">CARPE DIEM</span></a>
-                </div>
-                <nav class="collapse navbar-collapse" role="navigation">
-                    
-                    <ul class="nav navbar-nav navbar-right">
-                        <p class="navbar-btn">
-                            <a href="../membre/deconnexion.php" class="btn btn-large"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
-                        </p>
-                    </ul>
-                </nav>
-            </div>
+    <nav class="navbar navbar-default navbar-fixed-top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../index.php" class="navbar-brand"><span class="logonavbar">CARPE DIEM</span></a>
+        </div>
+        <nav class="collapse navbar-collapse" role="navigation">
+           
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <p class="navbar-btn">
+                        <a href="../membre/deconnexion.php" class="btn btn-large"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
+                    </p>
+                </li>
+            </ul>
         </nav>
+    </div>
+</nav>
+
             
-        </div><!--/container-->
 
     <!--main-->
-    <div class="container">
-        <div class="row">
+
+    <!-- <div class="container " style = "margin-top : 100px; margin-left: 150px; align-item : center;">
+        
+    </div> -->
+    <div class="container" style = "margin-top: 100px;">
+    <div class="row " style = "margin-left: 80px;">
             <?php echo $contenu2; ?>
         </div> 
-        <div class="row">
+        <div class="row"  " style = " display : flex ; ">
             <?php echo $contenu; ?>
+        </div>
+
+        <div>
+            <?php  echo $contenu3; ?>
         </div>
     </div><!--/container-->
 

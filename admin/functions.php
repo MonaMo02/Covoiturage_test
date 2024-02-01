@@ -5,29 +5,44 @@ require'../config/BDD.php';
 $bdd = getBdd();
 
 
-function print_request($bd, $request, $att_req = TRUE) {   //fonction permettant d'afficher la requete sql dans un tableau dynamique
-    $reponse = $bd->query($request); //on stocke le resultat de la requete
-    if ($reponse === FALSE) { //si la requete n'a pas aboutit
-        echo"impossible d'executer la requete";
+function print_request($bd, $request, $att_req = TRUE) {
+    $reponse = $bd->query($request);
+
+    if ($reponse === FALSE) {
+        echo "Impossible d'exécuter la requête";
         return FALSE;
     } else {
-        $tab_res = $reponse->fetchALL(PDO::FETCH_ASSOC); //sinon on parcours chaque element de la requete, en plaçant les clés dans un <th> et les valeurs dans les lignes suivantes
+        $tab_res = $reponse->fetchAll(PDO::FETCH_ASSOC);
         $i = 1;
+
         if ($att_req) {
-            //echo $request; //enlever le commentaire pour afficher la requete
-            echo "<table>";
+            echo '<ul class="responsive-table">';
+
             foreach ($tab_res as $unres) {
                 if ($i == 1) {
-                    echo"<tr><th>" . implode('</th><th>', array_keys($unres)) . "</th></tr>";
-                    $i++;
+                    echo '<li class="table-header">';
+                    foreach (array_keys($unres) as $key) {
+                        echo '<div class="col">' . $key . '</div>';
+                    }
+                    echo '</li>';
                 }
-                echo"<tr><td>" . implode('</td><td>', $unres) . "</td></tr>";
+
+                echo '<li class="table-row">';
+                foreach ($unres as $value) {
+                    echo '<div class="col">' . $value . '</div>';
+                }
+                echo '</li>';
+
+                $i++;
             }
-            echo"</table>";
+
+            echo '</ul>';
             return TRUE;
         }
     }
 }
+
+
 
 function getTablesList($bdd) {
     $tablesQuery = "SHOW TABLES;";
@@ -90,23 +105,18 @@ function handleAlterRequest($bdd) {
 function AlterRequestForm() {
     ob_start(); //on met en memoire tampon le code hmtl qui va suivre
 
-    echo "<h1>Alter request form</h1>";
+    echo "<h1 class='logonavbar' style='margin-left: 25px;'>Alter request form</h1>";
     echo "<form name='form' id='alterformrequest' method='POST' action='librairies_admin.php?action=alterFormContainer'>";
     //form_debut("form id="alterformrequest"", "POST", "librairies_admin.php");
-    form_label("Table name");
-    form_input_text("TabName", TRUE, "", "", 30, "");
+    form_input_text("TabName", TRUE, "Table name", "", 30, "");
     echo"<br><br>";
-    form_label("Command");
-    form_checkbox("Command", array("Add","Drop","Modify"), array(FALSE,FALSE,FALSE), array(FALSE,FALSE ,FALSE) , array("","",""));
+    form_select("Command", false , 0  ,array("Add","Drop","Modify"));
     echo"<br><br>";
-    form_label("Type");
-    form_checkbox("Type", array("Column", "Constraint"),array( FALSE, FALSE) ,array(FALSE ,FALSE ), array("", ""));
+    form_select("Type",false, 0,  array("Column", "Constraint"));
     echo"<br><br>";
-    form_label("Name");
-    form_input_text("Name", TRUE, "", "", 30, "");
+    form_input_text("Name", TRUE, "Name", "", 30, "");
     echo"<br><br>";
-    form_label("Definition");
-    form_input_text("Definition", TRUE, "", "", 30, "");
+    form_input_text("Definition", TRUE, "Definition", "", 30, "");
     echo"<br><br>";
     form_submit("submit","submit", FALSE);
     form_reset("Reset", "Reset", FALSE, FALSE);
