@@ -57,7 +57,7 @@ function formulaire() {
     
     form_fin()
     ?>
-    <p style="margin-left: 180px">dont have an accounet? <a href="../inscription/inscription.php">sign in</a></p>
+    <p style="margin-left: 180px">dont have an accounet? <a href="../inscription/inscription.php">sign up</a></p>
     
     </div>
     <?php

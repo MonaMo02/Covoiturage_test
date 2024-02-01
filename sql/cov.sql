@@ -56,17 +56,21 @@ CREATE TABLE `messagerie` (
 -- Structure de la table `pilote`
 --
 
-CREATE TABLE `pilote` (
-  `pilote_user_id` int(11) NOT NULL,
-  `voiture_id` int(11) NOT NULL,
-  `voiture_marque` varchar(45) NOT NULL,
-  `voiture_annee` int(11) NOT NULL,
-  `voiture_modele` varchar(45) NOT NULL,
-  `voiture_couleur` varchar(45) NOT NULL,
-  `photo` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE pilote (
+  pilote_user_id INTEGER primary key,
+  voiture_id INTEGER NOT NULL AUTOINCREMENT, 
+  voiture_marque VARCHAR(45) NOT NULL,
+  voiture_annee INTEGER NOT NULL,
+  voiture_modele VARCHAR(45) NOT NULL,
+  voiture_couleur VARCHAR(45) NOT NULL,
+  photo LONGTEXT NULL,
+  CONSTRAINT fk_pilote_user
+    FOREIGN KEY (pilote_user_id)
+    REFERENCES user (id)
+    ON DELETE NO ACTION 
+    ON UPDATE NO ACTION)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;;
 
---
+
 -- Déchargement des données de la table `pilote`
 --
 
@@ -80,7 +84,7 @@ INSERT INTO `pilote` (`pilote_user_id`, `voiture_id`, `voiture_marque`, `voiture
 --
 
 CREATE TABLE `trajet` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `lieu_depart` varchar(200) NOT NULL,
   `destination` varchar(200) NOT NULL,
   `places_max` int(11) NOT NULL,
@@ -221,17 +225,17 @@ INSERT INTO `ville_depart` (`nom`, `locationlat`, `locationlon`) VALUES
 --
 ALTER TABLE `evaluation`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_evaluateur` (`evaluateur_user_id`),
-  ADD KEY `fk_evalue` (`evalue_user_id`),
-  ADD KEY `fk_trajet_id` (`trajet_id`);
+  ADD FOREIGN KEY `fk_evaluateur` (`evaluateur_user_id`) REFERENCES user (`id`),
+  ADD FOREIGN KEY `fk_evalue` (`evalue_user_id`) REFERENCES user (`id`),
+  ADD FOREIGN KEY `fk_trajet_id` (`trajet_id`) REFERENCES trajet (`id`);
 
 --
 -- Index pour la table `messagerie`
 --
 ALTER TABLE `messagerie`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_expediteur` (`expediteur_user_id`),
-  ADD KEY `fk_destinataire` (`destinataire_user_id`);
+  ADD FOREIGN KEY `fk_expediteur` (`expediteur_user_id`),
+  ADD FOREIGN KEY `fk_destinataire` (`destinataire_user_id`);
 
 --
 -- Index pour la table `pilote`

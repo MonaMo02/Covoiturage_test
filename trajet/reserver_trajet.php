@@ -82,25 +82,45 @@ function formulaire() {
         echo "No matching record found in the database.";
     }
 }
-
 function action() {
-
     global $bdd;
     global $choix_trajet;
-    //on insere le passager sur le trajet par le biais de la table trajet_passager
-    $sql = 'INSERT INTO trajet_passager (trajet_id,user_id,nb_places) VALUES(:trajet_id,:user_id,:nb_places)';
-    $statement = $bdd->prepare($sql);
-    $statement->execute(array(
-        ":trajet_id" => $choix_trajet,
-        ":user_id" => $_SESSION["id"],
-        ":nb_places" => $_POST["nb_places"]
-    ));
-    
-    //on modifie le nombre de place prises sur le trajet en ajoutant celles reservées
-    $bdd->exec("UPDATE trajet SET places_prises = places_prises + " . $_POST['nb_places'] . " WHERE id = " . $choix_trajet);
 
-    return "<div class='alert alert-success'>Votre trajet a bien été reservé, il est maintenant disponible dans votre espace 'mes trajets'.</div>";
-}
+    // Get the maximum available places from the trajet table
+    $max_available_places = $bdd->query("SELECT places_max FROM trajet WHERE id = " . $choix_trajet)->fetchColumn();
+
+    // Check if the sum of current places_prises and new nb_places exceeds max_available_places
+    $total_places_prises = $bdd->query("SELECT places_prises FROM trajet WHERE id = " . $choix_trajet)->fetchColumn();
+    $new_places = $_POST['nb_places'];
+
+
+
+
+    if (($total_places_prises + $new_places) > $max_available_places) {
+ 
+   
+        return "<div class='alert alert-danger'>Le nombre de places disponibles est insuffisant.";
+    } else if(($total_places_prises + $new_places) == $max_available_places){
+
+        $bdd->exec("UPDATE trajet SET places_prises = places_prises + " . $new_places . " WHERE id = " . $choix_trajet);
+        $bdd->exec("UPDATE trajet SET effectue = 1 WHERE id = " . $choix_trajet);
+        return "<div class='alert alert-success'>Votre trajet a bien été réservé, il est maintenant disponible dans votre espace 'mes trajets'.</div>";
+    }else
+        // Update the number of places prises on the trajet
+        $sql = 'INSERT INTO trajet_passager (trajet_id,user_id,nb_places) VALUES(:trajet_id,:user_id,:nb_places)';
+        $statement = $bdd->prepare($sql);
+        $statement->execute(array(
+            ":trajet_id" => $choix_trajet,
+            ":user_id" => $_SESSION["id"],
+            ":nb_places" => $new_places
+        ));
+
+        $bdd->exec("UPDATE trajet SET places_prises = places_prises + " . $new_places . " WHERE id = " . $choix_trajet);
+
+        return "<div class='alert alert-success'>Votre trajet a bien été réservé, il est maintenant disponible dans votre espace 'mes trajets'.</div>";
+    }
+
+
 
 $title = "Reserver trajet";
 gabarit();

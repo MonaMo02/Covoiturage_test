@@ -69,7 +69,7 @@ function formulaire() {
     
     form_fin();
     ?>
-    <p style="margin-left: 170px">already have an accounet? <a href="../membre/connexion.php">sign up</a></p>
+    <p style="margin-left: 170px">already have an accounet? <a href="../membre/connexion.php">sign in</a></p>
     </div>
     <?php
     return ob_get_clean(); //la fonction retourne tout le html qui a été mis en tampon.
@@ -79,9 +79,9 @@ function action() {
   //  $chemin_destination = '../photo_profil/'; //chemin pour stocker les photos de profil use it for voiture
    // move_uploaded_file($_FILES["pic"]['tmp_name'], $chemin_destination . $_POST["login"] . strrchr($_FILES['pic']['name'], '.')); //on met la photo dans le dossier
     global $bdd;
-    $sql = 'INSERT INTO user (password, login, nom, prenom, email, num_tel, matricule,compte) VALUES(:password,:login,:nom,:prenom,:email,:num_tel,:matricule,:compte)';
+    $sql = 'INSERT INTO user (password, login, nom, prenom, email, num_tel, matricule,compte) VALUES(:password,:login,:nom,:prenom,:email,:num_tel,:matricule,:compte);';
     $statement = $bdd->prepare($sql);
-    $statement->execute(array(
+    $result = $statement->execute(array(
         ":password" => md5($_POST["password"]),
         ":login" => $_POST["login"],
         ":nom" => $_POST["nom"],
@@ -93,7 +93,24 @@ function action() {
       //  ":photo" => $chemin_destination . $_POST["login"] . strrchr($_FILES['pic']['name'], '.'),       //on inscrit l'utilisateur dans la base de données
         
     ));
-    return "<div class='alert alert-success'>Inscription réussie.</div>"; //on retourne que l'inscritpion a été reussi
+
+    if($result){
+        $sql = 'SELECT * FROM user WHERE login="' . $_POST['login'] . '"';
+        $reponse = $bdd->query($sql);
+        $donnees = $reponse->fetch();
+        $_SESSION["password"]=$_POST["password"];
+        $_SESSION["login"]=$_POST["login"];
+        $_SESSION["prenom"]=$_POST["prenom"];
+        $_SESSION["nom"]=$_POST["nom"];
+        $_SESSION["pilote"]=false;
+        $_SESSION["id"]=$donnees["id"];
+        header ('Location: ../membre/index.php');
+    return "<div class='alert alert-success'>Inscription réussie.</div>";
+
+    }
+    else{
+        return "<div class='alert alert-success'>Inscription échouée.</div>";
+    } 
 }
 
 $title = "Inscription";
