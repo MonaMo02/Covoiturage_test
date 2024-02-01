@@ -95,7 +95,18 @@ function action() {
     ));
 
     if($result){
+        $sql = 'SELECT * FROM user WHERE login="' . $_POST['login'] . '"';
+        $reponse = $bdd->query($sql);
+        $donnees = $reponse->fetch();
+        $_SESSION["password"]=$_POST["password"];
+        $_SESSION["login"]=$_POST["login"];
+        $_SESSION["prenom"]=$_POST["prenom"];
+        $_SESSION["nom"]=$_POST["nom"];
+        $_SESSION["pilote"]=false;
+        $_SESSION["id"]=$donnees["id"];
+        header ('Location: ../membre/index.php');
     return "<div class='alert alert-success'>Inscription réussie.</div>";
+
     }
     else{
         return "<div class='alert alert-success'>Inscription échouée.</div>";
