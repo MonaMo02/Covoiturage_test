@@ -29,7 +29,22 @@ ob_start();
 
 
 echo "
-<div class='col-md-4' id='rightCol'>";
+<div class='col-md-5' id='rightCol'>";
+
+if (isset($_POST['submit']) && $_POST['submit'] == 'submit') {
+    // Retrieve form data
+    handleAlterRequest($bdd);
+    // Redirect or display a success message
+    // header('Location: librairies_admin.php');
+    // exit;
+}
+
+$form = AlterRequestForm(); 
+echo"
+
+$form
+";
+
                 
 $rideDataQuery = "SELECT lieu_depart, COUNT(*) AS ride_count FROM trajet GROUP BY lieu_depart;";
 $rideDataResult = $bdd->query($rideDataQuery);
@@ -69,22 +84,7 @@ echo "<canvas id='ridesPerCityChart' width = 100px height = 100px></canvas>
                 // If you need any specific options for the pie chart, add them here
             }
         });
-    </script>";
-
-    if (isset($_POST['submit']) && $_POST['submit'] == 'submit') {
-        // Retrieve form data
-        handleAlterRequest($bdd);
-        // Redirect or display a success message
-        // header('Location: librairies_admin.php');
-        // exit;
-    }
-
-    $form = AlterRequestForm(); 
-    echo"
-    
-    $form
-
-
+    </script>
     </div>";
 
 
@@ -92,13 +92,13 @@ echo "<canvas id='ridesPerCityChart' width = 100px height = 100px></canvas>
 
 
 echo"
-<div class='col-md-8' id='leftCol'>";
+<div class='col-md-7' id='leftCol'>";
 echo "<h1>Comptes Utilisateurs</h1>";
 print_request($bdd, "SELECT id, nom, prenom, login, email FROM user;"); //on appelle simplement la fonction pour obtenir toutes les informations sur les comptes
 echo"
 
 <h1>Trajets restant a effectuer</h1>";
-$reponse = $bdd->query("SELECT id, effectue, lieu_depart, destination, date, heure_dep FROM trajet"); //on stocke les informations des trajets
+$reponse = $bdd->query("SELECT id, effectue, lieu_depart, destination, date, heure_dep FROM trajet where effectue = 1"); //on stocke les informations des trajets
 $reponse_nb_trajet = $bdd->query("SELECT count(*) FROM trajet");
 echo"<table><tr><th>ID</th><th>Ville de depart</th><th>Ville d'arrivee</th><th>Date</th><th>Heure</th><th>Pilote<br>Nom  Prenom</th><th>Passagers<br>Nom  Prenom</th></tr>"; //on crée le tableau
 $nb_trajet = $reponse_nb_trajet->fetch();
@@ -143,19 +143,13 @@ $contenu=ob_get_clean();
 ob_clean();
 
 $countusers = getCount($bdd, 'user');
-
-echo"
-<div class='col-md-4'> USERS : $countusers</div>
-";
-
-$countrides = getCount($bdd, 'trajet');
-echo"
-<div class='col-md-4'> RIDES : $countrides </div>
-";
-
 $countdrivers = getCount($bdd, 'pilote');
+$countrides = getCount($bdd, 'trajet');
+
 echo"
-<div class='col-md-4'> Drivers : $countdrivers </div>
+<div class='col-md-3 custom-card'> <h4 class = 'logonavbar' > USERS : $countusers</h4> </div>
+<div class='col-md-3 custom-card'> <h4 class = 'logonavbar' > RIDES : $countrides</h4>  </div>
+<div class='col-md-3 custom-card'> <h4 class = 'logonavbar' > Drivers : $countdrivers</h4>  </div>
 ";
 
 $contenu2 = ob_get_clean();
