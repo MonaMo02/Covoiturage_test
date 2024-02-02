@@ -36,28 +36,34 @@ if (isset($_POST['Soumettre']) && $_POST['Soumettre'] == 'Soumettre') {
 function formulaire() {
     ob_start();
     ?>
-    <h1>Description de votre véhicule</h1>
+    <h1 id="insccarheader">Description de votre véhicule</h1>
+    <div class="inscription_car">
+
+    
     <?php
     form_debut("form", "POST", "inscription_voiture.php");
-    form_label("Marque");
-    form_input_text("marque", TRUE, "", "", 20, "verifmarque();");
+    
+    form_input_text("marque", TRUE, "Marque", "", 20, "verifmarque();");
     echo"<br><br>";
-    form_label("Modèle");
-    form_input_text("modele", TRUE, "", "", 20, "verifmodele();");
+    
+    form_input_text("modele", TRUE, "Modèle", "", 20, "verifmodele();");
     echo"<br><br>";
-    form_label('Année');
-    form_input_text("annee", TRUE, "", "", 10, "verifannee();");
+    
+    form_input_text("annee", TRUE, "Année", "", 10, "verifannee();");
     echo"<br><br>";
-    form_label("Couleur");
-    form_input_text("couleur", TRUE, "", "", 25, "verifcouleur();");
+    
+    form_input_text("couleur", TRUE, "Couleur", "", 25, "verifcouleur();");
     echo"<br><br>";
-    form_label("Photo");
+    echo "<div class='addphoto'>";
+    form_label("Photo","pic");
     form_file("pic", "image/*", "");
-    echo"<br><br>";
+    echo "</div>";
+    
     form_submit("Soumettre", "Soumettre", FALSE);
-    form_reset("Reset", "Reinitialiser", FALSE, FALSE);
+    
     form_fin();
     ?>
+    </div>
         <?php
         return ob_get_clean();
     }
