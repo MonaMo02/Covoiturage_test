@@ -66,9 +66,9 @@
 
 
     <!--main-->
-    <div class="container" style ="width : 100%; margin-top : 100px;">
+    <div class="container" >
         
-            <div class="col-md-12">
+            <div class="col-md-11">
                 <?php echo $contenu; ?>
 
             </div>

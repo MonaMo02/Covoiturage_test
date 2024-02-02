@@ -58,7 +58,7 @@
     <div class="row " style = "margin-left: 80px;">
             <?php echo $contenu2; ?>
         </div> 
-        <div class="row"  " style = " display : flex ; ">
+        <div class="row"  style = " display : flex ;">
             <?php echo $contenu; ?>
         </div>
 

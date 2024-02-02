@@ -233,8 +233,8 @@ function affiche_tab($array) { //fonction de debug pour afficher les tableau ass
     }
 }
 
-function form_label($text) {
-    echo "<label >$text</label> : ";
+function form_label($text,$for) {
+    echo "<label for='$for'>$text</label>";
 }
 
 
