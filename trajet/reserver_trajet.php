@@ -36,81 +36,47 @@ function formulaire() {
     global $bdd;
     //on recupère les informations sur le trajet
     global $choix_trajet;
-    $reponse = $bdd->query("SELECT * FROM trajet as T, user as U, pilote as P WHERE T.id = " . $choix_trajet." AND U.id= T.pilote_user_id AND P.pilote_user_id = T.pilote_user_id And places_prises<places_max");
+    $reponse = $bdd->query("SELECT * FROM trajet as T, user as U, pilote as P WHERE T.id = " . $choix_trajet." AND U.id= T.pilote_user_id AND P.pilote_user_id = T.pilote_user_id and places_prises<places_max");
     $donnee = $reponse->fetch();
-    $tab_places = range(0, $donnee["places_max"] - $donnee["places_prises"]);
-
     ob_start();
     ?>
-    <h3 id="hd3">Reserver votre trajet</h3>
+    <h1>Reserver votre trajet</h1>
     
     
     <?php
     if ($donnee ==true) {
+    //on affiche les informations du trajet
+    echo"<div class='panel panel-success'>";
+    echo"<div class='panel-heading'>";
+    
+    echo"<b>Ville de départ : </b> ".$donnee["lieu_depart"]." - <b>Ville d'arrivée : </b>".$donnee["destination"];
 
+    echo"</div>";
+    echo "<div class='panel-body'>";
+
+    echo" Pilote : ".$donnee["prenom"]." ".$donnee["nom"];
         
-        $sql = "
-        SELECT  t.lieu_depart, t.destination, t.places_max, t.places_prises,
-                CONCAT(u.nom, ' ', u.prenom) AS nom_prenom,
-                CONCAT(p.voiture_marque, ' ', p.voiture_modele) AS marque_modele,
-                t.date,  t.heure_dep, t.prix
-    FROM 
-        trajet t
-    INNER JOIN 
-        pilote p ON t.pilote_user_id = p.pilote_user_id
-    INNER JOIN 
-        user u ON p.pilote_user_id = u.id
-        ";
+    echo"  <a href='../membre/profil.php?username=".$donnee["login"]."' class='btn btn-primary pull-right'>Son profil</a></br>";
+    echo "Voiture : ".$donnee["voiture_marque"]." ".$donnee["voiture_modele"];
 
-
-    $stmt = $bdd->query($sql);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC)?>
-        <div class='journey-container'>
-        <script src="https://kit.fontawesome.com/e3b74a388e.js" crossorigin="anonymous"></script>
+        echo"</div>";
+    echo "</div>";
         
-                                <div class="journey-item">                            
-                                    <i class="fa-solid fa-location-pin tp"></i>
-                                    <div class='line'>
-                                        <div class="journey-info">
-                                            <div class="info-section">
-                                                <span class="info-label"></span>
-                                                <span class="info-value"><?php echo trim(explode(",", $row["lieu_depart"])[0]);?></span>
-                                            </div>
-                                            <div class="info-section indexprice ">
-                                                <span class="info-label"><i class="fa-solid fa-dollar-sign "></i></span>
-                                                <span class="info-value prix"><?php echo $row["prix"]; ?></span>
-                                            </div>
-                                        </div>
-                                    
-                                        <div class="journey-info">
-                                            <div class="info-section">
-                                                <span class="info-label"></span>
-                                                <span class="info-value"><?php echo trim(explode(",", $row["destination"])[0]); ?></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <i class="fa-solid fa-location-pin btm"></i>
-                                    
-                                    <div class="divider"></div> 
-                                        <img width="70px" style=" border-radius: 50px; margin-left:5px; margin-top:-10px; position:absolute;" src="templates/image/driver.jpg" alt="">
-                                        
-                                        <div class="pilote-info">            
-                                            <span class="pilote-name"><?php echo $row["nom_prenom"]; ?></span> <br>
-                                            <span class="car-value"><?php echo $row["marque_modele"]; ?></span>
-                                        </div>
-                                        <form action="reserver_trajet.php" method="post">
-                                        <input type="hidden" name="choix_trajet" value=<?php $choix_trajet;?>>
-                                        <select class="select-places" name ="nb_places" id="nb_places" size=1 <?php foreach ($tab_places as $elem_hash) {
-                                        echo("<option>" . $elem_hash . "</option>"); } ?>  disabled></select>
-                                        <input type="submit" class="resbutton" value="Reserver">    
-                                    </form>
-                                    </div>
-                                    </div>
-                                                                    
-                                    
-        <?php
-        return ob_get_clean();
+        
+        
+        
+        
+    form_debut("form", "POST", "reserver_trajet.php");
+    form_label("Nombre de places");
+    //on limite le nombre de places à celle disponible en soustrayant le nombre de places max par le nombre de places prises
+    $tab_places = range(1, $donnee["places_max"] - $donnee["places_prises"]);
+    form_select("nb_places", FALSE,1, $tab_places);
+    form_hidden("choix_trajet",$choix_trajet);//on garde en memoire l'id du trajet par un champ hidden
+    form_submit("Reservation", "Reservation", FALSE);
+    form_fin();
+    ?>
+    <?php
+    return ob_get_clean();
     }else {
         // Handle the case when no row is found in the database
         echo "No matching record found in the database.";
