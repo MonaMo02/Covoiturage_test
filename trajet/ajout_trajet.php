@@ -29,54 +29,45 @@ function formulaire()
 {
     ob_start();
 ?>
-    <h1 style="margin-top:100px;" >Inscription de votre trajet</h1>
-    <?php
-    form_debut("form", "POST", "ajout_trajet.php");?>
-    <label for="ville_depart">Departure City:</label>
-    <div>
-        <input type="text" name="ville_depart" id="location" >
-        
-        <button onclick="getPosAndDisplayResult()">Get Departure Location</button>
-    </div>
-    
-    <div id="autocomplete-suggestions-location"></div>
-    <!-- Arrival Section -->
-    <h2>Arrival Information</h2>
-    <label for="ville_arrivee">Arrival City:</label>
-    <input type="text" name="ville_arrivee" id="destination" >
+    <h1 id="ajttrajetheader" style="margin-top:100px;" >Publier un trajet</h1>
+    <div class="publier_trajet">
 
-    <input type="hidden" id="location-lat" name="location-lat">
-    <input type="hidden" id="location-lon" name="location-lon">
-    <input type="hidden" id="destination-lat" name="destination-lat">
-    <input type="hidden" id="destination-lon" name="destination-lon">
-    <div id="autocomplete-suggestions-destination"></div>
-    
-    <!-- <button onclick="showresult()">result</button> -->
-    <div id="result"></div>
-    <script src="../templates/js/geolocation.js"></script>
-    <span style="color: red;" id="verifdate"></span>
-    <br><br>
-    <label for='heure'>
-           <input type="time" name="heure" required>';
-    </label>
-    
-    <br><br>
-    <label for='date'> Date
-            <input type="date" name="date" id="date" required>';
-    </label>
-    <?php
-    echo "<br><br>";
-    form_label("Nombre de place disponibles");
-    form_input_text("places", TRUE, "", "", 5, "");
-    echo "<br><br>";
-    form_label("Prix");
-    form_input_text("prix", TRUE, "DINARS ALGERIENS", "", 15, "");
-    echo "<br><br>";
-    form_submit("Soumettre", "Soumettre", FALSE);
-    form_reset("reset", "", FALSE, FALSE);
-    echo "<br>";
-    form_fin();
-    ?>
+        <?php
+        form_debut("form", "POST", "ajout_trajet.php");?>
+
+        <input type="text" name="ville_depart" id="location" placeholder="D’où partez-vous ?" >
+            
+        <button title="click to get exact position" onclick="getPosAndDisplayResult()"><i class="fa-solid fa-crosshairs"></i></button>
+        <div id="autocomplete-suggestions-location" ></div>
+
+        <input type="text"  id="destination"  placeholder="Où allez-vous?"><br>
+        <input type="hidden" id="location-lat" name="location-lat">
+        <input type="hidden" id="location-lon" name="location-lon">
+        <input type="hidden" id="destination-lat" name="destination-lat">
+        <input type="hidden" id="destination-lon" name="destination-lon">
+        <div id="autocomplete-suggestions-destination"></div>
+
+        <div id="result"></div>
+        <script src="../templates/js/geolocation.js"></script>
+        <span style="color: red;" id="verifdate"></span>
+        <input type="time" id="heure" required class="datetimeTRJ">
+        <input type="date" name="date" id="date" required class="datetimeTRJ"><br>
+        <script>
+            document.getElementById('date').setAttribute('min', new Date().toISOString().split('T')[0]);
+            document.getElementById('date').setAttribute('value', new Date().toISOString().split('T')[0]);
+        </script>
+        <br>
+        <input type="number" name="places" id="places" placeholder="2 places" min="0" max="5">
+        <input type="text" name="prix" id="prix" placeholder="100 da">
+        <?php
+       
+        echo "<br><br>";
+        form_submit("Soumettre", "Soumettre", FALSE);
+        
+        echo "<br>";
+        form_fin();
+        ?>
+    </div>
 <?php
     return ob_get_clean();
 }
