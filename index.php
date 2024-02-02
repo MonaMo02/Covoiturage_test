@@ -137,7 +137,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                                     <div class="journey-info">
                                         <div class="info-section">
                                             <span class="info-label"></span>
-                                            <span class="info-value"><?php echo $row["lieu_depart"]; ?></span>
+                                            <span class="info-value"><?php echo trim(explode(",", $row["lieu_depart"])[0]);?></span>
                                         </div>
                                         <div class="info-section indexprice ">
                                             <span class="info-label"><i class="fa-solid fa-dollar-sign "></i></span>
@@ -148,7 +148,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                                     <div class="journey-info">
                                         <div class="info-section">
                                             <span class="info-label"></span>
-                                            <span class="info-value"><?php echo $row["destination"]; ?></span>
+                                            <span class="info-value"><?php echo trim(explode(",", $row["destination"])[0]); ?></span>
                                         </div>
                                     </div>
                                 </div>

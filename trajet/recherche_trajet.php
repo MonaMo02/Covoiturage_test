@@ -25,7 +25,7 @@ function formulaire() {
     * from trajet
     JOIN ville_depart ON trajet.lieu_depart = ville_depart.nom
     JOIN ville_arrivee ON trajet.destination = ville_arrivee.nom
-    WHERE trajet.effectue = 0
+    WHERE trajet.effectue = 0 and trajet.places_max > trajet.places_prises
     AND pilote_user_id !=" . $_SESSION["id"] );
 
 // Check if the query was successful
@@ -66,7 +66,7 @@ function formulaire() {
             <input type="time" id="time" required>
 
             <label for="date">Date:</label>
-            <input type="date" id="date" required>
+            <input type="date" id="date" min="yyyy-mm-dd" required>
 
             <label for="destination">Enter destination:</label>
             <input type="text" id="destination" required autocomplete="off">
@@ -78,6 +78,10 @@ function formulaire() {
 
         <div id="results-container"></div>
         <script src = "../templates/js/findtrajet.js"></script>
+        <script>
+                  document.getElementById('date').setAttribute('min', new Date().toISOString().split('T')[0]);
+                  document.getElementById('date').setAttribute('value', new Date().toISOString().split('T')[0]);
+        </script>
         
     <?php
         return ob_get_clean();
