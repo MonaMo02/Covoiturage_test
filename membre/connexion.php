@@ -25,8 +25,9 @@ if (isset($_POST['Connexion']) && $_POST['Connexion'] == 'Connexion') {
         if ($donnee[0] == 1) {
             $contenu = action(); //si oui alors on appelle la fonction action qui va initialiser les variables de session
         } else if ($donnee[0] == 0) {
-
+            
             $contenu = '<script>alert("Invalid login or password."); location.href = "connexion.php"</script>';
+
         } else {
             $contenu = "<div class='alert alert-error'>Problème dans la base de données : plusieurs membres ont les mêmes identifiants de connexion.</div>";
         }
@@ -57,7 +58,7 @@ function formulaire() {
     
     form_fin()
     ?>
-    <p style="margin-left: 180px">dont have an accounet? <a href="../inscription/inscription.php">sign up</a></p>
+    <p style="margin-left: 180px">dont have an accounet? <a href="../inscription/inscription.php">sign in</a></p>
     
     </div>
     <?php
