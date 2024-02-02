@@ -25,9 +25,19 @@ $sql2 = "SELECT count(*) FROM trajet as T, trajet_passager as TP WHERE TP.trajet
         $donnee2 = $reponse2->fetch();
 ?>
 <!-- On affiche les deux infos precedentes -->
+<div style = "display : flex;">
+<div>
 
-<h2><span class="fa-stack " style="vertical-align: middle; margin-right:15px;"><i class="fa fa-envelope-square fa-stack-2x" ></i></span>  Vous avez <?php echo $donnee[0];?> messages.</h2>
-<h2><span class="fa-stack " style="vertical-align: middle; margin-right:15px;"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-car fa-stack-1x fa-inverse"></i></span>  Vous êtes actuellement sur <?php echo $donnee2[0];?> trajets.</h2>  
+<h3><span class="fa-stack " style="vertical-align: middle; margin-right:15px;"><i class="fa fa-envelope-square fa-stack-2x" ></i></span>  Vous avez <?php echo $donnee[0];?> messages.</h3>
+<h3><span class="fa-stack " style="vertical-align: middle; margin-right:15px;"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-car fa-stack-1x fa-inverse"></i></span>  Vous êtes actuellement sur <?php echo $donnee2[0];?> trajets.</h3>  
+
+</div>
+<div>
+<img src="../28910691_7506747.svg" alt="SVG Image" width="550" height="550">
+
+</div>
+
+</div>
 <?php $contenu = ob_get_clean();
 if($_SESSION["pilote"]==TRUE){
 require '../templates/pages/gabarit_pilote.php';  //on choisit le gabarit on fonction si c'est un pilote ou passager

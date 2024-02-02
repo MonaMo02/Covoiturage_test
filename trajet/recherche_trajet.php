@@ -20,7 +20,7 @@ $contenu = formulaire();
 function formulaire() {
 
     global $bdd;
-    
+        
     $result = $bdd->query("SELECT 
     * from trajet
     JOIN ville_depart ON trajet.lieu_depart = ville_depart.nom

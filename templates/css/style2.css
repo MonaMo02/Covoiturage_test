@@ -187,8 +187,9 @@ author: bootply.com
 }
 
 
-
-
+.alert{
+    margin-top: 100px;
+}
 
 @font-face { /*ajout de la police de la baniere*/
     font-family: "Dolcevita";
@@ -474,6 +475,14 @@ author: bootply.com
     margin-top: 60px;
     text-align: center;
     
+}
+#hd3{
+    color: #14525c;
+    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 60px;
+    text-align: center;  
 }
 
 .notfound{
