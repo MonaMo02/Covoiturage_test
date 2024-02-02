@@ -23,29 +23,27 @@
 
     </head>
     <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="banner">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="../index.php" class="navbar-brand"><span class="logonavbar">CARPE DIEM</span></a>
-        </div>
-        <nav class="collapse navbar-collapse" role="navigation">
-           
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <p class="navbar-btn">
-                        <a href="../membre/deconnexion.php" class="btn btn-large"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
-                    </p>
-                </li>
-            </ul>
+    <nav class="navbar navbar-default navbar-fixed-top costum-navbar-style" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CARPE DIEM</span></a>
+                </div>
+                <nav class="collapse navbar-collapse innernav" role="navigation">
+
+                    <ul class="nav navbar-nav navbar-right costum-nava-style">
+                        <p class="navbar-btn costum-p-navbar-buttons">
+                            <a href="../membre/deconnexion.php" class="btn  btn-large insc-button " > Deconnexion</a>
+                        </p>
+                    </ul>
+                </nav>
+            </div>
         </nav>
-    </div>
-</nav>
 
             
 
