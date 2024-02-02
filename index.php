@@ -36,7 +36,6 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
     </head>
 
 
-
     <body>
         <nav class="navbar navbar-default navbar-fixed-top costum-navbar-style" role="banner">
             <div class="container">

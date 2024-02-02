@@ -40,7 +40,8 @@ function formulaire()
         <button title="click to get exact position" onclick="getPosAndDisplayResult()"><i class="fa-solid fa-crosshairs"></i></button>
         <div id="autocomplete-suggestions-location" ></div>
 
-        <input type="text"  id="destination" name = "destination"  placeholder="Où allez-vous?"><br>
+        <input type="text"  id="destination"  name="ville_arrivee" placeholder="Où allez-vous?"><br>
+
         <input type="hidden" id="location-lat" name="location-lat">
         <input type="hidden" id="location-lon" name="location-lon">
         <input type="hidden" id="destination-lat" name="destination-lat">
@@ -50,7 +51,7 @@ function formulaire()
         <div id="result"></div>
         <script src="../templates/js/geolocation.js"></script>
         <span style="color: red;" id="verifdate"></span>
-        <input type="time" id="heure" name ="heure" required class="datetimeTRJ">
+        <input type="time" id="heure" name="heure" required class="datetimeTRJ">
         <input type="date" name="date" id="date" required class="datetimeTRJ"><br>
         <script>
             document.getElementById('date').setAttribute('min', new Date().toISOString().split('T')[0]);

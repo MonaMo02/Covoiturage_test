@@ -20,13 +20,13 @@ $contenu = formulaire();
 function formulaire() {
 
     global $bdd;
-    
+        
     $result = $bdd->query("SELECT 
     * from trajet
     JOIN ville_depart ON trajet.lieu_depart = ville_depart.nom
     JOIN ville_arrivee ON trajet.destination = ville_arrivee.nom
     WHERE trajet.effectue = 0 and trajet.places_max > trajet.places_prises
-    AND pilote_user_id !=" . $_SESSION["id"] );
+    AND pilote_user_id !=" . $_SESSION["id"]);
 
 // Check if the query was successful
     if ($result) {
@@ -49,7 +49,9 @@ function formulaire() {
     }
     if ($data != FALSE) {
         ob_start(); ?>
-        <h1 style="margin-top:100px;" >Recherche de votre trajet</h1>
+        <h1 style="margin-top:100px; font-weight: 600;font-size: 50;color: #14525c;text-align: center;margin-bottom: 40px;" >Recherche de votre trajet</h1>
+        <div class="rechercheSub">
+
         <input type="hidden" name="db" id="db" value='<?php echo $json_data; ?>'>
         <input type="hidden" id="location-lat">
         <input type="hidden" id="location-lon">
@@ -57,32 +59,50 @@ function formulaire() {
         <input type="hidden" id="destination-lon">
 
         <!-- <pre><?php print_r($data); ?></pre> -->
-        <form onsubmit="findTrajets(); return false;">
-            <label for="location">Enter departure:</label>
-            <input type="text" id="location" required autocomplete="off">
-            <div id="autocomplete-suggestions-location"></div>
+        <div class="quick-search-form"  style="margin-top: 20px;"> 
+            <form id="searchForm"  method="POST" onsubmit="findTrajets(); return false;">
+                <input type="text" name="ville_depart" class='start input' placeholder='Depart' required  id="location"  autocomplete="off"/>                   
+                <input type="text" name="ville_arrivee" class='dest input' placeholder='Destination' required id="destination" autocomplete="off"/>
+                <input type="date"  id="date" class="date input" name="date" min="yyyy-mm-dd" placeholder="Select a date">
+                <input type="time" id="time" required>
+                <input type="number" name="nbseat" class='nbseat input' placeholder='0' min='0' max='5'/>
+                <input type="submit" value="Search" class="submit-search">
+            </form>
 
-            <label for="time">Time:</label>
-            <input type="time" id="time" required>
-
-            <label for="date">Date:</label>
-            <input type="date" id="date" min="yyyy-mm-dd" required>
-
-            <label for="destination">Enter destination:</label>
-            <input type="text" id="destination" required autocomplete="off">
+        /div>
+        
             <div id="autocomplete-suggestions-location"></div>
             <div id="autocomplete-suggestions-destination"></div>
+            
+            
+            <script>
+                document.getElementById('date').setAttribute('min', new Date().toISOString().split('T')[0]);
+                document.getElementById('date').setAttribute('value', new Date().toISOString().split('T')[0]);
 
-            <button type="submit">Find Trajets</button>
-        </form>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var locationInput = document.getElementById('location');
+                    var destinationInput = document.getElementById('destination');
+                    var suggestionsLocation = document.getElementById('autocomplete-suggestions-location');
+                    var suggestionsDestination = document.getElementById('autocomplete-suggestions-destination');
 
-        <div id="results-container"></div>
+                    locationInput.addEventListener('click', function () {
+                        suggestionsDestination.style.display = 'none';
+                        suggestionsLocation.style.display = 'block';
+                    });
+
+                    destinationInput.addEventListener('click', function () {
+                        suggestionsLocation.style.display = 'none';
+                        suggestionsDestination.style.display = 'block';
+                    });
+                });
+            </script>
+            
+            
+       
+
+        <div id="results-container" style="margin-top:200px; position: absolute; "></div>
         <script src = "../templates/js/findtrajet.js"></script>
-        <script>
-                  document.getElementById('date').setAttribute('min', new Date().toISOString().split('T')[0]);
-                  document.getElementById('date').setAttribute('value', new Date().toISOString().split('T')[0]);
-        </script>
-        
+        </div>
     <?php
         return ob_get_clean();
     } else {
