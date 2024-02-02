@@ -56,7 +56,7 @@ console.error('Error in findTrajets:', error);
 }
 
 function fetchAutocompleteSuggestions(query, inputId) {
-const apiKey = 'pk.3be9e33b005e35c714ca37c18e918f08';
+const apiKey = 'pk.b3131f0ea825db713292fcdae7328f5d';
 
 fetch(`https://us1.locationiq.com/v1/autocomplete.php?key=${apiKey}&q=${encodeURIComponent(query)}`)
 .then(response => response.json())
@@ -100,7 +100,7 @@ const precision = 7;
 
 function findNearbyPlaces(latitude, longitude, trajets, destinationInput, timeInput, dateInput) {
 // Call Nearby Places API to find nearby places around the inputted departure location
-fetch(`https://us1.locationiq.com/v1/nearby.php?key=pk.b0202a65e13c7e35245ce1f7c6c65d84&lat=${latitude}&lon=${longitude}&radius=1000`)
+fetch(`https://us1.locationiq.com/v1/nearby.php?key=pk.b3131f0ea825db713292fcdae7328f5d&lat=${latitude}&lon=${longitude}&radius=1000`)
 .then(response => response.json())
 .then(data => {
     console.log('API Response:', data);
