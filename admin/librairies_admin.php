@@ -33,7 +33,10 @@ if ($rideDataResult) {
 $labels = json_encode(array_map('strval', array_column($rideChartData, 'lieu_depart')));
 $data = json_encode(array_map('strval', array_column($rideChartData, 'ride_count')));
 
-echo "<canvas id='ridesPerCityChart' width = 100px height = 100px></canvas>
+echo "
+<div class = 'chartpercity'>
+<canvas id='ridesPerCityChart' width = 100px height = 100px></canvas>
+</div>
     <script>
         var ctx = document.getElementById('ridesPerCityChart').getContext('2d');
         var labels = " . $labels . ";

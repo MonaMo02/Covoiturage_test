@@ -36,6 +36,10 @@ margin-bottom: 20px;
 background-color: #f8f8f8;
 }
 
+.chartpercity{
+    margin-left : 30px;
+}
+
 #ridesPerCityChart {
 width: 100%;
 height: 100%;
@@ -208,42 +212,42 @@ font-size: 18px;
 }
 
 
-    .col-md-12 .col {
+    .mestrajets .col {
     flex-basis: 20%; /* Adjust the value for the desired width */
     }
     
-    .col-md-12 .col-1 {
+    .mestrajets .col-1 {
     flex-basis: 35%; /* Adjust the value for the desired width */
     }
     
-    .col-md-12 .col-2 {
+    .mestrajets .col-2 {
     flex-basis: 35%; /* Adjust the value for the desired width */
     }
     
-    .col-md-12.col-3 {
+    .mestrajets .col-3 {
     flex-basis: 20%; /* Adjust the value for the desired width */
     }
     
-    .col-md-12 .col-4 {
+    .mestrajets .col-4 {
     flex-basis: 10%; /* Adjust the value for the desired width */
     }
     
-    .col-md-12 .col-5 {
+    .mestrajets .col-5 {
     flex-basis: 15%; /* Adjust the value for the desired width */
     }
     
-    .col-md-12 .col-6 {
+    .mestrajets .col-6 {
     flex-basis: 10%; /* Adjust the value for the desired width */
     }
 
-    .col-md-12 .col-7 {
+    .mestrajets .col-7 {
         flex-basis: 5%; /* Adjust the value for the desired width */
     }
 
-    .col-md-12 .col-8 {
+    .mestrajets .col-8 {
         flex-basis: 5%; /* Adjust the value for the desired width */
     }
-    .col-md-12 .col-9 {
+    .mestrajets .col-9 {
         flex-basis: 5%; /* Adjust the value for the desired width */
     }
     
@@ -269,3 +273,47 @@ font-size: 18px;
         background-color: #438b8426;
         border-radius: 5px;
     }
+
+        .mestrajetspass .col-1 {
+        flex-basis: 50%; /* Adjust the value for the desired width */
+        }
+        
+        .mestrajetspass .col-2 {
+        flex-basis: 20%; /* Adjust the value for the desired width */
+        }
+        
+        .mestrajetspass .col-3 {
+        flex-basis: 10%; /* Adjust the value for the desired width */
+        }
+        
+        .mestrajetspass .col-4 {
+        flex-basis: 20%; /* Adjust the value for the desired width */
+        }
+        
+        .mestrajetspass .col-5 {
+        flex-basis: 15%; /* Adjust the value for the desired width */
+        }
+        
+        .mestrajetspass .col-6 {
+        flex-basis: 10%; /* Adjust the value for the desired width */
+        }
+    
+        .mestrajetspass .col-7 {
+            flex-basis: 20%; /* Adjust the value for the desired width */
+        }
+    
+        .mestrajetspass .col-8 {
+            flex-basis: 5%; /* Adjust the value for the desired width */
+        }
+        .mestrajetspass .col-9 {
+            flex-basis: 5%; /* Adjust the value for the desired width */
+        }
+
+        .custom-btn-pass{
+            font-size: 20px; /* Adjust the value for the desired size */
+        padding: 15px 20px; /* Adjust the padding for the desired size */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color : black;
+        }
