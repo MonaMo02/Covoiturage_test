@@ -15,7 +15,10 @@
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
        
+        <link href="../templates/css/adminStyle.css" rel="stylesheet">
+
         <link href="../templates/css/style2.css" rel="stylesheet">
+
 
     </head>
     <body>
@@ -63,9 +66,9 @@
 
 
     <!--main-->
-    <div class="container" >
+    <div class="container" style ="width : 100%; margin-top : 100px;">
         
-            <div class="col-md-11">
+            <div class="col-md-12">
                 <?php echo $contenu; ?>
 
             </div>

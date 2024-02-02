@@ -69,7 +69,7 @@ function formulaire() {
     
     form_fin();
     ?>
-    <p style="margin-left: 170px">already have an accounet? <a href="../membre/connexion.php">sign up</a></p>
+    <p style="margin-left: 170px">already have an accounet? <a href="../membre/connexion.php">sign in</a></p>
     </div>
     <?php
     return ob_get_clean(); //la fonction retourne tout le html qui a été mis en tampon.
@@ -110,7 +110,7 @@ function action() {
     }
     else{
         return "<div class='alert alert-success'>Inscription échouée.</div>";
-    } //on retourne que l'inscritpion a été reussi
+    } 
 }
 
 $title = "Inscription";

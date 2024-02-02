@@ -203,7 +203,7 @@ function displayResults(filteredTrajets) {
         document.getElementById('autocomplete-suggestions-location').innerHTML = '';
         document.getElementById('autocomplete-suggestions-destination').innerHTML = '';
     } else {
-        resultsContainer.innerHTML = '<p>No matching trajets found.</p>';
+        resultsContainer.innerHTML = '<div class="alert alert-danger">Aucun trajet disponible pour le moment</div>';
         document.getElementById('autocomplete-suggestions-location').innerHTML = '';
         document.getElementById('autocomplete-suggestions-destination').innerHTML = '';
     }
