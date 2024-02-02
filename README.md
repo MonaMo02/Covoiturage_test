@@ -4,9 +4,6 @@
 To build our app we chose to go the old school road. We chose to work with the technologies we are best aquainted with to deliver the best possible result. 
 As the title suggestes this website is offers a carpooling service, in which users are able to share car journeys. 
 
-## Built with 
-
-
 ## Getting started 
 
 ### Prequisits 
