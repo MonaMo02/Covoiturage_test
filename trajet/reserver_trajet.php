@@ -101,9 +101,11 @@ function formulaire() {
                                         </div>
                                         <form action="reserver_trajet.php" method="post">
                                         <input type="submit" class="resbutton" value="Reserver">
-                                        <select calss="select-places" name ="nb_places" id="nb_places" size=1 <?php foreach ($tab_places as $elem_hash) {
+                                        <input type="hidden" name="choix_trajet" value=<?php $choix_trajet;?>>
+                                        <select class="select-places" name ="nb_places" id="nb_places" size=1 <?php foreach ($tab_places as $elem_hash) {
                                         echo("<option>" . $elem_hash . "</option>"); } ?>  disabled></select>
-                                        </form>
+                                        <input type="submit" class="resbutton" value="Reserver">    
+                                    </form>
                                     </div>
                                     </div>
                                                                     
