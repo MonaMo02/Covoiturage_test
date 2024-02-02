@@ -1,8 +1,8 @@
  /* Add your custom styles here */
  .custom-card {
     /* Add styles similar to the navbar */
-    background-color: #ffffff;
-    border: 1px solid #ddd;
+    background-color: #e3eeed;
+    border: 1px solid #e3eeed;
     border-radius: 5px;
     /* padding: 15px; */
     margin-bottom: 20px;
@@ -33,7 +33,7 @@ margin-left: 5px;
 border: 1px solid #ddd;
 padding: 20px;
 margin-bottom: 20px;
-background-color: #f8f8f8;
+background-color: #e3eeed;
 }
 
 .chartpercity{
