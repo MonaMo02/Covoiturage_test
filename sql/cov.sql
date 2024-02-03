@@ -63,25 +63,6 @@ CREATE TABLE `user` (
 --
 
 CREATE TABLE `pilote` (
-<<<<<<< Updated upstream
-  `pilote_user_id` int(11) NOT NULL,
-  `voiture_id` int(11) NOT NULL,
-  `voiture_marque` varchar(45) NOT NULL,
-  `voiture_annee` int(11) NOT NULL,
-  `voiture_modele` varchar(45) NOT NULL,
-  `voiture_couleur` varchar(45) NOT NULL,
-  `photo` longtext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `pilote`
---
-
-INSERT INTO `pilote` (`pilote_user_id`, `voiture_id`, `voiture_marque`, `voiture_annee`, `voiture_modele`, `voiture_couleur`, `photo`) VALUES
-(36, 1, 'lambo', 2050, 'idk', 'red', '../photo_voiture/azerty.jpg');
-
--- --------------------------------------------------------
-=======
   pilote_user_id INTEGER primary key,
   voiture_id INTEGER NOT NULL, 
   voiture_marque VARCHAR(45) NOT NULL,
@@ -94,18 +75,13 @@ INSERT INTO `pilote` (`pilote_user_id`, `voiture_id`, `voiture_marque`, `voiture
     REFERENCES user (id)
     ON DELETE NO ACTION 
   )
->>>>>>> Stashed changes
 
 --
 -- Structure de la table `trajet`
 --
 
 CREATE TABLE `trajet` (
-<<<<<<< Updated upstream
-  `id` int(11) NOT NULL,
-=======
   `id` int NOT NULL PRIMARY KEY,
->>>>>>> Stashed changes
   `lieu_depart` varchar(200) NOT NULL,
   `destination` varchar(200) NOT NULL,
   `places_max` int NOT NULL,
@@ -118,33 +94,12 @@ CREATE TABLE `trajet` (
 )
 
 
-<<<<<<< Updated upstream
-INSERT INTO `trajet` (`id`, `lieu_depart`, `destination`, `places_max`, `places_prises`, `date`, `pilote_user_id`, `heure_dep`, `prix`, `effectue`) VALUES
-(2, 'CNAS - CASNOS - CAMSP, Boulevard Kara Rezzik, Bab Ezzouar, Alger, 16042, Algérie', 'Château Saint Anton, 2A, Paseo Alcalde Francisco Vázquez, A Mestranza, Vieille Ville, La Corogne, La Corogne, Galice, 15001, Espagne', 3, 2, '2024-01-01', 31, '12:00', 100, 0),
-(3, 'Société générale Algérie, 1, Rue Rezig Kadda, Cité EPLF, cité Smail Yefsah 2068 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16042, Algérie', 'Château Saint Anton, 2A, Paseo Alcalde Francisco Vázquez, A Mestranza, Vieille Ville, La Corogne, La Corogne, Galice, 15001, Espagne', 3, 3, '2024-01-31', 36, '21:00', 200, 1),
-(4, 'Bab Ezzouar, Algiers, Algeria', 'Château Saint Anton, 2A, Paseo Alcalde Francisco Vázquez, A Mestranza, Vieille Ville, La Corogne, La Corogne, Galice, 15001, Espagne', 22, 0, '2024-01-01', 31, '12:00', 232, 0),
-(5, 'Cité Universitaire pour filles Baya Hocine (CUB4), Cité Smail Yefsah, Cité EPLF, Cité 324 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16033, Algérie', 'Château Saint Anton, 2A, Paseo Alcalde Francisco Vázquez, A Mestranza, Vieille Ville, La Corogne, La Corogne, Galice, 15001, Espagne', 2, 0, '2024-01-31', 31, '19:00', 100, 0),
-(6, 'Cité Universitaire pour filles Baya Hocine (CUB4), Boulevard Kada Rezig, Cité EPLF, Cité 324 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16033, Algérie', 'Musée archéologique et historique - Château Saint Anton, 2A, Paseo Alcalde Francisco Vázquez, A Mestranza, Vieille Ville, La Corogne, La Corogne, Galice, 15001, Espagne', 3, 0, '2024-01-05', 36, '10:00', 32, 0),
-(8, 'Cité Universitaire pour filles Baya Hocine (CUB4), Boulevard Kada Rezig, Cité EPLF, Cité 324 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16033, Algérie', 'Hôtel Sheraton Oran, Boulevard du 19 Mars, Cité Seddikia, Oran, Daïra Oran, Oran, 31025, Algérie', 2, 0, '2024-01-31', 36, '21:00', 222, 0),
-(10, 'Cité Universitaire pour filles Baya Hocine (CUB4), Cité Smail Yefsah, Cité EPLF, Cité 324 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16033, Algérie', 'Rio de Janeiro, Região Metropolitana do Rio de Janeiro, Rio de Janeiro, Brésil', 23, 0, '2024-01-10', 36, '12:05', 22, 0),
-(12, 'Tram :Université de Bab Ezzouar (USTHB), Rue Amar El Adlani, Cité EPLF, cité Smail Yefsah 2068 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16042, Algérie', 'Hôtel Sheraton Oran, Boulevard du 19 Mars, Cité Seddikia, Oran, Daïra Oran, Oran, 31025, Algérie', 31, 0, '2024-01-05', 36, '12:00', 3213, 0);
-
--- --------------------------------------------------------
-=======
->>>>>>> Stashed changes
 
 --
 -- Structure de la table `trajet_passager`
 --
 
 CREATE TABLE `trajet_passager` (
-<<<<<<< Updated upstream
-  `id_reserv` int(11) NOT NULL,
-  `trajet_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `nb_places` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-=======
   `trajet_id` int NOT NULL,
   `user_id` int NOT NULL,
   `position` varchar(45) NOT NULL,
@@ -152,7 +107,6 @@ CREATE TABLE `trajet_passager` (
   `proximité` decimal(10,0) NOT NULL,
   constraint pk_tp primary key (trajet_id,user_id)
 ) 
->>>>>>> Stashed changes
 
 --
 -- Déchargement des données de la table `trajet_passager`
@@ -191,38 +145,6 @@ CREATE TABLE `transaction` (
 
 
 
-<<<<<<< Updated upstream
---
--- Déchargement des données de la table `user`
---
-
-INSERT INTO `user` (`id`, `password`, `login`, `nom`, `prenom`, `email`, `num_tel`, `matricule`, `compte`) VALUES
-(1, '33ab50d3b65184d0bfb5dad05bdbe109', 'Florian', 'Culie', 'Florian', 'florian.culie@utt.fr', '0667856578', '1919078654', NULL),
-(2, '64a43b6ca15d128ac6a0679b39bc9c07', 'patel', 'Patelli', 'Alexandre', 'alexandre.patelli@utt.fr', '0768946578', '2121078654', NULL),
-(3, 'b50c7ccad3f17803d32f7892c3eca7fa', 'roiloth', 'Rollin', 'Francois', 'francois_rollin@laposte.net', '0563354378', '2020794354', NULL),
-(4, 'b282869b01636acd9846eeb06728f9f2', 'kaamelott', 'Astier', 'Alexandre', 'alexandre.astier@wanadoo.com', '0664548490', '1919310985', NULL),
-(5, '993614ef6850173f7f372d227a98532b', 'petitpedestre', 'Astier', 'Simon', 'simon-astier@wanadoo.com', '0654749248', '1919320578', NULL),
-(6, 'dc6420a6744bf33b7e52ab5e076d6c0f', 'mouallez', 'Lescure', 'Pierre', 'pierre.lescure@free.fr', '0665984535', '2121350785', NULL),
-(7, '9d6a586365f6047f187922e42f7012cc', 'chatonbleu', 'Justin', 'Julie', 'lamideschatons@gmail.com', '0676362610', '1919310857', NULL),
-(8, 'd6ba0682d75eb986237fb6b594f8a31f', 'joey', 'Leblanc', 'Matt', 'matt_leblanc@sfr.com', '0553768690', '2222318690', NULL),
-(9, 'b7e1509f89fb4e58f750856a642f6e98', 'mamar', 'Tnani', 'Aymar', 'aymar.tnani@utt.fr', '0768983823', '2020359890', NULL),
-(10, '931ed1920da0c0aab4cb7088ecf3d804', 'robyneterie', 'Roby', 'Maxime', 'roby.maxime@gmail.com', '0676369278', '1919378796', NULL),
-(26, 'dc6420a6744bf33b7e52ab5e076d6c0f', 'mouallez', 'Lescure', 'Pierre', 'pierre.lescure@free.fr', '0665984535', '2121350785', NULL),
-(27, '9d6a586365f6047f187922e42f7012cc', 'chatonbleu', 'Justin', 'Julie', 'lamideschatons@gmail.com', '0676362610', '1919310857', NULL),
-(28, 'd6ba0682d75eb986237fb6b594f8a31f', 'joey', 'Leblanc', 'Matt', 'matt_leblanc@sfr.com', '0553768690', '2222318690', NULL),
-(29, 'b7e1509f89fb4e58f750856a642f6e98', 'mamar', 'Tnani', 'Aymar', 'aymar.tnani@utt.fr', '0768983823', '2020359890', NULL),
-(30, '931ed1920da0c0aab4cb7088ecf3d804', 'robyneterie', 'Roby', 'Maxime', 'roby.maxime@gmail.com', '0676369278', '1919378796', NULL),
-(31, '202cb962ac59075b964b07152d234b70', 'chaitaroo', 'fodil cherif chaima', 'chaima', 'eylarichi@gmail.com', '+336720722', '12345263', 0),
-(32, '202cb962ac59075b964b07152d234b70', 'pow', 'pow', 'bbies', 'powbbies@gmail.com', '+213672072', '120031694', 0),
-(33, '202cb962ac59075b964b07152d234b70', 'ab', 'ma', 'chai', 'azrailkaya15@gmail.com', '+213672072', '12348569', 0),
-(34, '202cb962ac59075b964b07152d234b70', 'mouna', 'mouna', 'test', 'leo1t7vargas@hotmail.com', '123456789', '12564874', 0),
-(35, 'c3e878e27f52e2a57ace4d9a76fd9acf', 'test', 'test', 'tt', 'vvvv@gmail.com', '632165436', '6532106884', 0),
-(36, '202cb962ac59075b964b07152d234b70', 'azerty', 'test', 'tttt', 'ztet@gmail.com', '65421514', '5463169794', 0),
-(37, '202cb962ac59075b964b07152d234b70', 'qq', 'qq', 'azertyu', 'cdge@gmail.com', '6326565', '6416345195', 0);
-
--- --------------------------------------------------------
-=======
->>>>>>> Stashed changes
 
 --
 -- Structure de la table `ville_arrivee`
@@ -234,22 +156,6 @@ CREATE TABLE `ville_arrivee` (
   `destinationlon` varchar(30) NOT NULL
 )
 
-<<<<<<< Updated upstream
---
--- Déchargement des données de la table `ville_arrivee`
---
-
-INSERT INTO `ville_arrivee` (`nom`, `destinationlat`, `destinationlon`) VALUES
-('Château Saint Anton, 2A, Paseo Alcalde Francisco Vázquez, A Mestranza, Vieille Ville, La Corogne, La Corogne, Galice, 15001, Espagne', '43.36568965', ' -8.387522781184902'),
-('G2000, G-122, Jalan Cassia Barat 2, Bandar Cassia, Batu Kawan, South Seberang Perai District, Penang, 14110, Malaisie', '5.243625', '100.43661595'),
-('Hôtel Sheraton Oran, Boulevard du 19 Mars, Cité Seddikia, Oran, Daïra Oran, Oran, 31025, Algérie', '35.7152294', '-0.60999985'),
-('Musée archéologique et historique - Château Saint Anton, 2A, Paseo Alcalde Francisco Vázquez, A Mestranza, Vieille Ville, La Corogne, La Corogne, Galice, 15001, Espagne', '43.3659398', '-8.38875594'),
-('Rio de Janeiro, Região Metropolitana do Rio de Janeiro, Rio de Janeiro, Brésil', '-22.9110137', '-43.2093727'),
-('Université des Sciences et de la Technologie Houari Boumediene, Boulevard de l\'Université, Cité EPLF, cité Smail Yefsah 2068 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16042, Algérie', '36.7121202', '3.18107897');
-
--- --------------------------------------------------------
-=======
->>>>>>> Stashed changes
 
 --
 -- Structure de la table `ville_depart`
@@ -261,84 +167,37 @@ CREATE TABLE `ville_depart` (
   `locationlon` varchar(30) NOT NULL
 )
 
-<<<<<<< Updated upstream
---
--- Déchargement des données de la table `ville_depart`
---
-
-INSERT INTO `ville_depart` (`nom`, `locationlat`, `locationlon`) VALUES
-('Bab Ezzouar, Algiers, Algeria', '36.714081', '3.188828'),
-('Binarytech, Boulevard Kara Rezzik, Bab Ezzouar, Alger, 16042, Algérie', '36.7159845', '3.1879194'),
-('Cité Universitaire pour filles Baya Hocine (CUB4), Boulevard Kada Rezig, Cité EPLF, Cité 324 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16033, Algérie', '36.71314365', '3.1892323871532398'),
-('Cité Universitaire pour filles Baya Hocine (CUB4), Cité Smail Yefsah, Cité EPLF, Cité 324 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16033, Algérie', '36.71314365', '3.1892323871532398'),
-('CNAS - CASNOS - CAMSP, Boulevard Kara Rezzik, Bab Ezzouar, Alger, 16042, Algérie', '36.716109', '3.1872579'),
-('Ga-Mohlala, Makhuduthamaga Local Municipality, Sekhukhune District Municipality, Limpopo, 1124, Afrique du Sud', '-24.73539055', '30.01166138'),
-('H&M, Avenue Jean-Léon Laporte, Labourd, Hardoy, Anglet, Pyrénées-Atlantiques, Nouvelle-Aquitaine, 64600, France', '43.487275', '-1.4998228'),
-('Mil Mi-8 „Hip“, Museumsstraße, Finowfurt, Barnim, Brandebourg, 16244, Allemagne', '52.8340172', '13.6773371'),
-('Société générale Algérie, 1, Rue Rezig Kadda, Cité EPLF, cité Smail Yefsah 2068 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16042, Algérie', '36.7148763', '3.1891634'),
-('Tram :Université de Bab Ezzouar (USTHB), Rue Amar El Adlani, Cité EPLF, cité Smail Yefsah 2068 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16042, Algérie', '36.7211427', '3.1794155');
-
---
--- Index pour les tables déchargées
---
-=======
->>>>>>> Stashed changes
 
 --
 -- Index pour la table `evaluation`
 --
 ALTER TABLE `evaluation`
-<<<<<<< Updated upstream
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_evaluateur` (`evaluateur_user_id`),
-  ADD KEY `fk_evalue` (`evalue_user_id`),
-  ADD KEY `fk_trajet_id` (`trajet_id`);
-=======
   ADD FOREIGN KEY `fk_evaluateur` (`evaluateur_user_id`) REFERENCES user (`id`),
   ADD FOREIGN KEY `fk_evalue` (`evalue_user_id`) REFERENCES user (`id`),
   ADD FOREIGN KEY `fk_trajet_id` (`trajet_id`) REFERENCES trajet (`id`);
->>>>>>> Stashed changes
 
 --
 -- Index pour la table `messagerie`
 --
 ALTER TABLE `messagerie`
-<<<<<<< Updated upstream
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_expediteur` (`expediteur_user_id`),
-  ADD KEY `fk_destinataire` (`destinataire_user_id`);
+  ADD FOREIGN KEY `fk_expediteur` (`expediteur_user_id`) REFERENCES user (`id`),
+  ADD FOREIGN KEY `fk_destinataire` (`destinataire_user_id`) REFERENCES user (`id`);
 
---
--- Index pour la table `pilote`
---
-ALTER TABLE `pilote`
-  ADD PRIMARY KEY (`voiture_id`),
-  ADD KEY `pilote_user_id` (`pilote_user_id`);
-=======
-  ADD FOREIGN KEY `fk_expediteur` (`expediteur_user_id`),
-  ADD FOREIGN KEY `fk_destinataire` (`destinataire_user_id`);
-
->>>>>>> Stashed changes
 
 --
 -- Index pour la table `trajet`
+
 --
 ALTER TABLE `trajet`
-  ADD constraint foreign KEY `fk_depart` (`lieu_depart`) references ville_depart(nom) on delete no action,
- ADD constraint foreign KEY `fk_destination` (`destination`) references ville_arivee(nom) on delete no action;
+  ADD constraint foreign KEY `fk_depart` (`lieu_depart`) references `ville_depart` (nom) on delete no action,
+  ADD constraint foreign KEY `fk_destination` (`destination`) references `ville_arivee` (nom) on delete no action;
 
 --
 -- Index pour la table `trajet_passager`
 --
 ALTER TABLE `trajet_passager`
-<<<<<<< Updated upstream
-  ADD PRIMARY KEY (`id_reserv`),
-  ADD KEY `fk_trajet` (`trajet_id`),
-  ADD KEY `fk_user` (`user_id`);
-=======
   ADD constraint foreign KEY `fk_psgr_trajet_user` (`user_id`) references user(`id`) on delete no action,
   ADD constraint foreign KEY `fk_pos_ville` (`position`) references ville_depart(`nom`) on delete no action;
->>>>>>> Stashed changes
 
 
 
@@ -364,17 +223,7 @@ ALTER TABLE `pilote`
 -- AUTO_INCREMENT pour la table `trajet`
 --
 ALTER TABLE `trajet`
-<<<<<<< Updated upstream
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT pour la table `trajet_passager`
---
-ALTER TABLE `trajet_passager`
-  MODIFY `id_reserv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-=======
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
->>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT pour la table `transaction`
@@ -386,11 +235,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-<<<<<<< Updated upstream
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-=======
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
->>>>>>> Stashed changes
 
 --
 -- Contraintes pour les tables déchargées
