@@ -124,7 +124,7 @@ while ($tab_res = $reponse->fetch()) {
 
         echo "<div class='col col-6'><table>";
         while ($pilote = $reponse_pilote->fetch()) {
-            echo "<tr><td><a href='../membre/profil.php?login=" . $pilote["login"] . "'>" . $pilote["nom"] . "</a></td><td>" . $pilote["prenom"] . "</td></tr>";
+            echo "<tr><td>" . $pilote["nom"] . "</td><td>" . $pilote["prenom"] . "</td></tr>";
         }
         echo "</table></div>";
 

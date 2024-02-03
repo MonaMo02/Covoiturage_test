@@ -40,41 +40,58 @@ function formulaire() {
     $donnee = $reponse->fetch();
     ob_start();
     ?>
-    <h1>Reserver votre trajet</h1>
+    <h1 id="hd3" >Reserver votre trajet</h1>
     
     
     <?php
     if ($donnee ==true) {
     //on affiche les informations du trajet
-    echo"<div class='panel panel-success'>";
-    echo"<div class='panel-heading'>";
-    
-    echo"<b>Ville de départ : </b> ".$donnee["lieu_depart"]." - <b>Ville d'arrivée : </b>".$donnee["destination"];
+    ?>    
+                           <div class='journey-container'>
+                            <div class="journey-item" style="height: 190px;">                            
+                                <i class="fa-solid fa-location-pin tp"></i>
+                                <div class='line'>
+                                    <div class="journey-info">
+                                        <div class="info-section">
+                                            <span class="info-label"></span>
+                                            <span class="info-value"><?php echo trim(explode(",", $donnee["lieu_depart"])[0]);?></span>
+                                        </div>
+                                        <div class="info-section indexprice ">
+                                            <span class="info-label"><i class="fa-solid fa-dollar-sign "></i></span>
+                                            <span class="info-value prix"><?php echo $donnee["prix"]; ?></span>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="journey-info">
+                                        <div class="info-section">
+                                            <span class="info-label"></span>
+                                            <span class="info-value"><?php echo trim(explode(",", $donnee["destination"])[0]); ?></span>
+                                        </div>
+                                    </div>
+                                </div>
 
-    echo"</div>";
-    echo "<div class='panel-body'>";
-
-    echo" Pilote : ".$donnee["prenom"]." ".$donnee["nom"];
+                                <i class="fa-solid fa-location-pin btm"></i>
+                                
+                                <div class="divider"></div> 
+                                    <img width="70px" style=" border-radius: 50px; margin-left:5px; margin-top:-10px; position:absolute;" src="templates/image/driver.jpg" alt="">
+                                    
+                                    <div class="pilote-info">            
+                                        <span class="pilote-name"><?php echo $donnee["prenom"]." ".$donnee["nom"]; ?></span> <br>
+                                        <span class="car-value"><?php echo $donnee["voiture_marque"]." ".$donnee["voiture_modele"]; ?></span>
+                                    </div>
+                                    <?php    
+                                    form_debut("form", "POST", "reserver_trajet.php");
+                                    //on limite le nombre de places à celle disponible en soustrayant le nombre de places max par le nombre de places prises
+                                    $tab_places = range(1, $donnee["places_max"] - $donnee["places_prises"]);
+                                    form_select("nb_places", FALSE,1, $tab_places);
+                                    form_hidden("choix_trajet",$choix_trajet);//on garde en memoire l'id du trajet par un champ hidden
+                                    ?>                            
+                                    <input type="submit" name="Reservation" value="Reservation" class="resbutton">
+                            </div> <!-- journey items -->
+                        </div> <!-- journey container -->
+                             
         
-    echo"  <a href='../membre/profil.php?username=".$donnee["login"]."' class='btn btn-primary pull-right'>Son profil</a></br>";
-    echo "Voiture : ".$donnee["voiture_marque"]." ".$donnee["voiture_modele"];
-
-        echo"</div>";
-    echo "</div>";
         
-        
-        
-        
-        
-    form_debut("form", "POST", "reserver_trajet.php");
-    form_label("Nombre de places");
-    //on limite le nombre de places à celle disponible en soustrayant le nombre de places max par le nombre de places prises
-    $tab_places = range(1, $donnee["places_max"] - $donnee["places_prises"]);
-    form_select("nb_places", FALSE,1, $tab_places);
-    form_hidden("choix_trajet",$choix_trajet);//on garde en memoire l'id du trajet par un champ hidden
-    form_submit("Reservation", "Reservation", FALSE);
-    form_fin();
-    ?>
     <?php
     return ob_get_clean();
     }else {
