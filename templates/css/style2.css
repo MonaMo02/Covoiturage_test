@@ -480,6 +480,18 @@ th,
     font-size: 20px;
 }
 
+.resPage .indexprice  {
+    position: absolute;
+    margin-left: 360px;
+    
+}
+
+.resPage .indexprice  {
+    position: absolute;
+    margin-left: 360px;
+    
+}
+
 .prix {
     color: #000000;
     font-size: 18p;
@@ -592,18 +604,56 @@ th,
 
 
 }
-select[multiple], select[size] {
-    height: auto;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #eee;
-    background-color: #14525c;
-    margin-left: 16px;
-width: 37px;}
-.resbutton:hover {
-    background-color: #438b84;
 
+
+.resPage .resbutton {
+    /* position: absolute; */
+    height: 45px;
+    width: 130px;
+    background-color: #14525c;
+    border: 0;
+    color: #eee;
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 82%;
+
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.nbs button{
+    display: flex;
+    background-color: #97b3b7;
+    border: 0 solid;
+    border-radius: 8px;
+}
+.nbs  select[multiple], .nbs  select[size] {
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white; 
+    background-color: #97b3b7;
+    padding-top: 5px;
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border: 0 solid;
+}
+.nbs img{
+    margin-top: 8px;
+    margin-left: 8px;
+}
+.nbs{
+    position: absolute;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 644px;
+}
+.resPage select[multiple]:hover ,  .resPage select[size]:hover {
+    color: white;
+}
+.resbutton:hover {
+    background-color: rgb(19, 66, 73);
 }
 
 .connection {

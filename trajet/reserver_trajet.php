@@ -42,6 +42,8 @@ function formulaire() {
     ?>
     <h1 id="hd3" >Reserver votre trajet</h1>
     
+    <div class="resPage">
+
     
     <?php
     if ($donnee ==true) {
@@ -60,7 +62,27 @@ function formulaire() {
                                             <span class="info-label"><i class="fa-solid fa-dollar-sign "></i></span>
                                             <span class="info-value prix"><?php echo $donnee["prix"]; ?></span>
                                         </div>
+                                        <br>
+                                        
+                                                                  
+                                    
                                     </div>
+                                    <div class="nbs">
+                                        <button>
+                                        <img src="../templates/image/car-seat.png" width="25px" height="25px" alt="">
+                                        <?php    
+                                        form_debut("form", "POST", "reserver_trajet.php");
+                                        //on limite le nombre de places à celle disponible en soustrayant le nombre de places max par le nombre de places prises
+                                        $tab_places = range(1, $donnee["places_max"] - $donnee["places_prises"]);
+                                        form_select("nb_places", FALSE,1, $tab_places);
+                                        form_hidden("choix_trajet",$choix_trajet);//on garde en memoire l'id du trajet par un champ hidden
+                                        ?>  
+                                        </button>
+                                    
+                                       
+
+                                    </div>
+                                    
                                 
                                     <div class="journey-info">
                                         <div class="info-section">
@@ -73,23 +95,17 @@ function formulaire() {
                                 <i class="fa-solid fa-location-pin btm"></i>
                                 
                                 <div class="divider"></div> 
-                                    <img width="70px" style=" border-radius: 50px; margin-left:5px; margin-top:-10px; position:absolute;" src="templates/image/driver.jpg" alt="">
+                                    <img width="70px" style=" border-radius: 50px; margin-left:5px; margin-top:-10px; position:absolute;" src="../templates/image/driver.jpg" alt="">
                                     
                                     <div class="pilote-info">            
                                         <span class="pilote-name"><?php echo $donnee["prenom"]." ".$donnee["nom"]; ?></span> <br>
                                         <span class="car-value"><?php echo $donnee["voiture_marque"]." ".$donnee["voiture_modele"]; ?></span>
                                     </div>
-                                    <?php    
-                                    form_debut("form", "POST", "reserver_trajet.php");
-                                    //on limite le nombre de places à celle disponible en soustrayant le nombre de places max par le nombre de places prises
-                                    $tab_places = range(1, $donnee["places_max"] - $donnee["places_prises"]);
-                                    form_select("nb_places", FALSE,1, $tab_places);
-                                    form_hidden("choix_trajet",$choix_trajet);//on garde en memoire l'id du trajet par un champ hidden
-                                    ?>                            
+                                                               
                                     <input type="submit" name="Reservation" value="Reservation" class="resbutton">
                             </div> <!-- journey items -->
                         </div> <!-- journey container -->
-                             
+                        </div>
         
         
     <?php
