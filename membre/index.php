@@ -13,9 +13,11 @@ session_start(); //on demarre la session
 if (isset($_SESSION['login'])) { //on verifie que l'utilisateur est bien connecté
 ob_start();
 ?>
-
+<div style="position:absolute;margin-left:500px;margin-top:100px" >
+        <img  src="../28910691_7506747.svg" alt="SVG Image" width="650" >
+</div>
         
-<h1 >Bienvenue <?php echo$_SESSION['prenom']." ".$_SESSION['nom'];?></h1>
+<h1 style="margin-top:200px; font-weight: 600; font-size: 50;color: #14525c;" >Bienvenue <?php echo$_SESSION['prenom']." ".$_SESSION['nom'];?></h1>
 <?php 
 $sql = "SELECT count(*) FROM messagerie WHERE destinataire_user_id=".$_SESSION['id']; //on recuêre le nombre de message recu par l'utilisateur
         $reponse = $bdd->query($sql);
@@ -29,13 +31,10 @@ $sql2 = "SELECT count(*) FROM trajet as T, trajet_passager as TP WHERE TP.trajet
 <div>
 
 <h3><span class="fa-stack " style="vertical-align: middle; margin-right:15px;"><i class="fa fa-envelope-square fa-stack-2x" ></i></span>  Vous avez <?php echo $donnee[0];?> messages.</h3>
-<h3><span class="fa-stack " style="vertical-align: middle; margin-right:15px;"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-car fa-stack-1x fa-inverse"></i></span>  Vous êtes actuellement sur <?php echo $donnee2[0];?> trajets.</h3>  
+<h3><span class="fa-stack " style="vertical-align: middle; margin-right:15px; padding:5px"><i  class="fa fa-square fa-stack-2x"></i><i class="fa fa-car fa-stack-1x fa-inverse"></i></span>  Vous êtes actuellement sur <?php echo $donnee2[0];?> trajets.</h3>  
 
 </div>
-<div>
-<img src="../28910691_7506747.svg" alt="SVG Image" width="550" height="550">
 
-</div>
 
 </div>
 <?php $contenu = ob_get_clean();

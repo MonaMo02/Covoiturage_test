@@ -34,7 +34,7 @@ if ($_SESSION["pilote"]) {
     } else {
         // Display the pilot's trips
         echo "
-        <div class = 'mestrajets'>
+        <div class = 'mestrajets' style='width:1145px'>
         <h1 style='margin-top:100px'>Mes trajets en tant que pilote :</h1> ";
 
         // Display trips as a list
