@@ -33,9 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Display the fetched results in HTML format
     if ($stmt->rowCount() > 0) {
-   
-        echo " <div class='journey-container'>";
         echo " <h3 id='hd2'>Resultat de recherche</h3>";
+        echo " <div class='journey-container'>";
+        
         foreach ($results as $row) {
             ?>
             <div class="journey-item">                            
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="journey-info">
                         <div class="info-section">
                             <span class="info-label"></span>
-                            <span class="info-value"><?php echo $row["lieu_depart"]; ?></span>
+                            <span class="info-value"><?php echo trim(explode(",", $row["lieu_depart"])[0]); ?></span>
                         </div>
                         <div class="info-section">
                             <span class="info-label"><i class="fa-solid fa-dollar-sign"></i></span>
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="journey-info">
                         <div class="info-section">
                             <span class="info-label"></span>
-                            <span class="info-value"><?php echo $row["lieu_arrivee"]; ?></span>
+                            <span class="info-value"><?php echo trim(explode(",", $row["destination"])[0]); ?></span>
                         </div>
                         <!-- Add other details here -->
                     </div>

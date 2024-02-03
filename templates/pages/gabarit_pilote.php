@@ -16,8 +16,9 @@
         <!--[if lt IE 9]>
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="../templates/css/style2.css" rel="stylesheet">
         <link href="../templates/css/adminStyle.css" rel="stylesheet">
+
+        <link href="../templates/css/style2.css" rel="stylesheet">
 
 
     </head>
@@ -31,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="../index.php" class="navbar-brand"><span class = "logonavbar">CARPE DIEM</span></a>
+                    <a href="../index.php" class="navbar-brand"><span class = "logonavbar">Carfetch</span></a>
                 </div>
                 <nav class="collapse navbar-collapse" role="navigation">
                     <ul class="nav navbar-nav">

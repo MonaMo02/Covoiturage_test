@@ -36,7 +36,6 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
     </head>
 
 
-
     <body>
         <nav class="navbar navbar-default navbar-fixed-top costum-navbar-style" role="banner">
             <div class="container">
@@ -47,7 +46,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CARPE DIEM</span></a>
+                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CARFETCH</span></a>
                 </div>
                 <nav class="collapse navbar-collapse innernav" role="navigation">
 
@@ -137,7 +136,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                                     <div class="journey-info">
                                         <div class="info-section">
                                             <span class="info-label"></span>
-                                            <span class="info-value"><?php echo $row["lieu_depart"]; ?></span>
+                                            <span class="info-value"><?php echo trim(explode(",", $row["lieu_depart"])[0]);?></span>
                                         </div>
                                         <div class="info-section indexprice ">
                                             <span class="info-label"><i class="fa-solid fa-dollar-sign "></i></span>
@@ -148,7 +147,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                                     <div class="journey-info">
                                         <div class="info-section">
                                             <span class="info-label"></span>
-                                            <span class="info-value"><?php echo $row["destination"]; ?></span>
+                                            <span class="info-value"><?php echo trim(explode(",", $row["destination"])[0]); ?></span>
                                         </div>
                                     </div>
                                 </div>

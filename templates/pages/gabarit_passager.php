@@ -22,7 +22,8 @@
 
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top" role="banner">
+
+        <nav class="navbar navbar-default navbar-fixed-top costum-navbar-style" role="banner">
             <div class="container">
                 <div class="navbar-header">
                     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -31,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="../index.php" class="navbar-brand"><span class = "logonavbar">CARPE DIEM</span></a>
+                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CarFetch</span></a>
                 </div>
                 <nav class="collapse navbar-collapse" role="navigation">
                     <ul class="nav navbar-nav">
@@ -62,7 +63,6 @@
                 </nav>
             </div>
         </nav>
-
 
 
     <!--main-->
