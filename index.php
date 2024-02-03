@@ -21,7 +21,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
         <title>Bienvenue</title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="icon" type="image/png" href="covoiturage.png" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="favicon.ico" /><![endif]-->
         <link href="templates/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -184,7 +184,90 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                 
             </div> <!--  quick search form -->
         </div> <!--  containerbody-->
-      
+        
+<section class="sec-2">
+	<div class="container">
+                <br>
+		<h3 class="heading-2">Ce Que Nous Offrons</h3>
+		<br>
+        <br>
+		<br>
+		<div class="col3">
+			<div class="box">
+                        <i class="fa fa-lightbulb-o icon-1"></i>
+			<h3>Simplicité</h3>
+			<p>Une plateforme conçue pour une expérience fluide, de l'inscription à la recherche de trajets. </p>
+			</div>
+		</div>
+		<div class="col3">
+			<div class="box">
+                        <i class="fa fa-shield icon-1"></i>
+			<h3>Confiance</h3>
+			<p>La sécurité de nos membres est primordiale, avec des mesures rigoureuses pour garantir la fiabilité et la confiance. </p>
+			</div>
+		</div>
+		<div class="col3">
+			<div class="box">
+                        <i class="fa fa-money icon-1"></i>
+			<h3>Économies</h3>
+			<p>Covoiturez avec CarFetch pour des trajets plus abordables et écologiques.</p>
+			</div>
+		</div>
+		<div class="col3">
+                <div class="box">
+                <i class="fa fa-users icon-1"></i>
+                        <h3>Communauté</h3>
+                        <p>Rejoignez une communauté dynamique de covoitureurs partageant les mêmes valeurs et contribuez à créer des liens durables.</p>
+                </div>
+                </div>
+
+		
+
+	</div>
+</section>	
+
+<hr>
+<section class="sec-3">
+	<br>
+	<div class="container">
+		<h2 class="heading-3">About us</h2>
+		
+		
+		<br>
+		<div class="col6">
+			<p class="p3">
+                                Nous croyons en la puissance du covoiturage pour transformer nos déplacements quotidiens.
+                                Fondée avec une passion pour l'efficacité, l'économie collaborative et la réduction de l'empreinte carbone,
+                                notre plateforme vise à connecter les personnes partageant les mêmes trajets, rendant le covoiturage accessible à tous.<br>
+                                <b>Notre Vision :</b> <br>
+                                Créer une communauté de covoitureurs engagée, réduisant la congestion routière,
+                                les émissions de carbone et renforçant les liens entre les membres.
+                                Nous aspirons à faciliter des voyages durables, économiques et conviviaux pour tous.<br>
+                                <b>Notre Équipe :</b> <br>
+                                Une équipe passionnée dédiée à faire du covoiturage une expérience exceptionnelle.
+                                Chacun de nous croit que chaque trajet partagé fait une différence.
+                                Rejoignez-nous dans notre mission pour rendre le covoiturage accessible,
+                                 convivial et bénéfique pour tous. Ensemble, créons un avenir où chaque trajet compte.<br>
+                                <b>Bienvenue à bord !</b><br><br>
+                                <b>L'équipe FeTech.</b>
+
+			</p>
+			<br>
+			
+		</div>
+		<div class="col6">
+			<img src="./5421477.jpg" style="width: 100%; margin-top: -100px;margin-left:80px">
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</section>
+<hr>
+<section class="end">
+        <h3>Created By <span>FeTech Group</span> | All Rights Reserved</h3>
+</section>
+
+
+ 
     
     <!-- script references -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>

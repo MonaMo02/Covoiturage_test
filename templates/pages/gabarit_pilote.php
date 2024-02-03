@@ -6,7 +6,7 @@
         <title><?php echo $title; ?></title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="icon" type="image/png" href="../favicon.png" />
+        <link rel="icon" type="image/png" href="../covoiturage.png" />
         <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" /><![endif]-->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link href="../templates/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 
     </head>
     <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="banner" style="background-color:white; height:50px;">
+    <nav class="navbar navbar-default navbar-fixed-top costum-navbar-style " role="banner" style="background-color:white;">
             <div class="container">
                 <div class="navbar-header">
                     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,10 +32,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="../index.php" class="navbar-brand"><span class = "logonavbar">CARPE DIEM</span></a>
+                    <a href="../index.php" class="navbar-brand"><span class = "logonavbar">CarFetch</span></a>
                 </div>
-                <nav class="collapse navbar-collapse" role="navigation">
-                    <ul class="nav navbar-nav">
+                <nav class="collapse navbar-collapse innernav" role="navigation">
+                    <ul class="nav navbar-nav costum-nava-style ">
                         <li>
                             <a href="../membre/profil.php">Profil</a>
                         </li>
@@ -58,7 +58,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <p class="navbar-btn">
-                            <a href="../membre/deconnexion.php" class="btn btn-large"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
+                            <a href="../membre/deconnexion.php" class="btn btn-large disc-button  "><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
                         </p>
                     </ul>
                 </nav>
