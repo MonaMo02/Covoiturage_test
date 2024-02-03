@@ -43,7 +43,7 @@ function action() {
     ":date" => $_POST["date"],
     ":heure_dep" => $_POST["heure"],
     ":prix" => $_POST["prix"],
-    ":trajet_id" => $_POST["trajet_id"], // The ID of the trip we're modifying
+    ":trajet_id" => $_POST["modif"], // The ID of the trip we're modifying
     ":pilote_user_id" => $_SESSION["id"] // Assuming the user must be the original pilot of the trip to modify it
     ));
 
