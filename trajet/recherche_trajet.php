@@ -20,6 +20,9 @@ $contenu = formulaire();
 function formulaire() {
 
     global $bdd;
+
+
+    
         
     $result = $bdd->query("SELECT 
     * from trajet
@@ -98,7 +101,9 @@ function formulaire() {
             
        
 
-        <div id="results-container" style="margin-top:200px; position: absolute; "></div>
+        <div id="results-container" style="margin-top:50px;  margin-left : 150px ;max-width: 800px;">
+    
+        </div>
         <script src = "../templates/js/findtrajet.js"></script>
         </div>
     <?php

@@ -33,7 +33,7 @@ document.getElementById('destination').addEventListener('input', function () {
 });
 
 function fetchAutocompleteSuggestions(query, inputId) {
-const apiKey = 'pk.b3131f0ea825db713292fcdae7328f5d';//INSEREZ VOTRE PROPRE APIKEY ICI 
+const apiKey = 'pk.3be9e33b005e35c714ca37c18e918f08';//INSEREZ VOTRE PROPRE APIKEY ICI 
 
 fetch(`https://us1.locationiq.com/v1/autocomplete.php?key=${apiKey}&q=${encodeURIComponent(query)}`)
 .then(response => response.json())

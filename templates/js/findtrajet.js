@@ -56,7 +56,7 @@ console.error('Error in findTrajets:', error);
 }
 
 function fetchAutocompleteSuggestions(query, inputId) {
-const apiKey = 'pk.b3131f0ea825db713292fcdae7328f5d';//INSEREZ VOTRE PROPRE APIKEY ICI 
+const apiKey = 'pk.3be9e33b005e35c714ca37c18e918f08';//INSEREZ VOTRE PROPRE APIKEY ICI 
 
 fetch(`https://us1.locationiq.com/v1/autocomplete.php?key=${apiKey}&q=${encodeURIComponent(query)}`)
 .then(response => response.json())
@@ -177,29 +177,83 @@ function displayResults(filteredTrajets) {
     resultsContainer.innerHTML = '';
 
     if (filteredTrajets.length > 0) {
-        const ul = document.createElement('ul');
+        const div = document.createElement('div');
+        div.className = 'journey-container';
 
         filteredTrajets.forEach(trajet => {
-            const li = document.createElement('li');
-            const destinationInfo = `choix_trajet=${encodeURIComponent(trajet.id)}&depart=${encodeURIComponent(trajet.lieu_depart)}&destination=${encodeURIComponent(trajet.destination)}&date=${encodeURIComponent(trajet.date)}&time=${encodeURIComponent(trajet.heure_dep)}&idtrajet=${encodeURIComponent(trajet.id)}`;
+            const journeyItem = document.createElement('div');
+            journeyItem.className = 'journey-item';
 
-// Create a clickable link
-            const link = document.createElement('a');
-            link.href = `reserver_trajet.php?${destinationInfo}`;
-            // link.textContent = "Click to reserve";
-                link.textContent =`depart:${trajet.lieu_depart}\n
-                                destination:${trajet.destination}\n
-                                date:${trajet.date}\n
-                                trajet:${trajet.heure_dep}\n
-                                        `
+            // Location Pin
+            const locationPinTop = document.createElement('i');
+            locationPinTop.className = 'fa-solid fa-location-pin tp';
+            const locationPinBottom = document.createElement('i');
+            locationPinBottom.className = 'fa-solid fa-location-pin btm';
 
-            // Append the link to the list item
-            li.appendChild(link);
+            // Journey Info
+            const journeyInfo = document.createElement('div');
+            journeyInfo.className = 'line journey-info';
 
-            ul.appendChild(li);
+            // Info Section 1
+            const infoSection1 = document.createElement('div');
+            infoSection1.className = 'info-section';
+
+            const infoLabel1 = document.createElement('span');
+            infoLabel1.className = 'info-label';
+            const infoValue1 = document.createElement('span');
+            infoValue1.className = 'info-value';
+            infoValue1.textContent = trimLocation(trajet.lieu_depart);
+
+            // Info Section 2
+            const infoSection3 = document.createElement('div');
+            infoSection3.className = 'info-section indexprice';
+
+            const infoLabel3 = document.createElement('span');
+            infoLabel3.className = 'info-label';
+            const infoValue3 = document.createElement('span');
+            infoValue3.className = 'info-value prix';
+            infoValue3.textContent = trajet.prix;
+
+            // Info Section 3
+            const infoSection2 = document.createElement('div');
+            infoSection2.className = 'info-section';
+
+            const infoLabel2 = document.createElement('span');
+            infoLabel2.className = 'info-label';
+            const infoValue2 = document.createElement('span');
+            infoValue2.className = 'info-value';
+            infoValue2.textContent = trimLocation(trajet.destination);
+
+            // Reserver Button
+            const resButton = document.createElement('input');
+            resButton.type = 'button';
+            resButton.className = 'resbutton';
+            resButton.value = 'Reserver';
+            resButton.onclick = () => redirectToReserver(trajet); // Pass trajet as an argument
+
+
+            // Append elements to the DOM
+            infoSection1.appendChild(infoLabel1);
+            infoSection1.appendChild(infoValue1);
+            infoSection2.appendChild(infoLabel2);
+            infoSection2.appendChild(infoValue2);
+            infoSection3.appendChild(infoLabel3);
+            infoSection3.appendChild(infoValue3);
+
+            journeyInfo.appendChild(infoSection1);
+            journeyInfo.appendChild(infoSection2);
+            journeyInfo.appendChild(infoSection3);
+
+            journeyItem.appendChild(locationPinTop);
+            journeyItem.appendChild(journeyInfo);
+            journeyItem.appendChild(locationPinBottom);
+            journeyItem.appendChild(document.createElement('div')); // Divider
+            journeyItem.appendChild(resButton);
+
+            div.appendChild(journeyItem);
         });
 
-        resultsContainer.appendChild(ul);
+        resultsContainer.appendChild(div);
         document.getElementById('autocomplete-suggestions-location').innerHTML = '';
         document.getElementById('autocomplete-suggestions-destination').innerHTML = '';
     } else {
@@ -209,3 +263,11 @@ function displayResults(filteredTrajets) {
     }
 }
 
+function trimLocation(location) {
+    return location.split(",").slice(0, 2).join(",");
+}
+
+function redirectToReserver(trajet) {
+    const destinationInfo = `choix_trajet=${encodeURIComponent(trajet.id)}&depart=${encodeURIComponent(trajet.lieu_depart)}&destination=${encodeURIComponent(trajet.destination)}&date=${encodeURIComponent(trajet.date)}&time=${encodeURIComponent(trajet.heure_dep)}&idtrajet=${encodeURIComponent(trajet.id)}`;
+    window.location.href = `../trajet/reserver_trajet.php?${destinationInfo}`;
+}
