@@ -437,7 +437,13 @@ th,
     color: rgb(190, 0, 0);
 }
 
-
+.journey-container-find{
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    display: block;
+}
 
 
 .journey-container {

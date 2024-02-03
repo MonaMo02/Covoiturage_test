@@ -178,7 +178,7 @@ function displayResults(filteredTrajets) {
 
     if (filteredTrajets.length > 0) {
         const div = document.createElement('div');
-        div.className = 'journey-container';
+        div.className = 'journey-container-find';
 
         filteredTrajets.forEach(trajet => {
             const journeyItem = document.createElement('div');
@@ -231,6 +231,7 @@ function displayResults(filteredTrajets) {
             resButton.value = 'Reserver';
             resButton.onclick = () => redirectToReserver(trajet); // Pass trajet as an argument
 
+            const lineBreak = document.createElement('hr');
 
             // Append elements to the DOM
             infoSection1.appendChild(infoLabel1);
@@ -251,9 +252,14 @@ function displayResults(filteredTrajets) {
             journeyItem.appendChild(resButton);
 
             div.appendChild(journeyItem);
+            div.appendChild(lineBreak);
+
+        
         });
 
         resultsContainer.appendChild(div);
+        div.appendChild(lineBreak);
+
         document.getElementById('autocomplete-suggestions-location').innerHTML = '';
         document.getElementById('autocomplete-suggestions-destination').innerHTML = '';
     } else {
