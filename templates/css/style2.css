@@ -1121,8 +1121,8 @@ th,
     text-align: center;
 }
 
-#location,
-#destination {
+.publier_trajet #location,
+.publier_trajet #destination {
     height: 70px;
     width: 450px;
     background-color: #e3eeed;
@@ -1455,10 +1455,6 @@ th,
 .rechercheSub{
     
 }
-
-
-*{margin: 0px; padding: 0px; font-family: system-ui;}
-
 
 
 .col2{width: 20%;float: left;}
