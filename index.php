@@ -26,7 +26,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
         <link href="templates/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
                 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+        <!--[endif]-->
         <script src="https://kit.fontawesome.com/e3b74a388e.js" crossorigin="anonymous"></script>
         <!-- <link href="templates/css/styles.css" rel="stylesheet"> -->
         <link href="./templates/css/style2.css" rel="stylesheet">
