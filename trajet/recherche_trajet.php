@@ -69,8 +69,6 @@ function formulaire() {
                 <input type="submit" value="Search" class="submit-search">
             </form>
 
-        </div>
-        
             <div id="autocomplete-suggestions-location"></div>
             <div id="autocomplete-suggestions-destination"></div>
             

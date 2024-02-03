@@ -26,6 +26,7 @@
     </head>
     <body>
        
+
         <nav class="navbar navbar-default navbar-fixed-top costum-navbar-style" role="banner">
             <div class="container">
                 <div class="navbar-header">

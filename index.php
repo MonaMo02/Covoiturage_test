@@ -46,7 +46,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CARPE DIEM</span></a>
+                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CARFETCH</span></a>
                 </div>
                 <nav class="collapse navbar-collapse innernav" role="navigation">
 

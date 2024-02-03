@@ -6,9 +6,9 @@
  */
 
 
-require'../config/BDD.php';
+require '../config/BDD.php';
 $bdd = getBdd();
-require'../config/formulaire.php';      //voir inscription.php
+require '../config/formulaire.php';      //voir inscription.php
 require '../config/droits.php';
 
 test_pilote();
@@ -40,8 +40,7 @@ function formulaire()
         <button title="click to get exact position" onclick="getPosAndDisplayResult()"><i class="fa-solid fa-crosshairs"></i></button>
         <div id="autocomplete-suggestions-location" ></div>
 
-        <input type="text"  id="destination"  name="ville_arrivee" placeholder="Où allez-vous?"><br>
-
+        <input type="text"  id="destination" name='ville_arrivee' placeholder="Où allez-vous?"><br>
         <input type="hidden" id="location-lat" name="location-lat">
         <input type="hidden" id="location-lon" name="location-lon">
         <input type="hidden" id="destination-lat" name="destination-lat">
@@ -117,10 +116,10 @@ function action()
     ));
 
     if($result){
-        return "<div class='alert alert-success'>Votre trajet a bien été enregistré.</div>";
+        return "<div style='margin-top=100px;' class='alert alert-success'>Votre trajet a bien été enregistré.</div>";
     }
     else{
-        return "<div class='alert alert-success'>RIDE NOT ADDED </div>";
+        return "<div style='margin-top=100px;' class='alert alert-success'>RIDE NOT ADDED </div>";
 
     }
 

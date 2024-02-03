@@ -95,20 +95,21 @@ $nb_trajet = $rep_nb_trajet->fetch();
 if ($nb_trajet[0] == '0') {
     echo "<br><br><div class='alert '>Vous n'êtes actuellement inscrit pour aucun trajet, rendez-vous dans la section \"Rechercher un trajet\"</div>";
 } else {
-    echo "<div class ='mestrajetspass'><h1>Mes trajets en tant que passager : </h1>";
+    echo "<div class ='mestrajetspass'>
+    <h1>Mes trajets en tant que passager : </h1>";
     echo "<p>";
-    echo "<div class='container mestrajetspass'>";
+    echo "<div class='container'>";
     echo "<ul class='responsive-table'>";
     echo "<li class='table-header'>";
-    echo "<div class='col col-1'>Départ</div>";
-    echo "<div class='col col-2'>Arrivée</div>";
-    echo "<div class='col col-3'>Disponibilite</div>";
-    echo "<div class='col col-4'>Date</div>";
-    echo "<div class='col col-5'>Heure</div>";
-    echo "<div class='col col-6'>Prix</div>";
-    echo "<div class='col col-7'>Pilote</div>";
-    echo "<div class='col col-8'></div>";
-    echo "<div class='col col-9'></div>";
+    echo "<div class='col pcol-1'>Départ</div>";
+    echo "<div class='col pcol-2'>Arrivée</div>";
+    echo "<div class='col pcol-3'>Disponibilite</div>";
+    echo "<div class='col pcol-4'>Date</div>";
+    echo "<div class='col pcol-5'>Heure</div>";
+    echo "<div class='col pcol-6'>Prix</div>";
+    echo "<div class='col pcol-7'>Pilote</div>";
+    echo "<div class='col pcol-8'></div>";
+    echo "<div class='col pcol-9'></div>";
     echo "</li>";
 
     $reponse = $bdd->query("SELECT * FROM user as U, trajet_passager as TP, trajet as T WHERE TP.trajet_id = T.id and TP.user_id = ".$_SESSION["id"]." AND T.pilote_user_id = U.id");
@@ -119,18 +120,18 @@ if ($nb_trajet[0] == '0') {
 
         if ($nombre == 0) {
             echo "<li class='table-row'>";
-            echo "<div class='col col-1' data-label='Départ'>" . $donnee["lieu_depart"] . "</div>";
-            echo "<div class='col col-2' data-label='Arrivée'>" . $donnee["destination"] . "</div>";
-            echo "<div class='col col-3' data-label='Places prises '>" . $donnee["nb_places"] . "/" . $donnee["places_max"] . "</div>";
-            echo "<div class='col col-4' data-label='Date'>" . $donnee["date"] . "</div>";
-            echo "<div class='col col-5' data-label='Heure'>" . $donnee["heure_dep"] . "</div>";
-            echo "<div class='col col-6' data-label='Prix'>" . $donnee["prix"] . "</div>";
-            echo "<div class='col col-7' data-label='Pilote'>" . $donnee["prenom"] . " " . $donnee["nom"] . "</div>";
-            echo '<div class="col col-8"><form action="../membre/envoyer_message.php" method="post">';
+            echo "<div class='col pcol-1' data-label='Départ'>" . $donnee["lieu_depart"] . "</div>";
+            echo "<div class='col pcol-2' data-label='Arrivée'>" . $donnee["destination"] . "</div>";
+            echo "<div class='col pcol-3' data-label='Places prises '>" . $donnee["nb_places"] . "/" . $donnee["places_max"] . "</div>";
+            echo "<div class='col pcol-4' data-label='Date'>" . $donnee["date"] . "</div>";
+            echo "<div class='col pcol-5' data-label='Heure'>" . $donnee["heure_dep"] . "</div>";
+            echo "<div class='col pcol-6' data-label='Prix'>" . $donnee["prix"] . "</div>";
+            echo "<div class='col pcol-7' data-label='Pilote'>" . $donnee["prenom"] . " " . $donnee["nom"] . "</div>";
+            echo '<div class="col pcol-8"><form action="../membre/envoyer_message.php" method="post">';
             echo "<button type='submit' name='destinataire' class='btn  custom-btn-pass' value='" . $donnee["login"] . "'>
             <i class='fa-solid fa-message' style = 'color : black;'></i>                    
             </button></form>
-            <div class='col col-9'>
+            <div class='col pcol-9'>
             <form action='../membre/fiche_eval.php' method='post'>
             <button type='submit' " . disabled(!$donnee['effectue']) . " name='evaluer' class='btn  custom-btn-pass' value='" . $donnee["id"] . "'>
             <i class='fa-solid fa-comment-medical' style ='color : black;'></i>
