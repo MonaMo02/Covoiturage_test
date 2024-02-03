@@ -32,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CARFETCH</span></a>
+                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CarFetch</span></a>
                 </div>
                 <nav class="collapse navbar-collapse innernav" role="navigation">
 
