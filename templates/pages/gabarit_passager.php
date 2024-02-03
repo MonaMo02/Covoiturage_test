@@ -22,47 +22,6 @@
 
     </head>
     <body>
-        <!-- <nav class="navbar navbar-default navbar-fixed-top" role="banner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="../index.php" class="navbar-brand"><span class = "logonavbar">CARPE DIEM</span></a>
-                </div>
-                <nav class="collapse navbar-collapse" role="navigation">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="../membre/profil.php">Profil</a>
-                        </li>
-                        <li>
-                            <a href="../membre/mon_compte.php">Mes comptes</a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Messagerie<b class="caret"></b></a>
-                            <ul class="dropdown-menu" style="background-color:white;">
-                                <li><a href="../membre/mes_messages.php">Mes Messages</a></li>
-                                <li><a href="../membre/envoyer_message.php">Nouveau message</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="../trajet/mes_trajets.php">Mes trajets</a>
-                        </li>
-                        <li><a href="../trajet/recherche_trajet.php">Rechercher un trajet</a></li>
-                        <li><a href="../inscription/inscription_voiture.php">Enregistrer Voiture</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <p class="navbar-btn">
-                            <a href="../membre/deconnexion.php" class="btn btn-large"><i class="glyphicon glyphicon-off"></i> Deconnexion</a>
-                        </p>
-                    </ul>
-                </nav>
-            </div>
-        </nav> -->
-
 
         <nav class="navbar navbar-default navbar-fixed-top costum-navbar-style" role="banner">
             <div class="container">
@@ -73,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CARPE DIEM</span></a>
+                    <a href="#" class="navbar-brand innernav"><span class = "logonavbar">CarFetch</span></a>
                 </div>
                 <nav class="collapse navbar-collapse" role="navigation">
                     <ul class="nav navbar-nav">
