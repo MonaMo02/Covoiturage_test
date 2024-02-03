@@ -553,7 +553,7 @@ th,
     margin-bottom: 20px;
     font-size: 26px;
     font-weight: 600;
-    margin-top: 60px;
+    margin-top: 90px;
     text-align: center;  
 }
 
@@ -592,7 +592,15 @@ th,
 
 
 }
-
+select[multiple], select[size] {
+    height: auto;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #eee;
+    background-color: #14525c;
+    margin-left: 16px;
+width: 37px;}
 .resbutton:hover {
     background-color: #438b84;
 
@@ -1554,7 +1562,6 @@ th,
 
 
 .end{
-    margin-left: 5%;
     margin-top: 10px;
     text-align: center;
 }
