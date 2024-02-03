@@ -256,7 +256,7 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
 			
 		</div>
 		<div class="col6">
-			<img src="./5421477.jpg" style="width: 100%; margin-top: -100px;margin-left:80px">
+			<img src="./templates/image/5421477.jpg" style="width: 100%; margin-top: -100px;margin-left:80px">
 		</div>
 		<div class="clearfix"></div>
 	</div>
