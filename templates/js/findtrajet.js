@@ -182,7 +182,7 @@ function displayResults(filteredTrajets) {
 
         filteredTrajets.forEach(trajet => {
             const journeyItem = document.createElement('div');
-            journeyItem.className = 'journey-item';
+            journeyItem.className = 'journey-item-find';
 
             // Location Pin
             const locationPinTop = document.createElement('i');
@@ -192,7 +192,7 @@ function displayResults(filteredTrajets) {
 
             // Journey Info
             const journeyInfo = document.createElement('div');
-            journeyInfo.className = 'line journey-info';
+            journeyInfo.className = 'line journey-info-find';
 
             // Info Section 1
             const infoSection1 = document.createElement('div');
@@ -206,7 +206,7 @@ function displayResults(filteredTrajets) {
 
             // Info Section 2
             const infoSection3 = document.createElement('div');
-            infoSection3.className = 'info-section indexprice';
+            infoSection3.className = 'info-section-prix indexprice';
 
             const infoLabel3 = document.createElement('span');
             infoLabel3.className = 'info-label';
@@ -217,6 +217,7 @@ function displayResults(filteredTrajets) {
             // Info Section 3
             const infoSection2 = document.createElement('div');
             infoSection2.className = 'info-section';
+            infoSection2.style.marginTop="20px";
 
             const infoLabel2 = document.createElement('span');
             infoLabel2.className = 'info-label';
@@ -227,7 +228,7 @@ function displayResults(filteredTrajets) {
             // Reserver Button
             const resButton = document.createElement('input');
             resButton.type = 'button';
-            resButton.className = 'resbutton';
+            resButton.className = 'resbutton-find';
             resButton.value = 'Reserver';
             resButton.onclick = () => redirectToReserver(trajet); // Pass trajet as an argument
 

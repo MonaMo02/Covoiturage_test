@@ -101,7 +101,7 @@ function formulaire() {
             
        
 
-        <div id="results-container" style="margin-top:50px;  margin-left : 150px ;max-width: 800px;">
+        <div id="results-container" style="margin-top:50px;  margin-left : 250px ;max-width: 800px;">
     
         </div>
         <script src = "../templates/js/findtrajet.js"></script>
