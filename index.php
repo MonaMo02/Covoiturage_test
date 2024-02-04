@@ -78,6 +78,13 @@ if (isset($_SESSION['login'])) {          //si c'est un membre qui est connecté
                     document.getElementById('myDate').setAttribute('min', new Date().toISOString().split('T')[0]);
                     document.getElementById('myDate').setAttribute('value', new Date().toISOString().split('T')[0]);
 
+                    // const currentDate = new Date();
+                    // const dateString = currentDate.toISOString().split('T')[0];
+                    // const firstTwoStrings = dateString.split('-').slice(0, 3).join(',');
+
+                    // document.getElementById('myDate').setAttribute('min', firstTwoStrings);
+                    // document.getElementById('myDate').setAttribute('value', firstTwoStrings);
+
  
                     $(document).ready(function() {
                         $('#searchForm').submit(function(event) {

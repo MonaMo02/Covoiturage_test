@@ -470,12 +470,14 @@ th,
 
 }
 
+
+
+
 .journey-info {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
     text-align: left;
-
 
 }
 
@@ -529,6 +531,7 @@ th,
 .info-section {
     flex: 1;
 }
+
 
 .info-label {
     font-weight: bold;

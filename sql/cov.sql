@@ -57,20 +57,6 @@ CREATE TABLE `messagerie` (
 --
 
 CREATE TABLE `pilote` (
-<<<<<<< HEAD
-  pilote_user_id INTEGER primary key,
-  voiture_id INTEGER NOT NULL, 
-  voiture_marque VARCHAR(45) NOT NULL,
-  voiture_annee INTEGER NOT NULL,
-  voiture_modele VARCHAR(45) NOT NULL,
-  voiture_couleur VARCHAR(45) NOT NULL,
-  photo LONGTEXT NULL,
-  CONSTRAINT fk_pilote_user
-    FOREIGN KEY (pilote_user_id)
-    REFERENCES user (id)
-    ON DELETE NO ACTION 
-  )
-=======
   `pilote_user_id` int(11) NOT NULL,
   `voiture_id` int(11) NOT NULL,
   `voiture_marque` varchar(45) NOT NULL,
@@ -88,18 +74,13 @@ INSERT INTO `pilote` (`pilote_user_id`, `voiture_id`, `voiture_marque`, `voiture
 (36, 1, 'lambo', 2050, 'idk', 'red', '../photo_voiture/azerty.jpg');
 
 -- --------------------------------------------------------
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Structure de la table `trajet`
 --
 
 CREATE TABLE `trajet` (
-<<<<<<< HEAD
-  `id` int NOT NULL PRIMARY KEY,
-=======
   `id` int(11) NOT NULL,
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
   `lieu_depart` varchar(200) NOT NULL,
   `destination` varchar(200) NOT NULL,
   `places_max` int(11) NOT NULL,
@@ -115,8 +96,6 @@ CREATE TABLE `trajet` (
 -- Déchargement des données de la table `trajet`
 --
 
-<<<<<<< HEAD
-=======
 INSERT INTO `trajet` (`id`, `lieu_depart`, `destination`, `places_max`, `places_prises`, `date`, `pilote_user_id`, `heure_dep`, `prix`, `effectue`) VALUES
 (2, 'CNAS - CASNOS - CAMSP, Boulevard Kara Rezzik, Bab Ezzouar, Alger, 16042, Algérie', 'Château Saint Anton, 2A, Paseo Alcalde Francisco Vázquez, A Mestranza, Vieille Ville, La Corogne, La Corogne, Galice, 15001, Espagne', 3, 2, '2024-01-01', 31, '12:00', 100, 0),
 (3, 'Société générale Algérie, 1, Rue Rezig Kadda, Cité EPLF, cité Smail Yefsah 2068 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16042, Algérie', 'Château Saint Anton, 2A, Paseo Alcalde Francisco Vázquez, A Mestranza, Vieille Ville, La Corogne, La Corogne, Galice, 15001, Espagne', 3, 3, '2024-01-31', 36, '21:00', 200, 1),
@@ -128,28 +107,17 @@ INSERT INTO `trajet` (`id`, `lieu_depart`, `destination`, `places_max`, `places_
 (12, 'Tram :Université de Bab Ezzouar (USTHB), Rue Amar El Adlani, Cité EPLF, cité Smail Yefsah 2068 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16042, Algérie', 'Hôtel Sheraton Oran, Boulevard du 19 Mars, Cité Seddikia, Oran, Daïra Oran, Oran, 31025, Algérie', 31, 0, '2024-01-05', 36, '12:00', 3213, 0);
 
 -- --------------------------------------------------------
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Structure de la table `trajet_passager`
 --
 
 CREATE TABLE `trajet_passager` (
-<<<<<<< HEAD
-  `trajet_id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `position` varchar(45) NOT NULL,
-  `nb_places` int NOT NULL,
-  `proximité` decimal(10,0) NOT NULL,
-  constraint pk_tp primary key (trajet_id,user_id)
-) 
-=======
   `id_reserv` int(11) NOT NULL,
   `trajet_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `nb_places` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Déchargement des données de la table `trajet_passager`
@@ -202,8 +170,6 @@ CREATE TABLE `user` (
   `compte` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Déchargement des données de la table `user`
 --
@@ -233,7 +199,6 @@ INSERT INTO `user` (`id`, `password`, `login`, `nom`, `prenom`, `email`, `num_te
 (37, '202cb962ac59075b964b07152d234b70', 'qq', 'qq', 'azertyu', 'cdge@gmail.com', '6326565', '6416345195', 0);
 
 -- --------------------------------------------------------
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Structure de la table `ville_arrivee`
@@ -245,8 +210,6 @@ CREATE TABLE `ville_arrivee` (
   `destinationlon` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Déchargement des données de la table `ville_arrivee`
 --
@@ -260,7 +223,6 @@ INSERT INTO `ville_arrivee` (`nom`, `destinationlat`, `destinationlon`) VALUES
 ('Université des Sciences et de la Technologie Houari Boumediene, Boulevard de l\'Université, Cité EPLF, cité Smail Yefsah 2068 lgts, Bab Ezzouar, Daïra Dar el-Beïda, Alger, 16042, Algérie', '36.7121202', '3.18107897');
 
 -- --------------------------------------------------------
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Structure de la table `ville_depart`
@@ -272,8 +234,6 @@ CREATE TABLE `ville_depart` (
   `locationlon` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Déchargement des données de la table `ville_depart`
 --
@@ -293,32 +253,20 @@ INSERT INTO `ville_depart` (`nom`, `locationlat`, `locationlon`) VALUES
 --
 -- Index pour les tables déchargées
 --
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Index pour la table `evaluation`
 --
 ALTER TABLE `evaluation`
-<<<<<<< HEAD
-  ADD FOREIGN KEY `fk_evaluateur` (`evaluateur_user_id`) REFERENCES user (`id`),
-  ADD FOREIGN KEY `fk_evalue` (`evalue_user_id`) REFERENCES user (`id`),
-  ADD FOREIGN KEY `fk_trajet_id` (`trajet_id`) REFERENCES trajet (`id`);
-=======
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_evaluateur` (`evaluateur_user_id`),
   ADD KEY `fk_evalue` (`evalue_user_id`),
   ADD KEY `fk_trajet_id` (`trajet_id`);
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Index pour la table `messagerie`
 --
 ALTER TABLE `messagerie`
-<<<<<<< HEAD
-  ADD FOREIGN KEY `fk_expediteur` (`expediteur_user_id`) REFERENCES user (`id`),
-  ADD FOREIGN KEY `fk_destinataire` (`destinataire_user_id`) REFERENCES user (`id`);
-
-=======
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_expediteur` (`expediteur_user_id`),
   ADD KEY `fk_destinataire` (`destinataire_user_id`);
@@ -329,34 +277,23 @@ ALTER TABLE `messagerie`
 ALTER TABLE `pilote`
   ADD PRIMARY KEY (`voiture_id`),
   ADD KEY `pilote_user_id` (`pilote_user_id`);
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Index pour la table `trajet`
 
 --
 ALTER TABLE `trajet`
-<<<<<<< HEAD
-  ADD constraint foreign KEY `fk_depart` (`lieu_depart`) references `ville_depart` (nom) on delete no action,
-  ADD constraint foreign KEY `fk_destination` (`destination`) references `ville_arivee` (nom) on delete no action;
-=======
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_depart` (`lieu_depart`),
   ADD KEY `fk_destination` (`destination`);
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Index pour la table `trajet_passager`
 --
 ALTER TABLE `trajet_passager`
-<<<<<<< HEAD
-  ADD constraint foreign KEY `fk_psgr_trajet_user` (`user_id`) references user(`id`) on delete no action,
-  ADD constraint foreign KEY `fk_pos_ville` (`position`) references ville_depart(`nom`) on delete no action;
-=======
   ADD PRIMARY KEY (`id_reserv`),
   ADD KEY `fk_trajet` (`trajet_id`),
   ADD KEY `fk_user` (`user_id`);
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Index pour la table `transaction`
@@ -410,9 +347,6 @@ ALTER TABLE `pilote`
 -- AUTO_INCREMENT pour la table `trajet`
 --
 ALTER TABLE `trajet`
-<<<<<<< HEAD
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
@@ -420,7 +354,6 @@ ALTER TABLE `trajet`
 --
 ALTER TABLE `trajet_passager`
   MODIFY `id_reserv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- AUTO_INCREMENT pour la table `transaction`
@@ -432,11 +365,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-<<<<<<< HEAD
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
->>>>>>> c986bdb87f12fe33914897ccc209490d64f36180
 
 --
 -- Contraintes pour les tables déchargées

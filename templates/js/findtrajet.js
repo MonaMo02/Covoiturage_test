@@ -56,7 +56,7 @@ console.error('Error in findTrajets:', error);
 }
 
 function fetchAutocompleteSuggestions(query, inputId) {
-const apiKey = 'pk.3be9e33b005e35c714ca37c18e918f08';//INSEREZ VOTRE PROPRE APIKEY ICI 
+const apiKey = 'pk.3be9e33b005e35c714ca37c18e918f08';  /*****INSEREZ VOTRE PROPRE APIKEY ICI*****/
 
 fetch(`https://us1.locationiq.com/v1/autocomplete.php?key=${apiKey}&q=${encodeURIComponent(query)}`)
 .then(response => response.json())
@@ -192,7 +192,7 @@ function displayResults(filteredTrajets) {
 
             // Journey Info
             const journeyInfo = document.createElement('div');
-            journeyInfo.className = 'line journey-info';
+            journeyInfo.className = ' journey-info-find';
 
             // Info Section 1
             const infoSection1 = document.createElement('div');
