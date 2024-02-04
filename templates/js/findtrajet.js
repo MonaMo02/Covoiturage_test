@@ -184,6 +184,7 @@ function displayResults(filteredTrajets) {
             const journeyItem = document.createElement('div');
             journeyItem.className = 'journey-item-find';
 
+
             // Location Pin
             const locationPinTop = document.createElement('i');
             locationPinTop.className = 'fa-solid fa-location-pin tp';

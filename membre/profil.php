@@ -78,7 +78,11 @@ $exist=1;
 ?>
 
 <div class="car"> 
-  <h2>Vehicule</h2>           
+  <h2>Vehicule</h2>      
+  <div class="profileImg">
+              <img class="img-thumbnail" style="-webkit-user-select:none; 
+              display:block; margin:auto; width:200px;" src="<?php echo $donnee2["photo"]; ?>">
+    </div>     
   <div class="carInfo"> 
     <form  method="post" action="update_profile.php">
         <label for="marque">Marque :  </label><input type="text" name="marque" id="marque" value=<?php echo ucfirst(strtolower($donnee2["voiture_marque"])); ?>  onchange=verifmarque()> <br>
@@ -87,6 +91,8 @@ $exist=1;
         <label for="voiture_couleur">Couleur : </label><input type="text" name="voiture_couleur" id="voiture_couleur" value=<?php echo ucfirst(strtolower($donnee2["voiture_couleur"])); ?> disabled onchange=verifcouleur()> <br>
         <input type="submit" name="savecar" class="savecar" value="Save"  style="visibility: hidden;">
     </form>
+
+    
   </div> 
   <div class="carButtons">
       <input type="button" class="enablecar" value="Modifier les informations de la vehicule" onclick="enableEditcar()"> 

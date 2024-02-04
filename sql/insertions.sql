@@ -1,15 +1,15 @@
----------------pwd for users is 123*************************************
+
 INSERT INTO `user` (`id`, `password`, `login`, `nom`, `prenom`, `email`, `num_tel`, `matricule`, `compte`) VALUES
-(26, '64a43b6ca15d128ac6a0679b39bc9c0', 'chai', 'fodil cherif', 'chaima', 'azrailkaya15@gmail.com', '0667856578', '202032050043', NULL),
-(27, '64a43b6ca15d128ac6a0679b39bc9c07', 'mouna', 'Djaraoui', 'mouna', 'mounaa.dj@yahoo.com', '0768946578', '2121078654', NULL),
-(28, '64a43b6ca15d128ac6a0679b39bc9c0', 'leila', 'alouache', 'leila', 'leilaaaAloua@hotmail.net', '0563354378', '2020794354', NULL),
-(29, '64a43b6ca15d128ac6a0679b39bc9c0', 'Douaa', 'kadem', 'douaa', 'kadem.douaa.usthb@gmail.com', '0664548490', '1919310985', NULL),
-(30, '64a43b6ca15d128ac6a0679b39bc9c0', 'yasmina', 'sad', 'yasmina', 'Sad.yasmina.com', '0654749248', '1919320578', NULL),
-(31, '64a43b6ca15d128ac6a0679b39bc9c0', 'meriem', 'latif', 'meriem', 'meriemlatif@gmail.com', '0654749248', '2020320578', NULL),
-(32, '64a43b6ca15d128ac6a0679b39bc9c0', 'ab_yasmine', 'aboura', 'yasmine', 'aboura2002@gmail.com', '0654749246', '1919320359', NULL),
-(33, '64a43b6ca15d128ac6a0679b39bc9c0', 'kamilia', 'mazzouz', 'kamilia', 'kamz555@yahoo.com', '0654749257', '1919320167', NULL),
-(35, '64a43b6ca15d128ac6a0679b39bc9c0', 'thanaa', 'djemmal', 'thanaa', 'sumo.2002@gmail.com', '0654749246', '1919320646', NULL),
-(36, '64a43b6ca15d128ac6a0679b39bc9c0', 'lyna', 'atal', 'lyna', 'lyna222@gmail.com', '0654749276', '1919320349', NULL);
+(26, '202cb962ac59075b964b07152d234b70', 'chai', 'fodil cherif', 'chaima', 'azrailkaya15@gmail.com', '0667856578', '202032050043', NULL),
+(27, '202cb962ac59075b964b07152d234b70', 'mouna', 'Djaraoui', 'mouna', 'mounaa.dj@yahoo.com', '0768946578', '2121078654', NULL),
+(28, '202cb962ac59075b964b07152d234b70', 'leila', 'alouache', 'leila', 'leilaaaAloua@hotmail.net', '0563354378', '2020794354', NULL),
+(29, '202cb962ac59075b964b07152d234b70', 'Douaa', 'kadem', 'douaa', 'kadem.douaa.usthb@gmail.com', '0664548490', '1919310985', NULL),
+(30, '202cb962ac59075b964b07152d234b70', 'yasmina', 'sad', 'yasmina', 'Sad.yasmina.com', '0654749248', '1919320578', NULL),
+(31, '202cb962ac59075b964b07152d234b70', 'meriem', 'latif', 'meriem', 'meriemlatif@gmail.com', '0654749248', '2020320578', NULL),
+(32, '202cb962ac59075b964b07152d234b70', 'ab_yasmine', 'aboura', 'yasmine', 'aboura2002@gmail.com', '0654749246', '1919320359', NULL),
+(33, '202cb962ac59075b964b07152d234b70', 'kamilia', 'mazzouz', 'kamilia', 'kamz555@yahoo.com', '0654749257', '1919320167', NULL),
+(35, '202cb962ac59075b964b07152d234b70', 'thanaa', 'djemmal', 'thanaa', 'sumo.2002@gmail.com', '0654749246', '1919320646', NULL),
+(36, '202cb962ac59075b964b07152d234b70', 'lyna', 'atal', 'lyna', 'lyna222@gmail.com', '0654749276', '1919320349', NULL);
 
 
 INSERT INTO `pilote` (`pilote_user_id`, `voiture_id`, `voiture_marque`, `voiture_annee`, `voiture_modele`, `voiture_couleur`, `photo`) VALUES

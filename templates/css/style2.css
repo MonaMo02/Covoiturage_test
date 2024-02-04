@@ -471,7 +471,7 @@ th,
 }
 
 .journey-item-find {
-    width: 600px;
+    width: 800px;
     height: 120px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
@@ -527,12 +527,22 @@ th,
     
 }
 
-.resPage .indexprice  {
+ .indexprice  {
     position: absolute;
-    margin-left: 360px;
+    margin-left: 340px;
     
 }
 
+.profileImg{
+    position: absolute;
+    margin-left: 360px;
+    border-radius: 100%;
+}
+.profileImg img{
+    width: 50px;
+    height: 100px;
+    border-radius: 100px;
+}
 .prix {
     color: #000000;
     font-size: 18p;
@@ -554,7 +564,7 @@ th,
 
 .info-section-prix{
     position: absolute;
-    margin-left: 480px;
+    margin-left: 660px;
     margin-top: -75px;
 }
 
@@ -664,7 +674,7 @@ th,
     color: #eee;
     font-weight: 600;
     font-size: 16px;
-    margin-left: 40%;
+    margin-left: 58%;
     margin-top: -40px;
     border-radius: 8px;
 
