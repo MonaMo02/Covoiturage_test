@@ -470,6 +470,28 @@ th,
 
 }
 
+.journey-item-find {
+    width: 800px;
+    height: 120px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.47);
+    border-radius: 10px;
+    text-align: left;
+
+
+}
+
+.journey-info-find {
+    display: block;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    text-align: left;
+
+
+}
+
 
 
 
@@ -507,12 +529,22 @@ th,
     
 }
 
-.resPage .indexprice  {
+ .indexprice  {
     position: absolute;
-    margin-left: 360px;
+    margin-left: 340px;
     
 }
 
+.profileImg{
+    position: absolute;
+    margin-left: 360px;
+    border-radius: 100%;
+}
+.profileImg img{
+    width: 50px;
+    height: 100px;
+    border-radius: 100px;
+}
 .prix {
     color: #000000;
     font-size: 18p;
@@ -532,6 +564,12 @@ th,
     flex: 1;
 }
 
+
+.info-section-prix{
+    position: absolute;
+    margin-left: 660px;
+    margin-top: -75px;
+}
 
 .info-label {
     font-weight: bold;
@@ -567,6 +605,8 @@ th,
 
 }
 
+
+
 .fa-car {
     margin-left: 10px;
     font-size: 20px;
@@ -588,7 +628,7 @@ th,
     margin-bottom: 20px;
     font-size: 26px;
     font-weight: 600;
-    margin-top: 60px;
+    margin-top: 100px;
     text-align: center;
 }
 
@@ -628,6 +668,21 @@ th,
 
 }
 
+.resbutton-find {
+    position: absolute;
+    height: 45px;
+    width: 130px;
+    background-color: #14525c;
+    border: 0;
+    color: #eee;
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 58%;
+    margin-top: -40px;
+    border-radius: 8px;
+
+
+}
 
 .resPage .resbutton {
     /* position: absolute; */
